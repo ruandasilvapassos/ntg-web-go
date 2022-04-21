@@ -154,6 +154,11 @@ export const Footer: React.FC = () => {
           <div className="text-center"></div>
         </div>
       </div>
+      <div className="back-to-top">
+        <div className="inner">
+          <span className="material-icons">expand_less</span>
+        </div>
+      </div>
     </footer>
   )
 }

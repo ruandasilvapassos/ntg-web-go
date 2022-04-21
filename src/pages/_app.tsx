@@ -5,44 +5,18 @@ import '@shared/styles/vendor/nucleo/nucleo-svg.css'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useCookie } from 'react-use'
+
+import { CookieBlock } from '@components/Modals/CookieBlock'
 
 import type { AppLayoutProps } from 'next/app'
 
-import type { NextWebVitalsMetric } from 'next/app'
-
-const CONSOLE_STYLE = {
-  ok: ['color: #fff'].join(';'),
-  warn: ['color: #ff0000'].join(';')
-}
-
-/**
- * Measuring performance
- * you can disable if it's not necessary
- * @param metric NextWebVitalsMetric
- */
-export const reportWebVitals = (metric: NextWebVitalsMetric) => {
-  // disable it in production
-  if (process.env.NODE_ENV === 'production') return
-  const VALUE: number = parseFloat((metric.value / 1000).toFixed(3))
-  const STYLE: string = VALUE > 3 ? CONSOLE_STYLE.warn : CONSOLE_STYLE.ok
-
-  switch (metric.name) {
-    case 'Next.js-hydration':
-      // Length of time it takes for the page to start and finish hydrating (in ms)
-      console.info(`%cFirst load render finish in: ${VALUE}s`, STYLE)
-      break
-    case 'Next.js-render':
-      // Length of time it takes for a page to finish render after a route change (in ms)
-      console.info(`%cFinish rendering in: ${VALUE}s`, STYLE)
-      break
-    default:
-      break
-  }
-}
-
 const _APP = ({ Component, pageProps }: AppLayoutProps) => {
   const { pathname } = useRouter()
+  const [value, updateCookie] = useCookie('agree-cookie')
+  const [showCookie, setShowCookie] = useState(false)
+
   const getLayout = Component.getLayout ?? ((page) => page)
 
   useEffect(() => {
@@ -58,6 +32,21 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
     }
   }, [pathname])
 
+  const handleUseCookie = (accept?: boolean) => {
+    if (accept) {
+      updateCookie('1')
+    } else {
+      updateCookie('0')
+    }
+  }
+
+  useEffect(() => {
+    if (value) {
+      setShowCookie(false)
+    } else {
+      setShowCookie(true)
+    }
+  }, [value])
   return (
     <>
       <Head>
@@ -73,6 +62,8 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       <Script src="https://kit.fontawesome.com/42d5adcbca.js" />
 
       {getLayout(<Component {...pageProps} />)}
+
+      <CookieBlock state={showCookie} handleUseCookie={handleUseCookie} onClose={() => setShowCookie(false)} />
     </>
   )
 }
