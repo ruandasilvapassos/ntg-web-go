@@ -1,22 +1,36 @@
+import classNames from 'classnames'
+import Link from 'next/link'
+import { useMemo } from 'react'
+
 import { ProductCheckbox } from '@components/Filters/ProductCheckbox'
 import { useHeaderHeight } from '@hooks/useHeaderHeight'
 
-export const ProductList: React.FC = () => {
+interface ProductListProps {
+  className?: string
+  title?: string
+  description?: string
+}
+
+export const ProductList: React.FC<ProductListProps> = (props) => {
+  const { className, title, description } = props
   const headerHeight = useHeaderHeight()
 
+  const showHeading = useMemo(() => {
+    if (title || description) return true
+    return false
+  }, [props])
   return (
-    <section className="py-5 bg-gray-100 py-lg-7 product-section">
+    <section className={classNames(['py-5 bg-gray-100 py-lg-7 product-section', className])}>
       <div className="container">
-        <div className="row">
-          <div className="col-lg-7">
-            <h2>Explore More Products</h2>
-            <p>
-              Find the right products to enable technology transformation across your enterprise and run mission-critical
-              processes efficiently and securely – today and as your business needs evolve.
-            </p>
+        {showHeading && (
+          <div className="row pb-6">
+            <div className="col-lg-7">
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </div>
           </div>
-        </div>
-        <div className="pt-6 row ">
+        )}
+        <div className="row">
           <div className="col-lg-3 categories-section ">
             {/* Filter Product Checkbox */}
             <ProductCheckbox />
@@ -241,11 +255,9 @@ export const ProductList: React.FC = () => {
 
                                             <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
                                           </a> --> */}
-                                              <a
-                                                href="./product.html"
-                                                className="mt-3 text-xs btn btn-sm btn-outline-primary">
-                                                Learn more
-                                              </a>
+                                              <Link href={`/product/${i + 1}`} passHref>
+                                                <a className="mt-3 text-xs btn btn-sm btn-outline-primary">Learn more</a>
+                                              </Link>
                                             </div>
                                           </div>
                                         </div>
@@ -322,11 +334,13 @@ export const ProductList: React.FC = () => {
                                             <p>Software Plan Starts at</p>
                                             <div className="d-flex justify-content-between align-items-center">
                                               <h5 className="mb-0">US$0.0013/hour</h5>
-                                              <a href="/productDetail.html" className="text-sm icon-move-right">
-                                                <span className="text-dark">Learn more</span>
+                                              <Link href={`/product/${i + 1}`} passHref>
+                                                <a className="text-sm icon-move-right">
+                                                  <span className="text-dark">Learn more</span>
 
-                                                <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
-                                              </a>
+                                                  <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                                </a>
+                                              </Link>
                                             </div>
                                           </div>
                                         </div>
@@ -403,11 +417,12 @@ export const ProductList: React.FC = () => {
                                             <p>Software Plan Starts at</p>
                                             <div className="d-flex justify-content-between align-items-center">
                                               <h5 className="mb-0">US$0.0013/hour</h5>
-                                              <a className="text-sm icon-move-right">
-                                                <span className="text-dark">Learn more</span>
-
-                                                <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
-                                              </a>
+                                              <Link href={`/product/${i + 1}`} passHref>
+                                                <a className="text-sm icon-move-right">
+                                                  <span className="text-dark">Learn more</span>
+                                                  <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                                </a>
+                                              </Link>
                                             </div>
                                           </div>
                                         </div>
@@ -416,9 +431,11 @@ export const ProductList: React.FC = () => {
                                   ))}
 
                                   <div className="buttons">
-                                    <button type="button" className="mt-4 btn btn-primary">
-                                      Learn more
-                                    </button>
+                                    <Link href={`/product`} passHref>
+                                      <a type="button" className="mt-4 btn btn-primary">
+                                        Learn more
+                                      </a>
+                                    </Link>
                                   </div>
                                 </div>
                               </div>
@@ -484,11 +501,13 @@ export const ProductList: React.FC = () => {
                                             <p>Software Plan Starts at</p>
                                             <div className="d-flex justify-content-between align-items-center">
                                               <h5 className="mb-0">US$0.0013/hour</h5>
-                                              <a className="text-sm icon-move-right">
-                                                <span className="text-dark">Learn more</span>
+                                              <Link href={`/product/${i + 1}`} passHref>
+                                                <a className="text-sm icon-move-right">
+                                                  <span className="text-dark">Learn more</span>
 
-                                                <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
-                                              </a>
+                                                  <i className="text-xs fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                                </a>
+                                              </Link>
                                             </div>
                                           </div>
                                         </div>

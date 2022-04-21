@@ -18,7 +18,11 @@ const LandingPage: NextLayoutComponentType = () => {
       {/* Featured Product section */}
       <FeaturedProduct />
       {/* Product List section */}
-      <ProductList />
+      <ProductList
+        title="Explore More Products"
+        description="Find the right products to enable technology transformation across your enterprise and run mission-critical
+              processes efficiently and securely – today and as your business needs evolve."
+      />
       {/* Our Process section */}
       <Section.OurProcess />
       {/* Why use our Products section */}

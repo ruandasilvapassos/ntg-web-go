@@ -10,10 +10,14 @@ import type { NextLayoutComponentType } from 'next'
 
 const ProductListPage: NextLayoutComponentType = () => {
   return (
-    <div className="home-page">
-      <NextSeo {...extendSEO(routes.en.home.seo)} />
+    <div className="product-page">
+      <NextSeo {...extendSEO(routes.en.product.seo)} />
       {/* Explore More section */}
-      <ProductList />
+      <ProductList
+        title="Ntegral Products"
+        description="Find the right products to enable technology transformation across your enterprise and run mission-critical processes efficiently and securely – today and as your business needs evolve."
+        className="py-lg-7 pt-lg-10"
+      />
       {/* Featured Product section */}
       <FeaturedProduct />
       <ConnectCTA />

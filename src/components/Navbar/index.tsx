@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useWindowScroll } from 'react-use'
 
@@ -27,24 +28,16 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
   return (
     <nav id="MAIN_HEADER" className={classNames(navStyle)}>
       <div className="container">
-        <a
-          className="text-white navbar-brand d-none d-md-block"
-          href="./home.html"
-          rel="tooltip"
-          title=""
-          data-placement="bottom"
-          target="_blank">
-          <Image alt="" src="/static/img/logo-light.png" width={130} height={40} />
-        </a>
-        <a
-          className="text-white navbar-brand d-block d-md-none"
-          href="./home.html"
-          rel="tooltip"
-          title=""
-          data-placement="bottom"
-          target="_blank">
-          <Image alt="" src="/static/img/logo-light.png" width={130} height={40} />
-        </a>
+        <Link href="/" passHref>
+          <a className="text-white navbar-brand d-none d-md-block" rel="tooltip" title="" data-placement="bottom">
+            <Image alt="" src="/static/img/logo-light.png" width={130} height={40} />
+          </a>
+        </Link>
+        <Link href="/" passHref>
+          <a className="text-white navbar-brand d-block d-md-none" rel="tooltip" title="" data-placement="bottom">
+            <Image alt="" src="/static/img/logo-light.png" width={130} height={40} />
+          </a>
+        </Link>
         <button
           className="shadow-none navbar-toggler ms-2"
           type="button"
@@ -169,9 +162,11 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
                         <a href="../pages/chat.html" className="dropdown-item border-radius-md">
                           <span>Chat</span>
                         </a>
-                        <a href="../pages/product-page.html" className="dropdown-item border-radius-md">
-                          <span>Product Page</span>
-                        </a>
+                        <Link href="/product" passHref>
+                          <a className="dropdown-item border-radius-md">
+                            <span>Product Page</span>
+                          </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

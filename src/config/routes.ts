@@ -9,6 +9,14 @@ const routes = {
         ...defaultSEO.en,
         title: 'Ntegral | Home'
       })
+    },
+    product: {
+      label: 'Product',
+      path: '/',
+      seo: extendSEO({
+        ...defaultSEO.en,
+        title: 'Ntegral | Product'
+      })
     }
   },
   es: {
@@ -18,6 +26,14 @@ const routes = {
       seo: extendSEO({
         ...defaultSEO.en,
         title: 'Ntegral | Casa'
+      })
+    },
+    product: {
+      label: 'Home',
+      path: '/',
+      seo: extendSEO({
+        ...defaultSEO.en,
+        title: 'Ntegral | Home'
       })
     }
   }

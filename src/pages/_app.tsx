@@ -54,7 +54,7 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       </Head>
       <Script src="/static/js/core/popper.min.js" />
       <Script src="/static/js/core/bootstrap.min.js" />
-      <Script src="/static/js/material-kit-pro.min.js" />
+      <Script src="/static/js/material-kit-pro.js" />
       <Script src="https://kit.fontawesome.com/42d5adcbca.js" />
 
       {getLayout(<Component {...pageProps} />)}
