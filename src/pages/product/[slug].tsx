@@ -2,8 +2,9 @@ import { NextSeo } from 'next-seo'
 
 import { ConnectCTA } from '@components/CTAs/ConnectCTA'
 import { MainLayout } from '@components/Layouts/MainLayout'
-import { BlockQuote, ProductDetail, ProductDetailTab } from '@components/PageChunk/Product'
+import { ProductDetail, ProductDetailTab } from '@components/PageChunk/Product'
 import { FeaturedProduct } from '@components/Section'
+import { BlockQuote } from '@components/Testimonials'
 import routes from '@src/config/routes'
 import { extendSEO } from '@src/config/seo'
 
