@@ -1,7 +1,7 @@
 import { ProductCheckbox } from '@components/Filters/ProductCheckbox'
 import { useHeaderHeight } from '@hooks/useHeaderHeight'
 
-export const ExploreMore: React.FC = () => {
+export const ProductList: React.FC = () => {
   const headerHeight = useHeaderHeight()
 
   return (
