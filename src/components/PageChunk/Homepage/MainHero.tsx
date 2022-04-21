@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const MainHero = () => {
   return (
     <header>
@@ -14,9 +16,11 @@ export const MainHero = () => {
                 We refine the process to integrate people, technology, and change management using our wide range of products
               </p>
               <div className="buttons">
-                <button type="button" className="mt-4 btn bg-gradient-primary">
-                  See all products
-                </button>
+                <Link href="/product" passHref>
+                  <a type="button" className="mt-4 btn bg-gradient-primary">
+                    See all products
+                  </a>
+                </Link>
               </div>
 
               <div className="mt-5 mb-5 row mt-lg-3">

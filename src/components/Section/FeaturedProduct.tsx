@@ -29,9 +29,11 @@ export const FeaturedProduct: React.FC = () => {
                 <p className="mb-4">
                   Azure Marketplace: Microsoft SQL Server Evaluation 2019 for Ubuntu:18-04 container image
                 </p>
-                <button type="button" className="mb-0 btn bg-gradient-primary w-100">
-                  View Product
-                </button>
+                <Link href="/product/example" passHref>
+                  <a type="button" className="mb-0 btn bg-gradient-primary w-100">
+                    View Product
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -46,9 +48,11 @@ export const FeaturedProduct: React.FC = () => {
                 <p className="mb-4">
                   Azure Marketplace: Microsoft SQL Server Evaluation 2019 for Ubuntu:18-04 container image
                 </p>
-                <button type="button" className="mb-0 btn bg-gradient-primary w-100">
-                  View Product
-                </button>
+                <Link href="/product/example" passHref>
+                  <a type="button" className="mb-0 btn bg-gradient-primary w-100">
+                    View Product
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -63,9 +67,11 @@ export const FeaturedProduct: React.FC = () => {
                 <p className="mb-4">
                   Azure Marketplace: Microsoft SQL Server Evaluation 2019 for Ubuntu:18-04 container image
                 </p>
-                <button type="button" className="mb-0 btn bg-gradient-primary w-100">
-                  View Product
-                </button>
+                <Link href="/product/example" passHref>
+                  <a type="button" className="mb-0 btn bg-gradient-primary w-100">
+                    View Product
+                  </a>
+                </Link>
               </div>
             </div>
           </div>

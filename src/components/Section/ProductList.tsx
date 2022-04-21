@@ -516,9 +516,11 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
                                   ))}
 
                                   <div className="buttons">
-                                    <button type="button" className="mt-4 btn btn-primary">
-                                      See All Products
-                                    </button>
+                                    <Link href="/product" passHref>
+                                      <a type="button" className="mt-4 btn btn-primary">
+                                        See All Products
+                                      </a>
+                                    </Link>
                                   </div>
                                 </div>
                               </div>

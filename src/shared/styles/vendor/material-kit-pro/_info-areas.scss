@@ -48,7 +48,7 @@
 
 .icon-md {
   width: $icon-md-width !important;
-  height: $icon-md-height;
+  height: $icon-md-height !important;
 
   i {
     top: $info-icon-top-md;
