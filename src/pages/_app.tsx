@@ -3,7 +3,9 @@ import '@shared/styles/vendor/nucleo/nucleo-icons.css'
 import '@shared/styles/vendor/nucleo/nucleo-svg.css'
 
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
+import { useEffect } from 'react'
 
 import type { AppLayoutProps } from 'next/app'
 
@@ -40,7 +42,21 @@ export const reportWebVitals = (metric: NextWebVitalsMetric) => {
 }
 
 const _APP = ({ Component, pageProps }: AppLayoutProps) => {
+  const { pathname } = useRouter()
   const getLayout = Component.getLayout ?? ((page) => page)
+
+  useEffect(() => {
+    // create a dom to force script to re-fetch each page change
+    // it fix nav pills issue on product list
+    const script = document.createElement('script')
+    script.src = '/static/js/material-kit-pro.js'
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      script.src = ''
+      document.body.appendChild(script)
+    }
+  }, [pathname])
 
   return (
     <>
@@ -54,7 +70,6 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       </Head>
       <Script src="/static/js/core/popper.min.js" />
       <Script src="/static/js/core/bootstrap.min.js" />
-      <Script src="/static/js/material-kit-pro.js" />
       <Script src="https://kit.fontawesome.com/42d5adcbca.js" />
 
       {getLayout(<Component {...pageProps} />)}
