@@ -1,0 +1,12 @@
+/* Write your own custom base styles here */
+/* Start purging... */
+@import 'vendor/material-kit-pro';
+/* Stop purging. */
+@import 'typography';
+@import 'loader';
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: #fff;
+}
+/* Your own custom utilities */
