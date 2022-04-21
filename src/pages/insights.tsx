@@ -11,9 +11,13 @@ const InsightPage: NextLayoutComponentType = () => {
   return (
     <div className="insights-page">
       <NextSeo {...extendSEO(routes.en.home.seo)} />
+      {/* Featured news section */}
       <FeaturedNews />
+      {/* Latest news list section */}
       <NewsList />
+      {/* Insight categories, news list with categories section */}
       <InsightCategories />
+      {/* Apply now cta section */}
       <ApplyNow />
     </div>
   )
