@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const JobList: React.FC = () => {
   return (
     <section className="py-lg-7 py-5  bg-white career-list">
@@ -15,10 +17,12 @@ export const JobList: React.FC = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <a href="#" className="fw-bold apply-now">
-                    Apply now
-                    <span></span>
-                  </a>
+                  <Link href="/career/data-engineer" passHref>
+                    <a className="fw-bold apply-now">
+                      Apply now
+                      <span></span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -32,10 +36,12 @@ export const JobList: React.FC = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <a href="#" className="fw-bold apply-now">
-                    Apply now
-                    <span></span>
-                  </a>
+                  <Link href="/career/data-engineer" passHref>
+                    <a className="fw-bold apply-now">
+                      Apply now
+                      <span></span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -49,10 +55,12 @@ export const JobList: React.FC = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <a href="#" className="fw-bold apply-now">
-                    Apply now
-                    <span></span>
-                  </a>
+                  <Link href="/career/data-engineer" passHref>
+                    <a className="fw-bold apply-now">
+                      Apply now
+                      <span></span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -66,10 +74,12 @@ export const JobList: React.FC = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <a href="#" className="fw-bold apply-now">
-                    Apply now
-                    <span></span>
-                  </a>
+                  <Link href="/career/data-engineer" passHref>
+                    <a className="fw-bold apply-now">
+                      Apply now
+                      <span></span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -83,10 +93,12 @@ export const JobList: React.FC = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <a href="#" className="fw-bold apply-now">
-                    Apply now
-                    <span></span>
-                  </a>
+                  <Link href="/career/data-engineer" passHref>
+                    <a className="fw-bold apply-now">
+                      Apply now
+                      <span></span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -100,10 +112,12 @@ export const JobList: React.FC = () => {
                   </p>
                 </div>
                 <div className="col-auto">
-                  <a href="#" className="fw-bold apply-now">
-                    Apply now
-                    <span></span>
-                  </a>
+                  <Link href="/career/data-engineer" passHref>
+                    <a className="fw-bold apply-now">
+                      Apply now
+                      <span></span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>

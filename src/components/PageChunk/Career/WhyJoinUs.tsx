@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const WhyJoinUs: React.FC = () => {
   return (
     <section className="py-lg-7 py-5 bg-gray-200">
@@ -8,9 +10,11 @@ export const WhyJoinUs: React.FC = () => {
             <p>Because we care in more than one way</p>
           </div>
           <div className="col-lg-6 text-end d-flex flex-column justify-content-center">
-            <button type="button" className="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">
-              About Us
-            </button>
+            <Link href="/about" passHref>
+              <a type="button" className="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">
+                About Us
+              </a>
+            </Link>
           </div>
         </div>
         <div className="row mt-5">
