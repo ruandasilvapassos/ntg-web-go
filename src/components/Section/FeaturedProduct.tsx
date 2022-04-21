@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const FeaturedProduct: React.FC = () => {
   return (
     <section className="py-5 bg-gray-200 py-lg-7">
@@ -8,9 +10,11 @@ export const FeaturedProduct: React.FC = () => {
             <p>Our products are enterprise ready and can help you accelerate your go-to-market strategy.</p>
           </div>
           <div className="col-lg-5 text-end d-flex flex-column justify-content-center">
-            <button type="button" className="mt-2 mb-0 btn bg-gradient-primary ms-lg-auto me-lg-0 me-auto mt-lg-0">
-              View All Products
-            </button>
+            <Link href="/product" passHref>
+              <a type="button" className="mt-2 mb-0 btn bg-gradient-primary ms-lg-auto me-lg-0 me-auto mt-lg-0">
+                View All Products
+              </a>
+            </Link>
           </div>
         </div>
         <div className="row">

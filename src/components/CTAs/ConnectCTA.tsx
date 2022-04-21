@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const ConnectCTA: React.FC = () => {
   return (
     <section className="overflow-hidden bg-gradient-dark position-relative">
@@ -13,9 +15,9 @@ export const ConnectCTA: React.FC = () => {
               </p>
               <div>
                 <div className="pt-5">
-                  <a href="#" className="px-4 mb-4 text-white btn bg-gradient-primary fw-bold">
-                    Let’s connect{' '}
-                  </a>
+                  <Link href="/contact/v2">
+                    <a className="px-4 mb-4 text-white btn bg-gradient-primary fw-bold">Let’s connect</a>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -48,7 +48,7 @@
 
 .icon-md {
   width: $icon-md-width !important;
-  height: $icon-md-height !important;
+  height: $icon-md-height;
 
   i {
     top: $info-icon-top-md;
@@ -68,8 +68,8 @@
 }
 
 .icon-lg {
-  width: $icon-lg-width;
-  height: $icon-lg-height;
+  width: $icon-lg-width !important;
+  height: $icon-lg-height !important;
   i {
     top: $info-icon-top-lg;
     font-size: $font-size-2xl;

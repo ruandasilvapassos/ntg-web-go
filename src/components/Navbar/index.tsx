@@ -292,20 +292,28 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
                         <img src="/static/img/down-arrow.svg" alt="down-arrow" className="arrow ms-auto" />
                       </a>
                       <div className="px-2 py-3 mt-0 dropdown-menu" aria-labelledby="dropdownSignIn">
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-cover.html">
-                          <span>Cover</span>
-                        </a>
-                        <a
-                          className="mb-1 dropdown-item ps-3 border-radius-md"
-                          href="../pages/sign-in/sign-in-illustration.html">
-                          <span>Illustration</span>
-                        </a>
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-basic.html">
-                          <span>Basic</span>
-                        </a>
-                        <a className="dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-simple.html">
-                          <span>Simple</span>
-                        </a>
+                        <Link href="/services">
+                          <a className="mb-1 dropdown-item ps-3 border-radius-md">
+                            <span>Cover</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a
+                            className="mb-1 dropdown-item ps-3 border-radius-md"
+                            href="../pages/sign-in/sign-in-illustration.html">
+                            <span>Illustration</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-basic.html">
+                            <span>Basic</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a className="dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-simple.html">
+                            <span>Simple</span>
+                          </a>
+                        </Link>
                       </div>
                     </li>
                     <li className="p-0 border-0 nav-item dropdown dropdown-hover dropdown-subitem list-group-item">
@@ -316,20 +324,28 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
                         <img src="/static/img/down-arrow.svg" alt="down-arrow" className="arrow ms-auto" />
                       </a>
                       <div className="px-2 py-3 mt-0 dropdown-menu" aria-labelledby="dropdownSignUp">
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-up/sign-up-cover.html">
-                          <span>Cover</span>
-                        </a>
-                        <a
-                          className="mb-1 dropdown-item ps-3 border-radius-md"
-                          href="../pages/sign-up/sign-up-illustration.html">
-                          <span>Illustration</span>
-                        </a>
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-up/sign-up-basic.html">
-                          <span>Basic</span>
-                        </a>
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-up/sign-up-simple.html">
-                          <span>Simple</span>
-                        </a>
+                        <Link href="/services">
+                          <a className="mb-1 dropdown-item ps-3 border-radius-md">
+                            <span>Cover</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a
+                            className="mb-1 dropdown-item ps-3 border-radius-md"
+                            href="../pages/sign-in/sign-in-illustration.html">
+                            <span>Illustration</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-basic.html">
+                            <span>Basic</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a className="dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-simple.html">
+                            <span>Simple</span>
+                          </a>
+                        </Link>
                       </div>
                     </li>
                     <li className="p-0 border-0 nav-item dropdown dropdown-hover dropdown-subitem list-group-item">
@@ -340,20 +356,28 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
                         <img src="/static/img/down-arrow.svg" alt="down-arrow" className="arrow ms-auto" />
                       </a>
                       <div className="px-2 py-3 mt-0 dropdown-menu" aria-labelledby="dropdownSignUp">
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-up/sign-up-cover.html">
-                          <span>Cover</span>
-                        </a>
-                        <a
-                          className="mb-1 dropdown-item ps-3 border-radius-md"
-                          href="../pages/sign-up/sign-up-illustration.html">
-                          <span>Illustration</span>
-                        </a>
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-up/sign-up-basic.html">
-                          <span>Basic</span>
-                        </a>
-                        <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-up/sign-up-simple.html">
-                          <span>Simple</span>
-                        </a>
+                        <Link href="/services">
+                          <a className="mb-1 dropdown-item ps-3 border-radius-md">
+                            <span>Cover</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a
+                            className="mb-1 dropdown-item ps-3 border-radius-md"
+                            href="../pages/sign-in/sign-in-illustration.html">
+                            <span>Illustration</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a className="mb-1 dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-basic.html">
+                            <span>Basic</span>
+                          </a>
+                        </Link>
+                        <Link href="/services">
+                          <a className="dropdown-item ps-3 border-radius-md" href="../pages/sign-in/sign-in-simple.html">
+                            <span>Simple</span>
+                          </a>
+                        </Link>
                       </div>
                     </li>
                   </ul>
@@ -361,31 +385,34 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
               </div>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a
-                href="./insights.html"
-                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
-                role="button"
-                style={{ color: textColor }}>
-                Insights
-              </a>
+              <Link href="/insights" passHref>
+                <a
+                  className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                  role="button"
+                  style={{ color: textColor }}>
+                  Insights
+                </a>
+              </Link>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a
-                href="./about.html"
-                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
-                role="button"
-                style={{ color: textColor }}>
-                About
-              </a>
+              <Link href="/about" passHref>
+                <a
+                  className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                  role="button"
+                  style={{ color: textColor }}>
+                  About
+                </a>
+              </Link>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a
-                href="./career-list.html"
-                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
-                role="button"
-                style={{ color: textColor }}>
-                Careers
-              </a>
+              <Link href="/career" passHref>
+                <a
+                  className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                  role="button"
+                  style={{ color: textColor }}>
+                  Careers
+                </a>
+              </Link>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
               <Link href="/contact" passHref>

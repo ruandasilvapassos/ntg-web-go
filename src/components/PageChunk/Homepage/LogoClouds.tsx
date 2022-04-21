@@ -1,10 +1,15 @@
 interface LogoCloudsProps {
   title?: string
+  backgroundColor?: string
 }
 
-export const LogoClouds: React.FC<LogoCloudsProps> = ({ title }) => {
+export const LogoClouds: React.FC<LogoCloudsProps> = ({ title, backgroundColor = '#f0f2f5' }) => {
   return (
-    <div className="py-5 bg-gray-200 py-lg-6">
+    <div
+      className="py-5 py-lg-6"
+      style={{
+        backgroundColor
+      }}>
       <div className="container">
         {title && (
           <div className="row">
