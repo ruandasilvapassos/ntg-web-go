@@ -79,10 +79,10 @@ nav.fixed-top {
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.06) !important;
 
     .nav-link {
-      color: $headings-color;
+      color: $headings-color !important;
 
       &:hover {
-        color: $headings-color;
+        color: $headings-color !important;
       }
 
       .arrow {
@@ -97,7 +97,7 @@ nav.fixed-top {
     }
 
     .nav-link i {
-      color: $headings-color;
+      color: $headings-color !important;
     }
   }
 }
