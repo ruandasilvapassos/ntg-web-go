@@ -10,7 +10,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const REQUIRED_CONFIG = {
   reactStrictMode: true, // true | false
   env: {
-    SITE_NAME: 'Sawala Boilerplate',
+    SITE_NAME: 'Ntegral',
     BASE_URL: isProd ? 'http://localhost:3000' : 'http://localhost:3000'
   },
   extends: ['plugin:@next/next/recommended']
