@@ -388,13 +388,14 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
               </a>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a
-                href="./contact-v2.html"
-                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
-                role="button"
-                style={{ color: textColor }}>
-                Connect
-              </a>
+              <Link href="/contact" passHref>
+                <a
+                  className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                  role="button"
+                  style={{ color: textColor }}>
+                  Connect
+                </a>
+              </Link>
             </li>
           </ul>
         </div>
