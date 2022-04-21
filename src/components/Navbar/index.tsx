@@ -3,9 +3,16 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useWindowScroll } from 'react-use'
 
-export const Navbar = () => {
-  const initialNavStyle = ['top-0 py-4 shadow-none navbar navbar-expand-lg position-fixed z-index-3 w-100 fixed-top']
+interface NavbarProps {
+  theme?: 'light' | 'dark'
+}
 
+export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
+  const initialNavStyle = [
+    'top-0 py-4 shadow-none navbar navbar-expand-lg position-fixed z-index-3 w-100 fixed-top navbar-transparent'
+  ]
+
+  const textColor = theme === 'dark' ? '#344767' : '#fff'
   const [navStyle, setNavStyle] = useState(initialNavStyle)
   const { y } = useWindowScroll()
 
@@ -60,15 +67,10 @@ export const Navbar = () => {
                 role="button"
                 id="dropdownMenuPages10"
                 data-bs-toggle="dropdown"
-                aria-expanded="false">
+                aria-expanded="false"
+                style={{ color: textColor }}>
                 Products
-                <img
-                  src="/static/img/down-arrow-dark.svg"
-                  alt="down-arrow"
-                  className="arrow ms-2 d-lg-block d-block"
-                  width={10}
-                  height={7}
-                />
+                <span className="material-icons">expand_more</span>
               </a>
               <div
                 className="p-3 mt-0 dropdown-menu ms-n3 dropdown-menu-animation dropdown-xl border-radius-xl mt-lg-3"
@@ -277,15 +279,10 @@ export const Navbar = () => {
                 role="button"
                 id="dropdownMenuAccount"
                 data-bs-toggle="dropdown"
-                aria-expanded="false">
+                aria-expanded="false"
+                style={{ color: textColor }}>
                 Services
-                <img
-                  src="/static/img/down-arrow-dark.svg"
-                  alt="down-arrow"
-                  className="arrow ms-2 d-lg-block d-block"
-                  width={10}
-                  height={7}
-                />
+                <span className="material-icons">expand_more</span>
               </a>
               <div
                 className="p-3 mt-0 dropdown-menu dropdown-menu-animation dropdown-md border-radius-xl mt-lg-3"
@@ -369,22 +366,38 @@ export const Navbar = () => {
               </div>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a href="./insights.html" className="cursor-pointer nav-link ps-2 d-flex align-items-center" role="button">
+              <a
+                href="./insights.html"
+                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                role="button"
+                style={{ color: textColor }}>
                 Insights
               </a>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a href="./about.html" className="cursor-pointer nav-link ps-2 d-flex align-items-center" role="button">
+              <a
+                href="./about.html"
+                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                role="button"
+                style={{ color: textColor }}>
                 About
               </a>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a href="./career-list.html" className="cursor-pointer nav-link ps-2 d-flex align-items-center" role="button">
+              <a
+                href="./career-list.html"
+                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                role="button"
+                style={{ color: textColor }}>
                 Careers
               </a>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a href="./contact-v2.html" className="cursor-pointer nav-link ps-2 d-flex align-items-center" role="button">
+              <a
+                href="./contact-v2.html"
+                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                role="button"
+                style={{ color: textColor }}>
                 Connect
               </a>
             </li>
