@@ -1,4 +1,12 @@
+import { useForm } from 'react-hook-form'
+
 export const ContactV2Form: React.FC = () => {
+  const { register, handleSubmit } = useForm()
+
+  // we set ts to any, temporarily
+  const handleContactForm = (data: any) => {
+    console.log(data)
+  }
   return (
     <section className="py-lg-7 py-5">
       <div className="container">
@@ -36,31 +44,31 @@ export const ContactV2Form: React.FC = () => {
         <div className="row">
           <div className="col-lg-10 mx-auto">
             <div className="card card-plain">
-              <form id="contact-form" method="post" autoComplete="off">
+              <form id="contact-form" onSubmit={handleSubmit(handleContactForm)} method="post" autoComplete="off">
                 <div className="card-body">
                   <div className="row">
                     <div className="col-md-6">
                       <label>Full Name</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="text" className="form-control" placeholder="Full Name" />
+                        <input type="text" className="form-control" placeholder="Full Name" {...register('fullname')} />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <label>Email</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="email" className="form-control" placeholder="Email" />
+                        <input type="email" className="form-control" placeholder="Email" {...register('email')} />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <label>Company</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="text" className="form-control" placeholder="Company" />
+                        <input type="text" className="form-control" placeholder="Company" {...register('company')} />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <label>Topic</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="text" className="form-control" placeholder="Topic" />
+                        <input type="text" className="form-control" placeholder="Topic" {...register('topic')} />
                       </div>
                     </div>
                   </div>
@@ -68,11 +76,11 @@ export const ContactV2Form: React.FC = () => {
                     <label>What can we help you?</label>
                     <div className="input-group input-group-outline is-filled mb-4">
                       <textarea
-                        name="message"
                         className="form-control"
                         id="message"
                         rows={6}
-                        placeholder="Describe your problem in at least 250 characters"></textarea>
+                        placeholder="Describe your problem in at least 250 characters"
+                        {...register('message')}></textarea>
                     </div>
                   </div>
                   <div className="row">

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const MainHero = () => {
@@ -6,7 +7,7 @@ export const MainHero = () => {
       <div
         className="page-header min-vh-75"
         style={{
-          backgroundImage: 'url(../../static/img/home-bg.png)'
+          backgroundImage: 'url(/static/img/home-bg.png)'
         }}>
         <div className="container">
           <div className="row">
@@ -30,13 +31,13 @@ export const MainHero = () => {
                 <div className="col-md-5">
                   <div className="mt-2 row align-items-center">
                     <div className="col-4">
-                      <img className="w-100 logo-available" src="/static/img/azure.svg" alt="logo" />
+                      <Image src="/static/img/azure.svg" height={32} width={90} />
                     </div>
                     <div className="col-4">
-                      <img className="w-100 logo-available" src="/static/img/ibm.svg" alt="logo" />
+                      <Image src="/static/img/ibm.svg" height={32} width={90} />
                     </div>
                     <div className="col-4">
-                      <img className="w-100 logo-available" src="/static/img/aws.svg" alt="logo" />
+                      <Image src="/static/img/aws.svg" height={32} width={90} />
                     </div>
                   </div>
                 </div>

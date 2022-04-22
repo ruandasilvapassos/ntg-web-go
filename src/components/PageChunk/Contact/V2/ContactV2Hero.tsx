@@ -1,3 +1,5 @@
+import { Link } from 'react-scroll'
+
 export const ContactV2Hero: React.FC = () => {
   return (
     <header>
@@ -17,9 +19,9 @@ export const ContactV2Hero: React.FC = () => {
                   We always want to hear from you! Let us know if there is anything that we can help you with.
                 </p>
                 <div className="buttons">
-                  <button type="button" className="btn bg-gradient-primary mt-4">
-                    Go Contact Form{' '}
-                  </button>
+                  <Link type="button" to="contact-form" offset={-275} className="btn bg-gradient-primary mt-4">
+                    Go Contact Form
+                  </Link>
                 </div>
               </div>
             </div>

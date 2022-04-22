@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const Footer: React.FC = () => {
   return (
     <footer className="pt-6 bg-gray-200 footer">
@@ -39,7 +41,7 @@ export const Footer: React.FC = () => {
                     <li>
                       <a className="dropdown-item border-radius-md">
                         <img alt="" src="/static/img/spain.png" />
-                        Spanish{' '}
+                        Spanish
                       </a>
                     </li>
                   </ul>
@@ -139,15 +141,15 @@ export const Footer: React.FC = () => {
               <p className="p-0 m-0 text-sm text-muted font-weight-normal">© 2022 Ntegral Inc. All Rights Reserved</p>
             </div>
             <div className="col-md-6 text-md-end">
-              <a href="./privacy.html" className="text-xs text-muted ms-0">
-                PRIVACY POLICY
-              </a>
-              <a href="./terms.html" className="text-xs text-muted ms-3">
-                TERMS
-              </a>
-              <a href="./contact.html" className="text-xs text-muted ms-3">
-                CONNECT
-              </a>
+              <Link href="/privacy" passHref>
+                <a className="text-xs text-muted ms-0">PRIVACY POLICY</a>
+              </Link>
+              <Link href="/terms" passHref>
+                <a className="text-xs text-muted ms-3">TERMS</a>
+              </Link>
+              <Link href="/contact/v2" passHref>
+                <a className="text-xs text-muted ms-3">CONNECT</a>
+              </Link>
             </div>
           </div>
 

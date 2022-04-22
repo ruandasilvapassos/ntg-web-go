@@ -11,7 +11,11 @@ const REQUIRED_CONFIG = {
   reactStrictMode: true, // true | false
   env: {
     SITE_NAME: 'Ntegral',
-    BASE_URL: isProd ? 'http://localhost:3000' : 'http://localhost:3000'
+    BASE_URL: isProd ? 'http://localhost:3000' : 'http://localhost:3000',
+    API_URL: process.env.API_URL || 'http://localhost:1337'
+  },
+  images: {
+    domains: ['images.unsplash.com']
   },
   extends: ['plugin:@next/next/recommended']
 }
