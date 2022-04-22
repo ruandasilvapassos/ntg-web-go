@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_component_required_skills",
+  "info": {
+    "displayName": "Required skills",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

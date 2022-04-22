@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "response_apply_forms",
+  "info": {
+    "singularName": "response-apply-form",
+    "pluralName": "response-apply-forms",
+    "displayName": "Response Apply Form",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "string"
+    },
+    "resume": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "desired_salary": {
+      "type": "string"
+    },
+    "earliest": {
+      "type": "string"
+    },
+    "career": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::career.career"
+    }
+  }
+}

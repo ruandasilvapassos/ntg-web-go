@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_component_key_responsibilities",
+  "info": {
+    "displayName": "Key responsibility",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

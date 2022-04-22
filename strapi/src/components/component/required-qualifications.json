@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_component_required_qualifications",
+  "info": {
+    "displayName": "Required qualifications",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

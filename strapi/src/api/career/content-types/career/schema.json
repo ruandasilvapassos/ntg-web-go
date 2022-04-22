@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "careers",
+  "info": {
+    "singularName": "career",
+    "pluralName": "careers",
+    "displayName": "Career"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "position": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "overview": {
+      "type": "richtext"
+    },
+    "key_responsibility": {
+      "displayName": "Key responsibility",
+      "type": "component",
+      "repeatable": true,
+      "component": "component.key-responsibility"
+    },
+    "required_qualifications": {
+      "displayName": "Required qualifications",
+      "type": "component",
+      "repeatable": true,
+      "component": "component.required-qualifications"
+    },
+    "required_skills": {
+      "displayName": "Required skills",
+      "type": "component",
+      "repeatable": true,
+      "component": "component.required-skills"
+    },
+    "type_job": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::type-job.type-job"
+    }
+  }
+}

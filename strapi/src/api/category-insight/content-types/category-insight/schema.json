@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_insights",
+  "info": {
+    "singularName": "category-insight",
+    "pluralName": "category-insights",
+    "displayName": "Category Insight"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
