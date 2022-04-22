@@ -4,17 +4,18 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product"
+    "displayName": "Product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
-    "sub_title": {
+    "summary": {
       "type": "string"
     },
     "description": {
@@ -42,17 +43,21 @@
       "relation": "oneToMany",
       "target": "api::category-product.category-product"
     },
-    "companies": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::company.company"
-    },
     "start_price": {
       "type": "string"
     },
     "featured_product": {
       "type": "boolean",
       "default": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

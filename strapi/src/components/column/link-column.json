@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_column_link_columns",
+  "info": {
+    "displayName": "LinkColumn",
+    "icon": "align-center",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

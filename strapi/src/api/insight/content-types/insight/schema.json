@@ -15,7 +15,7 @@
     "title": {
       "type": "string"
     },
-    "sub_title": {
+    "overview": {
       "type": "string"
     },
     "image": {
@@ -33,6 +33,20 @@
     },
     "content": {
       "type": "richtext"
+    },
+    "related_insights": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::insight.insight"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

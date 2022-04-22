@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elements_buttons",
+  "info": {
+    "displayName": "button",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "button",
+        "reset",
+        "submit"
+      ]
+    },
+    "class": {
+      "type": "string"
+    }
+  }
+}

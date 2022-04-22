@@ -24,19 +24,19 @@
       "displayName": "Key responsibility",
       "type": "component",
       "repeatable": true,
-      "component": "component.key-responsibility"
+      "component": "career.key-responsibility"
     },
     "required_qualifications": {
       "displayName": "Required qualifications",
       "type": "component",
       "repeatable": true,
-      "component": "component.required-qualifications"
+      "component": "career.required-qualifications"
     },
     "required_skills": {
       "displayName": "Required skills",
       "type": "component",
       "repeatable": true,
-      "component": "component.required-skills"
+      "component": "career.required-skills"
     },
     "type_job": {
       "type": "relation",

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_products_products",
+  "info": {
+    "displayName": "Products",
+    "icon": "box-open"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    }
+  }
+}

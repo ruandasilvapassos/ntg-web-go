@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_leads",
+  "info": {
+    "singularName": "web-lead",
+    "pluralName": "web-leads",
+    "displayName": "Web Lead"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    },
+    "term_condition": {
+      "type": "boolean"
+    }
+  }
+}
