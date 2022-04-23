@@ -5,8 +5,14 @@ import { MainHero } from '@components/PageChunk/Homepage'
 import { CTACard } from './Cards/CTACard'
 import { ThumbnailCardSection } from './Cards/ThumbnailCard'
 import { DynamicComponentType } from './ComponentType'
+import { BackgroundHero } from './Hero/BackgroundHero'
+import { BasicHero } from './Hero/BasicHero'
+import { HeaderHero } from './Hero/HeaderHero'
+import { HeroHighlight } from './Hero/HeroHighlight'
+import { HeroWithLogo } from './Hero/HeroWithLogo'
 import { SimpleHeroWithImage } from './Hero/SimpleWithImage'
 import { LogoClouds } from './LogoCloud'
+import { MasonrySection } from './Masonry'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -15,7 +21,13 @@ const sectionComponents = {
   'layouts.component-type': DynamicComponentType,
   'layouts.card-with-button': CTACard,
   'layouts.image-hero': SimpleHeroWithImage,
-  'layouts.partner': LogoClouds
+  'layouts.partner': LogoClouds,
+  'layouts.bkg-header': BackgroundHero,
+  'layouts.header': HeaderHero,
+  'layouts.mansory-image': MasonrySection,
+  'layouts.hero-circle-image': HeroWithLogo,
+  'layouts.hero-highlight': HeroHighlight,
+  'heros.hero': BasicHero
   // ComponentSectionsLargeVideo: LargeVideo,
   // ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   // ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,

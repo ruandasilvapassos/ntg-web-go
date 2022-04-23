@@ -19,7 +19,7 @@
       "repeatable": true,
       "component": "elements.item"
     },
-    "image": {
+    "images": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -31,11 +31,12 @@
       ]
     },
     "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "vertical_height": {
       "type": "integer"

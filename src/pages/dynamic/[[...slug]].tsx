@@ -71,6 +71,7 @@ export async function getStaticPaths(context: NextPageContext) {
     const localePages = await api.get(`/pages?locale=${locale}&fields=slug,locale`).then(({ data }) => data)
     return [...currentPages, ...localePages.data]
   }, Promise.resolve([]))
+
   const paths = pages?.map((page) => {
     const { slug, locale } = page.attributes
     // Decompose the slug that was saved in Strapi

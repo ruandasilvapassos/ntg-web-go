@@ -1,7 +1,7 @@
 {
   "collectionName": "components_layouts_mansory_images",
   "info": {
-    "displayName": "Mansory Image",
+    "displayName": "Masonry Image",
     "icon": "braille",
     "description": ""
   },
@@ -13,7 +13,7 @@
     "overview": {
       "type": "text"
     },
-    "image": {
+    "images": {
       "type": "media",
       "multiple": true,
       "required": false,

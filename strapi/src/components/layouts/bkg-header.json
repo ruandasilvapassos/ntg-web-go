@@ -10,7 +10,7 @@
     "title": {
       "type": "string"
     },
-    "vertical_height": {
+    "verticalHeight": {
       "type": "integer"
     },
     "background": {

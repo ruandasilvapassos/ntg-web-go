@@ -8,7 +8,7 @@ interface ThumbnailCardSectionProps {
 
 export const ThumbnailCardSection: React.FC<ThumbnailCardSectionProps> = ({ data }) => {
   const { title, overview, card: cards } = data
-  console.log(cards)
+  // console.log(cards)
   return (
     <section className="py-5 bg-white py-lg-7">
       <div className="container">

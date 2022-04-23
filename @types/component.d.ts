@@ -6,6 +6,13 @@ declare namespace Component {
     target?: '_self' | '_blank' | '_parent' | '_top'
     text?: string
   }
+  interface Button {
+    id: number
+    text?: string
+    link?: string
+    class?: string
+    type?: 'button' | 'reset' | 'submit'
+  }
   interface Logo {
     id: string
     title?: string

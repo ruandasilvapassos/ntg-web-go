@@ -1,4 +1,4 @@
-import { ProductList } from '@components/Section'
+import { FeaturedProduct, ProductList } from '@components/Section'
 
 import { Testimonies } from '../Testimonies'
 
@@ -19,6 +19,8 @@ export const DynamicComponentType: React.FC<ComponentTypeProps> = ({ data }) => 
       return <ProductList title={title} description={overview} />
     case 'testimoni':
       return <Testimonies title={title} description={overview} />
+    case 'featured_product':
+      return <FeaturedProduct title={title} description={overview} />
     default:
       return <></>
   }

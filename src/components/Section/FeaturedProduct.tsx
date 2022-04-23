@@ -1,21 +1,31 @@
 import Link from 'next/link'
 
-export const FeaturedProduct: React.FC = () => {
+interface FeaturedProductProps {
+  title?: string
+  description?: string
+  button?: Component.Link
+}
+export const FeaturedProduct: React.FC<FeaturedProductProps> = ({ title, description, button }) => {
   return (
     <section className="py-5 bg-gray-200 py-lg-7">
       <div className="container">
         <div className="row">
           <div className="col-lg-7">
-            <h2>Featured Products</h2>
-            <p>Our products are enterprise ready and can help you accelerate your go-to-market strategy.</p>
+            {title && <h2>{title}</h2>}
+            {description && <p>{description}</p>}
           </div>
-          <div className="col-lg-5 text-end d-flex flex-column justify-content-center">
-            <Link href="/product" passHref>
-              <a type="button" className="mt-2 mb-0 btn bg-gradient-primary ms-lg-auto me-lg-0 me-auto mt-lg-0">
-                View All Products
-              </a>
-            </Link>
-          </div>
+          {button && (
+            <div className="col-lg-5 text-end d-flex flex-column justify-content-center">
+              <Link href={button?.url || '#!'} passHref>
+                <a
+                  type="button"
+                  title={button?.title}
+                  className="mt-2 mb-0 btn bg-gradient-primary ms-lg-auto me-lg-0 me-auto mt-lg-0">
+                  {button?.text}
+                </a>
+              </Link>
+            </div>
+          )}
         </div>
         <div className="row">
           <div className="col-lg-4 col-md-6">
