@@ -1,8 +1,9 @@
 {
   "collectionName": "components_layouts_card_with_buttons",
   "info": {
-    "displayName": "Card With Button",
-    "icon": "border-all"
+    "displayName": "CTA Card",
+    "icon": "border-all",
+    "description": ""
   },
   "options": {},
   "attributes": {

@@ -2,19 +2,21 @@
   "collectionName": "components_elements_record_cards",
   "info": {
     "displayName": "Record Card",
-    "icon": "adjust"
+    "icon": "adjust",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "title": {
       "type": "string"
@@ -22,10 +24,10 @@
     "description": {
       "type": "text"
     },
-    "button_text": {
+    "buttonText": {
       "type": "string"
     },
-    "button_url": {
+    "buttonUrl": {
       "type": "string"
     }
   }

@@ -1,9 +1,12 @@
-'use strict';
+'use strict'
 
 /**
  *  global controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const collectionType = 'global'
 
-module.exports = createCoreController('api::global.global');
+const schema = require(`../content-types/${collectionType}/schema.json`)
+const createPopulatedController = require('../../../helpers/populate')
+
+module.exports = createPopulatedController(`api::${collectionType}.${collectionType}`, schema)

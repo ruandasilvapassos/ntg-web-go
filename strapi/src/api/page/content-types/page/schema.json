@@ -43,6 +43,17 @@
       },
       "component": "shared.seo"
     },
+    "settings": {
+      "displayName": "Page Settings",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "settings.page-settings"
+    },
     "contentSections": {
       "pluginOptions": {
         "i18n": {

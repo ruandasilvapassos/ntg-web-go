@@ -12,10 +12,15 @@ const REQUIRED_CONFIG = {
   env: {
     SITE_NAME: 'Ntegral',
     BASE_URL: isProd ? 'http://localhost:3000' : 'http://localhost:3000',
-    API_URL: process.env.API_URL || 'http://localhost:1337'
+    API_URL: process.env.API_URL || 'http://localhost:1337/api'
   },
   images: {
-    domains: ['images.unsplash.com']
+    domains: ['images.unsplash.com', 'ntgweb.blob.core.windows.net']
+  },
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
+    localeDetection: false
   },
   extends: ['plugin:@next/next/recommended']
 }

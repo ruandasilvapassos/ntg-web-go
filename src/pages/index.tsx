@@ -12,7 +12,7 @@ const LandingPage: NextLayoutComponentType = () => {
   return (
     <div className="home-page">
       <NextSeo {...extendSEO(routes.en.home.seo)} />
-      <Section.MainHero />
+      {/* <Section.MainHero /> */}
       {/* Home Section */}
       <Section.OurValues />
       {/* Featured Product section */}

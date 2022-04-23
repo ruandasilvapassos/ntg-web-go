@@ -64,7 +64,7 @@
         }
       }
     },
-    "menu": {
+    "footer": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {

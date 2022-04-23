@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_settings_page_settings",
+  "info": {
+    "displayName": "Page Settings",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "navbarStyle": {
+      "type": "enumeration",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    }
+  }
+}

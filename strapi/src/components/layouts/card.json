@@ -1,7 +1,7 @@
 {
   "collectionName": "components_layouts_cards",
   "info": {
-    "displayName": "Card",
+    "displayName": "Thumbnail Card",
     "icon": "address-card",
     "description": ""
   },
@@ -13,30 +13,11 @@
     "overview": {
       "type": "text"
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "card": {
       "displayName": "Record Card",
       "type": "component",
       "repeatable": true,
       "component": "elements.record-card"
-    },
-    "label": {
-      "type": "string"
-    },
-    "button": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.button"
     }
   }
 }

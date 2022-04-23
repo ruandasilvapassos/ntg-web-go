@@ -1,9 +1,12 @@
-'use strict';
+'use strict'
 
 /**
  *  page controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const collectionType = 'page'
 
-module.exports = createCoreController('api::page.page');
+const schema = require(`../content-types/${collectionType}/schema.json`)
+const createPopulatedController = require('../../../helpers/populate')
+
+module.exports = createPopulatedController(`api::${collectionType}.${collectionType}`, schema)

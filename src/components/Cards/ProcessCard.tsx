@@ -3,7 +3,7 @@ import Link from 'next/link'
 interface ProcessCardProps {
   title?: string
   description?: string
-  icon?: JSX.Element
+  icon?: JSX.Element | string
   buttonText?: string
   buttonUrl?: string
 }
@@ -14,7 +14,7 @@ export const ProcessCard: React.FC<ProcessCardProps> = (props) => {
     <div className="col-lg-3 col-md-6 card-col">
       <div className="p-2 pt-4 mb-4 card rounded-4 mh-350">
         <div className="pt-1 pb-2 card-body">
-          {icon && icon}
+          {icon && typeof icon === 'string' ? <img src={icon} /> : icon}
           <h4 className="my-3 font-weight-bolder">{title}</h4>
           {description && <p className="fw-regular ">{description}</p>}
         </div>
