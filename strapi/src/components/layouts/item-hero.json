@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_layouts_item_heroes",
+  "info": {
+    "displayName": "Item Hero",
+    "icon": "align-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "with_image",
+        "without_image"
+      ],
+      "default": "with_image"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_layouts_component_types",
+  "info": {
+    "displayName": "Component Type",
+    "icon": "audio-description",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "career",
+        "product",
+        "service",
+        "featured_product",
+        "latest_insight",
+        "detail_product",
+        "detail_career",
+        "testimoni",
+        "insight",
+        "detail_insight"
+      ]
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

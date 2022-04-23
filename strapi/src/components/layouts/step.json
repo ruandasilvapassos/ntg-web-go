@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_layouts_steps",
+  "info": {
+    "displayName": "Step",
+    "icon": "ellipsis-h"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    }
+  }
+}

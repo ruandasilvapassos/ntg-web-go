@@ -55,7 +55,27 @@
         "layouts.header",
         "heros.hero",
         "products.products",
-        "layouts.card"
+        "layouts.card",
+        "layouts.center-hero",
+        "layouts.mansory-image",
+        "layouts.hero-circle-image",
+        "layouts.hero-highlight",
+        "layouts.partner",
+        "layouts.quote",
+        "layouts.simple-hero",
+        "layouts.component-type",
+        "layouts.item-hero",
+        "layouts.step",
+        "layouts.hero-square-image",
+        "layouts.support-hero",
+        "layouts.contact-info",
+        "layouts.contact",
+        "layouts.header-with-customer",
+        "layouts.card-with-button",
+        "layouts.image-hero",
+        "layouts.share-header",
+        "layouts.content-container",
+        "layouts.accordion-content"
       ]
     }
   }

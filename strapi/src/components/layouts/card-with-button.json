@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_layouts_card_with_buttons",
+  "info": {
+    "displayName": "Card With Button",
+    "icon": "border-all"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_layouts_partners",
+  "info": {
+    "displayName": "Partner",
+    "icon": "grip-horizontal"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.logo"
+    }
+  }
+}

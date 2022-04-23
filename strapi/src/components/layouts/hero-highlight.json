@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_layouts_hero_highlights",
+  "info": {
+    "displayName": "Hero Highlight",
+    "icon": "bullseye"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    }
+  }
+}

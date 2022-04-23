@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layouts_content_containers",
+  "info": {
+    "displayName": "Content Container",
+    "icon": "chalkboard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

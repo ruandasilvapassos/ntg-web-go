@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_layouts_quotes",
+  "info": {
+    "displayName": "Quote",
+    "icon": "asterisk"
+  },
+  "options": {},
+  "attributes": {
+    "message": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

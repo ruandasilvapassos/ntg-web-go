@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_layouts_image_heroes",
+  "info": {
+    "displayName": "Image Hero",
+    "icon": "camera"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_layouts_mansory_images",
+  "info": {
+    "displayName": "Mansory Image",
+    "icon": "braille",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

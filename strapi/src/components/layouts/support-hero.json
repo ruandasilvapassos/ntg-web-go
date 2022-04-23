@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_layouts_support_heroes",
+  "info": {
+    "displayName": "Support Hero",
+    "icon": "angle-double-right"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    },
+    "support": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layouts_accordion_contents",
+  "info": {
+    "displayName": "Accordion Content",
+    "icon": "angle-double-down"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "item": {
+      "displayName": "Accordion Item",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.accordion-item"
+    }
+  }
+}

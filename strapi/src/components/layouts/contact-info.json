@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_layouts_contact_infos",
+  "info": {
+    "displayName": "Contact Info",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record-card"
+    }
+  }
+}

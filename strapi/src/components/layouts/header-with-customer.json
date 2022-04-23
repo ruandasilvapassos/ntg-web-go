@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_layouts_header_with_customers",
+  "info": {
+    "displayName": "Header With Customer",
+    "icon": "atom"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "background": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "logo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.logo"
+    }
+  }
+}

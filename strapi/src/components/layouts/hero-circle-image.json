@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_layouts_hero_circle_images",
+  "info": {
+    "displayName": "Hero Circle Image",
+    "icon": "border-none",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "item": {
+      "displayName": "Item",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.item"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "background": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "vertical_height": {
+      "type": "integer"
+    }
+  }
+}

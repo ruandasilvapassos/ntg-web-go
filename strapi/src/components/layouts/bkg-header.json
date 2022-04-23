@@ -10,10 +10,10 @@
     "title": {
       "type": "string"
     },
-    "verticalHeight": {
+    "vertical_height": {
       "type": "integer"
     },
-    "image": {
+    "background": {
       "type": "media",
       "multiple": false,
       "required": false,

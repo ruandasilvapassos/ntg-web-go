@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layouts_simple_heroes",
+  "info": {
+    "displayName": "Simple Hero",
+    "icon": "bars"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    }
+  }
+}

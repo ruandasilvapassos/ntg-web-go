@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_layouts_contacts",
+  "info": {
+    "displayName": "Contact",
+    "icon": "atlas"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "with_background",
+        "without_background"
+      ],
+      "default": "with_background"
+    },
+    "background": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
