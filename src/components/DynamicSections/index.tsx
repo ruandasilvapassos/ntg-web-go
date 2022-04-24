@@ -6,6 +6,7 @@ import { CTACard } from './Cards/CTACard'
 import { ThumbnailCardSection } from './Cards/ThumbnailCard'
 import { DynamicComponentType } from './ComponentType'
 import { ContactForm } from './ContactForm'
+import { ContentContainer } from './ContentContainer'
 import { BackgroundHero } from './Hero/BackgroundHero'
 import { BasicHero } from './Hero/BasicHero'
 import { ContactInfo } from './Hero/ContactInfo'
@@ -43,7 +44,8 @@ const sectionComponents = {
   'layouts.featured-news': FeaturedNews,
   'layouts.support-hero': SupportHero,
   'layouts.contact-info': ContactInfo,
-  'layouts.contact': ContactForm
+  'layouts.contact': ContactForm,
+  'layouts.content-container': ContentContainer
   // ComponentSectionsLargeVideo: LargeVideo,
   // ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   // ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,

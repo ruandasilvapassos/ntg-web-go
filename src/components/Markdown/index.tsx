@@ -24,12 +24,15 @@ const MarkdownComponents: Components = {
     )
   },
   blockquote: ({ ...props }) => {
-    return <blockquote className="blockquote ps-4" {...omit(props, 'node')} {...props} />
+    return <blockquote className="blockquote ps-4" {...props} {...omit(props, 'node')} />
   },
   figure: ({ ...props }) => {
     return (
       <figure style={{ margin: '0 -5rem', borderRadius: '5px', overflow: 'hidden' }} children={props.children?.[0]}></figure>
     )
+  },
+  a: ({ ...props }) => {
+    return <a className="text-primary" {...props} {...omit(props, 'node')} />
   }
 } as const
 

@@ -2,7 +2,8 @@
   "collectionName": "components_layouts_content_containers",
   "info": {
     "displayName": "Content Container",
-    "icon": "chalkboard"
+    "icon": "chalkboard",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,6 +12,9 @@
     },
     "content": {
       "type": "richtext"
+    },
+    "overview": {
+      "type": "text"
     }
   }
 }
