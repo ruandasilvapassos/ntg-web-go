@@ -5,7 +5,7 @@ interface HeroHighlightProps {
     item?: {
       title?: string
       image?: Strapi.Media
-      description?: string
+      overview?: string
     }[]
     image?: Strapi.Media
   }
@@ -26,7 +26,7 @@ export const HeroHighlight: React.FC<HeroHighlightProps> = ({ data }) => {
                       <img className="width-32-px mb-4" src={item?.image?.data?.attributes?.url} alt="equity rewards" />
                     )}
                     {item?.title && <h5 className="text-blk">{item?.title}</h5>}
-                    {item?.description && <p className="text-blk opacity-8">{item?.description}</p>}
+                    {item?.overview && <p className="text-blk opacity-8">{item?.overview}</p>}
                   </div>
                 </div>
               ))}

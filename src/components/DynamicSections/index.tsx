@@ -9,10 +9,14 @@ import { BackgroundHero } from './Hero/BackgroundHero'
 import { BasicHero } from './Hero/BasicHero'
 import { HeaderHero } from './Hero/HeaderHero'
 import { HeroHighlight } from './Hero/HeroHighlight'
+import { HeroSquareImage } from './Hero/HeroSquareImage'
 import { HeroWithLogo } from './Hero/HeroWithLogo'
+import { ItemHero } from './Hero/ItemHero'
 import { SimpleHeroWithImage } from './Hero/SimpleWithImage'
 import { LogoClouds } from './LogoCloud'
 import { MasonrySection } from './Masonry'
+import { Quote } from './Quote'
+import { Timeline } from './Timeline'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -27,7 +31,11 @@ const sectionComponents = {
   'layouts.mansory-image': MasonrySection,
   'layouts.hero-circle-image': HeroWithLogo,
   'layouts.hero-highlight': HeroHighlight,
-  'heros.hero': BasicHero
+  'heros.hero': BasicHero,
+  'layouts.item-hero': ItemHero,
+  'layouts.step': Timeline,
+  'layouts.quote': Quote,
+  'layouts.hero-square-image': HeroSquareImage
   // ComponentSectionsLargeVideo: LargeVideo,
   // ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   // ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,

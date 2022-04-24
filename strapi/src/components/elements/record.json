@@ -1,19 +1,18 @@
 {
-  "collectionName": "components_elements_accordion_items",
+  "collectionName": "components_elements_records",
   "info": {
-    "displayName": "Accordion Item",
-    "icon": "angle-down",
-    "description": ""
+    "displayName": "Record",
+    "icon": "angle-up"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
     },
-    "content": {
-      "type": "richtext"
+    "overview": {
+      "type": "text"
     },
-    "icon": {
+    "image": {
       "allowedTypes": [
         "images"
       ],

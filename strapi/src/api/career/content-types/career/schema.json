@@ -4,7 +4,8 @@
   "info": {
     "singularName": "career",
     "pluralName": "careers",
-    "displayName": "Career"
+    "displayName": "Career",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,25 +21,25 @@
     "overview": {
       "type": "richtext"
     },
-    "key_responsibility": {
+    "keyResponsibility": {
       "displayName": "Key responsibility",
       "type": "component",
       "repeatable": true,
       "component": "career.key-responsibility"
     },
-    "required_qualifications": {
+    "requiredQualifications": {
       "displayName": "Required qualifications",
       "type": "component",
       "repeatable": true,
       "component": "career.required-qualifications"
     },
-    "required_skills": {
+    "requiredSkills": {
       "displayName": "Required skills",
       "type": "component",
       "repeatable": true,
       "component": "career.required-skills"
     },
-    "type_job": {
+    "typeJob": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::type-job.type-job"

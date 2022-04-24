@@ -13,16 +13,6 @@
     "overview": {
       "type": "text"
     },
-    "button": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.button"
-    },
-    "item": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.record-card"
-    },
     "style": {
       "type": "enumeration",
       "enum": [
@@ -32,14 +22,25 @@
       "default": "with_image"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.record"
     }
   }
 }

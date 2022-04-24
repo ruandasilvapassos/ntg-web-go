@@ -10,7 +10,7 @@
     "title": {
       "type": "string"
     },
-    "sub_title": {
+    "subTitle": {
       "type": "string"
     },
     "overview": {

@@ -13,7 +13,7 @@
     "overview": {
       "type": "text"
     },
-    "vertical_height": {
+    "verticalHeight": {
       "type": "integer"
     },
     "image": {

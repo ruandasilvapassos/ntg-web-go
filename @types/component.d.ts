@@ -24,7 +24,7 @@ declare namespace Component {
   interface Card {
     id: number
     title?: string
-    description?: string
+    overview?: string
     buttonText?: string
     buttonUrl?: string
     image?: Strapi.Media

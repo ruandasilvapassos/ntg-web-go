@@ -14,10 +14,9 @@
       "type": "text"
     },
     "card": {
-      "displayName": "Record Card",
       "type": "component",
       "repeatable": true,
-      "component": "elements.record-card"
+      "component": "elements.record"
     }
   }
 }

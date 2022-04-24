@@ -38,7 +38,7 @@
         "images"
       ]
     },
-    "vertical_height": {
+    "verticalHeight": {
       "type": "integer"
     }
   }

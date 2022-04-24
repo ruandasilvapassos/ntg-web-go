@@ -2,14 +2,15 @@
   "collectionName": "components_layouts_contact_infos",
   "info": {
     "displayName": "Contact Info",
-    "icon": "allergies"
+    "icon": "allergies",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "item": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.record-card"
+      "component": "elements.record"
     }
   }
 }

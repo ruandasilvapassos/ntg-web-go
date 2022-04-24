@@ -13,7 +13,7 @@
     "overview": {
       "type": "text"
     },
-    "component_type": {
+    "componentType": {
       "type": "enumeration",
       "enum": [
         "career",

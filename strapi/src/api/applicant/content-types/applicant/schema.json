@@ -4,17 +4,18 @@
   "info": {
     "singularName": "applicant",
     "pluralName": "applicants",
-    "displayName": "Applicant"
+    "displayName": "Applicant",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "first_name": {
+    "firstName": {
       "type": "string"
     },
-    "last_name": {
+    "lastName": {
       "type": "string"
     },
     "email": {
@@ -34,7 +35,7 @@
         "audios"
       ]
     },
-    "desired_salary": {
+    "desiredSalary": {
       "type": "string"
     },
     "earliest": {

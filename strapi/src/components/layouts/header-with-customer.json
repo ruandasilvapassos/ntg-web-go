@@ -31,7 +31,7 @@
       "repeatable": false,
       "component": "elements.link"
     },
-    "logo_title": {
+    "logoTitle": {
       "type": "string"
     }
   }

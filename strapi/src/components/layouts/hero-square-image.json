@@ -2,7 +2,8 @@
   "collectionName": "components_layouts_hero_square_images",
   "info": {
     "displayName": "Hero Square Image",
-    "icon": "dice-one"
+    "icon": "dice-one",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,22 +18,29 @@
       "repeatable": false,
       "component": "elements.button"
     },
-    "image": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "vertical_height": {
-      "type": "integer"
+    "verticalHeight": {
+      "type": "integer",
+      "default": 525
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "linear-gradient(195deg, #42424a 0%, #191919 100%)"
     }
   }
 }

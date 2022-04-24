@@ -36,12 +36,7 @@ export const ThumbnailCardSection: React.FC<ThumbnailCardSectionProps> = ({ data
                 </div>
                 <div className="card-body">
                   {card?.title && <h5 className="mt-3">{card?.title}</h5>}
-                  {card?.description && (
-                    <p>
-                      We help companies develop the capacity to continually change—and do so without buckling under the
-                      pressure of new ways of working or disrupting their ongoing business operations.
-                    </p>
-                  )}
+                  {card?.overview && <p>{overview}</p>}
                 </div>
               </div>
             </div>
