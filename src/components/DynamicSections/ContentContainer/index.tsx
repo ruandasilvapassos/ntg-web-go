@@ -8,7 +8,6 @@ interface ContentContainerProps {
   }
 }
 export const ContentContainer: React.FC<ContentContainerProps> = ({ data }) => {
-  console.log(data)
   return (
     <section className="pt-3 pt-md-3 pb-md-3 pt-lg-7 bg-gray-200">
       <div className="container">
