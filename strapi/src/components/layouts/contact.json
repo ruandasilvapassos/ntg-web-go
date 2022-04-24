@@ -1,8 +1,9 @@
 {
   "collectionName": "components_layouts_contacts",
   "info": {
-    "displayName": "Contact",
-    "icon": "atlas"
+    "displayName": "Contact Form",
+    "icon": "atlas",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -21,14 +22,15 @@
       "default": "with_background"
     },
     "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

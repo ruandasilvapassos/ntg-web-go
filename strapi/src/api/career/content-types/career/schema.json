@@ -18,31 +18,21 @@
     "description": {
       "type": "text"
     },
-    "overview": {
-      "type": "richtext"
-    },
-    "keyResponsibility": {
-      "displayName": "Key responsibility",
-      "type": "component",
-      "repeatable": true,
-      "component": "career.key-responsibility"
-    },
-    "requiredQualifications": {
-      "displayName": "Required qualifications",
-      "type": "component",
-      "repeatable": true,
-      "component": "career.required-qualifications"
-    },
-    "requiredSkills": {
-      "displayName": "Required skills",
-      "type": "component",
-      "repeatable": true,
-      "component": "career.required-skills"
-    },
     "typeJob": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::type-job.type-job"
+    },
+    "contentSection": {
+      "displayName": "contentSection",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.content-section"
+    },
+    "positionCode": {
+      "type": "uid",
+      "targetField": "position",
+      "required": true
     }
   }
 }

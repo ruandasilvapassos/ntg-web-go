@@ -11,13 +11,14 @@ const populateAttribute = ({ components }) => {
       ).filter(([, v]) => v.type === 'component' || v.type === 'media')
 
       const attrPopulates = componentAttributes.reduce((acc, [curr]) => ({ ...acc, [curr]: { populate: '*' } }), {})
-
       return {
         ...currentValue,
         [current.split('.').pop()]: { populate: '*' },
         ...attrPopulates
       }
     }, {})
+    // add insight statically
+    populate.insight = { populate: '*' }
     return { populate }
   }
   return { populate: '*' }

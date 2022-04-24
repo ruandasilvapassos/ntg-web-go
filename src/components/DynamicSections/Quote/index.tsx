@@ -1,8 +1,7 @@
 interface QuoteProps {
   data?: {
     message?: string
-    name?: string
-    position?: string
+    footnote?: string
     avatar?: Strapi.Media
     backgroundColor?: string
   }
@@ -26,10 +25,7 @@ export const Quote: React.FC<QuoteProps> = ({ data }) => {
             )}
             <div className="col-lg-10">
               {data?.message && <p className="lead fw-bold text-dark mb-4">{data?.message}</p>}
-              <p className="text-mute fw-bold mb-0">
-                {data?.name}, <br />
-                {data?.position}
-              </p>
+              <p className="text-mute fw-bold mb-0">{data?.footnote}</p>
             </div>
           </div>
         </div>

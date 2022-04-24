@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elements_contacts",
+  "info": {
+    "displayName": "contact",
+    "icon": "mail-bulk",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "iconColor": {
+      "type": "string",
+      "default": "#BA1A18"
+    }
+  }
+}

@@ -5,14 +5,18 @@ import { MainHero } from '@components/PageChunk/Homepage'
 import { CTACard } from './Cards/CTACard'
 import { ThumbnailCardSection } from './Cards/ThumbnailCard'
 import { DynamicComponentType } from './ComponentType'
+import { ContactForm } from './ContactForm'
 import { BackgroundHero } from './Hero/BackgroundHero'
 import { BasicHero } from './Hero/BasicHero'
+import { ContactInfo } from './Hero/ContactInfo'
+import { FeaturedNews } from './Hero/FeaturedNews'
 import { HeaderHero } from './Hero/HeaderHero'
 import { HeroHighlight } from './Hero/HeroHighlight'
 import { HeroSquareImage } from './Hero/HeroSquareImage'
 import { HeroWithLogo } from './Hero/HeroWithLogo'
 import { ItemHero } from './Hero/ItemHero'
 import { SimpleHeroWithImage } from './Hero/SimpleWithImage'
+import { SupportHero } from './Hero/SupportHero'
 import { LogoClouds } from './LogoCloud'
 import { MasonrySection } from './Masonry'
 import { Quote } from './Quote'
@@ -35,7 +39,11 @@ const sectionComponents = {
   'layouts.item-hero': ItemHero,
   'layouts.step': Timeline,
   'layouts.quote': Quote,
-  'layouts.hero-square-image': HeroSquareImage
+  'layouts.hero-square-image': HeroSquareImage,
+  'layouts.featured-news': FeaturedNews,
+  'layouts.support-hero': SupportHero,
+  'layouts.contact-info': ContactInfo,
+  'layouts.contact': ContactForm
   // ComponentSectionsLargeVideo: LargeVideo,
   // ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   // ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,

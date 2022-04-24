@@ -13,15 +13,16 @@
     "overview": {
       "type": "text"
     },
-    "item": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.record"
-    },
     "support": {
       "type": "component",
       "repeatable": true,
       "component": "elements.record-card"
+    },
+    "items": {
+      "displayName": "cardWithIcon",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.card-with-icon"
     }
   }
 }

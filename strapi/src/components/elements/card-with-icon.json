@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elements_card_with_icons",
+  "info": {
+    "displayName": "cardWithIcon",
+    "icon": "id-card"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "iconBackground": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

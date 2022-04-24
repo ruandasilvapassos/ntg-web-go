@@ -8,9 +8,10 @@
   "options": {},
   "attributes": {
     "item": {
+      "displayName": "contact",
       "type": "component",
       "repeatable": true,
-      "component": "elements.record"
+      "component": "elements.contact"
     }
   }
 }

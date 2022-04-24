@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_elements_content_sections",
+  "info": {
+    "displayName": "contentSection",
+    "icon": "server",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

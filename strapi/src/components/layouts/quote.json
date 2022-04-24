@@ -10,12 +10,6 @@
     "message": {
       "type": "text"
     },
-    "name": {
-      "type": "string"
-    },
-    "position": {
-      "type": "string"
-    },
     "avatar": {
       "type": "media",
       "multiple": false,
@@ -27,6 +21,9 @@
     "backgroundColor": {
       "type": "string",
       "default": "#FCDFDE"
+    },
+    "footnote": {
+      "type": "string"
     }
   }
 }

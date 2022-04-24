@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_layouts_featured_news",
+  "info": {
+    "displayName": "Featured News",
+    "icon": "hashtag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "insight": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::insight.insight"
+    },
+    "socialShare": {
+      "displayName": "socialShare",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.social-share"
+    },
+    "shareTitle": {
+      "type": "string"
+    }
+  }
+}

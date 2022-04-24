@@ -1,9 +1,12 @@
-'use strict';
+'use strict'
 
 /**
  *  insight controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const collectionType = 'insight'
 
-module.exports = createCoreController('api::insight.insight');
+const schema = require(`../content-types/${collectionType}/schema.json`)
+const createPopulatedController = require('../../../helpers/populate')
+
+module.exports = createPopulatedController(`api::${collectionType}.${collectionType}`, schema)

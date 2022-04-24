@@ -4,7 +4,8 @@
   "info": {
     "singularName": "type-job",
     "pluralName": "type-jobs",
-    "displayName": "Type Job"
+    "displayName": "Job Type",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

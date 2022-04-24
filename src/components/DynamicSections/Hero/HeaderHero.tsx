@@ -29,14 +29,8 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({ data }) => {
           <div className="row">
             <div className="col-lg-7 d-flex justify-content-center flex-column">
               <div className="card card-body blur d-flex justify-content-center shadow-lg p-5 mt-5">
-                {title && <h1 className="text-dark mb-4">About Us</h1>}
-                {overview && (
-                  <p className="lead text-dark pe-md-5 me-md-5">
-                    Ntegral seeks to find the right products and solutions to enable technology transformation across our
-                    client’s enterprise and run mission-critical processes efficiently and securely – today and as their
-                    business needs evolve.
-                  </p>
-                )}
+                {title && <h1 className="text-dark mb-4">{title}</h1>}
+                {overview && <p className="lead text-dark pe-md-5 me-md-5">{overview}</p>}
                 {button && (
                   <div className="buttons">
                     <Link href={button?.link || ''}>
