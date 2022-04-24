@@ -3,9 +3,9 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
 import { CSSInterpolation } from '@emotion/serialize'
+import { omit } from '@utils/index'
 
 import type { Components } from 'react-markdown'
-
 interface MarkdownProps {
   children?: string
   components?: Components
@@ -21,6 +21,14 @@ const MarkdownComponents: Components = {
           <p key={i} children={child?.toString() || ''} className="font-weight-normal mb-2" />
         ))}
       </li>
+    )
+  },
+  blockquote: ({ ...props }) => {
+    return <blockquote className="blockquote ps-4" {...omit(props, 'node')} {...props} />
+  },
+  figure: ({ ...props }) => {
+    return (
+      <figure style={{ margin: '0 -5rem', borderRadius: '5px', overflow: 'hidden' }} children={props.children?.[0]}></figure>
     )
   }
 } as const
