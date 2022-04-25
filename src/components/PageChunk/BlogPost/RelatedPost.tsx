@@ -1,11 +1,9 @@
 import Link from 'next/link'
 
-import { Insight } from './Post'
-
 interface RelatedPostProps {
   insights?: {
     id: number
-    attributes?: Insight
+    attributes?: Component.Insight
   }[]
 }
 export const RelatedPost: React.FC<RelatedPostProps> = ({ insights }) => {

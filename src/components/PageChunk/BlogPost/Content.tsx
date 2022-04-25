@@ -1,9 +1,7 @@
 import Markdown, { useComponent } from '@components/Markdown'
 
-import { Insight } from './Post'
-
 interface BlogContentProps {
-  data?: Insight
+  data?: Component.Insight
 }
 export const BlogContent: React.FC<BlogContentProps> = ({ data }) => {
   return (
