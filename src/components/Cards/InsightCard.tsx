@@ -32,12 +32,11 @@ export const InsightCard: React.FC<InsightCardProps> = (props) => {
             {trending && <i className="material-icons">trending_up</i>}
             {category}
           </h6>
-          <h4 className="card-title">
-            <a href="#pablo">{title}</a>
-          </h4>
+          <h4 className="card-title">{title}</h4>
           <p className="card-description">{description}</p>
           <p className="author">
-            <b>{author}</b>, {created_at}
+            <b>{author}</b>
+            {author && ','} {created_at}
           </p>
         </div>
       </div>

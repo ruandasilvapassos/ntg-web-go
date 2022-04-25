@@ -2,6 +2,8 @@ import '@styles/index.scss'
 import '@shared/styles/vendor/nucleo/nucleo-icons.css'
 import '@shared/styles/vendor/nucleo/nucleo-svg.css'
 
+import * as dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
@@ -11,6 +13,8 @@ import { useCookie } from 'react-use'
 import { CookieBlock } from '@components/Modals/CookieBlock'
 
 import type { AppLayoutProps } from 'next/app'
+
+dayjs.extend(relativeTime)
 
 const _APP = ({ Component, pageProps }: AppLayoutProps) => {
   const { pathname } = useRouter()

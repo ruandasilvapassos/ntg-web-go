@@ -98,4 +98,42 @@ declare namespace Component {
       }
     }
   }
+  interface CategoryInsight {
+    id: number
+    attributes?: {
+      color?: string
+      name?: string
+      popular?: boolean
+    }
+  }
+  interface Insight {
+    content?: string
+    createdAt: Date | string
+    excerpt?: string
+    image?: Strapi.Media
+    overview?: string
+    publishedAt?: Date | string
+    slug?: string
+    title?: string
+    updatedAt?: string
+    categoryInsight?: {
+      data?: CategoryInsight
+    }
+    relatedInsights?: {
+      data: Insight[]
+    }
+    author?: {
+      data?: {
+        id: number
+        attributes?: {
+          name?: string
+          photo?: Strapi.Media
+        }
+      }
+    }
+  }
+  interface InsightResponse {
+    id: string
+    attributes?: Insight
+  }
 }

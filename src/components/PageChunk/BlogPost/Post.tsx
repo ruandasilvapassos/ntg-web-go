@@ -3,31 +3,8 @@ import { RelatedPost } from './RelatedPost'
 import { SocialShare } from './SocialShare'
 import { BlogThumbnail } from './Thumbnail'
 
-interface CategoryInsight {
-  id: number
-  attributes?: {
-    color?: string
-    name?: string
-    popular?: boolean
-  }
-}
-
-export interface Insight {
-  title?: string
-  image?: Strapi.Media
-  overview?: string
-  content?: string
-  excerpt?: string
-  slug: string
-  categoryInsight?: {
-    data?: CategoryInsight
-  }
-  relatedInsights?: {
-    data: Insight[]
-  }
-}
 interface BlogPostProps {
-  data?: Insight
+  data?: Component.Insight
 }
 export const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
   return (

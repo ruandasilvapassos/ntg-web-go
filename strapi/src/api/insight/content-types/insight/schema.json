@@ -16,7 +16,7 @@
       "type": "string"
     },
     "overview": {
-      "type": "string"
+      "type": "text"
     },
     "image": {
       "type": "media",
@@ -51,6 +51,11 @@
     "excerpt": {
       "type": "text",
       "maxLength": 160
+    },
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
     }
   }
 }
