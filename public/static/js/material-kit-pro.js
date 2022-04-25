@@ -184,7 +184,7 @@ if (document.querySelector('.blur-shadow-image')) {
       shadowCardsRounded[i].parentElement.appendChild(div)
       div.classList.add('colored-shadow', 'rounded')
 
-      var currentSrc = shadowCardsRounded[i].children[0].getAttribute('src')
+      var currentSrc = shadowCardsRounded[i].children[0]?.getAttribute('src')
       var el = shadowCardsRounded[i].nextElementSibling
 
       el.style.backgroundImage = 'url(' + currentSrc + ')'
@@ -196,7 +196,7 @@ if (document.querySelector('.blur-shadow-image')) {
       shadowCards[i].parentElement.appendChild(div)
       div.classList.add('colored-shadow')
 
-      var currentSrc = shadowCards[i].children[0].getAttribute('src')
+      var currentSrc = shadowCards[i].children[0]?.getAttribute('src')
       var el = shadowCards[i].nextElementSibling
 
       el.style.backgroundImage = 'url(' + currentSrc + ')'

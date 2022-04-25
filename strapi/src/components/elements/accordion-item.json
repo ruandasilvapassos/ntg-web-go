@@ -14,11 +14,11 @@
       "type": "richtext"
     },
     "icon": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
+      "type": "string"
+    },
+    "iconColor": {
+      "type": "string",
+      "default": "#344767"
     }
   }
 }

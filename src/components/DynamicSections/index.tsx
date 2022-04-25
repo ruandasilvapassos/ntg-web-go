@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 
 import { MainHero } from '@components/PageChunk/Homepage'
 
+import { AccordionContent } from './AccordionContent'
 import { CTACard } from './Cards/CTACard'
 import { ThumbnailCardSection } from './Cards/ThumbnailCard'
 import { DynamicComponentType } from './ComponentType'
@@ -45,7 +46,8 @@ const sectionComponents = {
   'layouts.support-hero': SupportHero,
   'layouts.contact-info': ContactInfo,
   'layouts.contact': ContactForm,
-  'layouts.content-container': ContentContainer
+  'layouts.content-container': ContentContainer,
+  'layouts.accordion-content': AccordionContent
   // ComponentSectionsLargeVideo: LargeVideo,
   // ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   // ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
