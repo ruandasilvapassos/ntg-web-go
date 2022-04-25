@@ -17,6 +17,7 @@ import { HeroHighlight } from './Hero/HeroHighlight'
 import { HeroSquareImage } from './Hero/HeroSquareImage'
 import { HeroWithLogo } from './Hero/HeroWithLogo'
 import { ItemHero } from './Hero/ItemHero'
+import { SimpleHero } from './Hero/SimpleHero'
 import { SimpleHeroWithImage } from './Hero/SimpleWithImage'
 import { SupportHero } from './Hero/SupportHero'
 import { LogoClouds } from './LogoCloud'
@@ -47,7 +48,8 @@ const sectionComponents = {
   'layouts.contact-info': ContactInfo,
   'layouts.contact': ContactForm,
   'layouts.content-container': ContentContainer,
-  'layouts.accordion-content': AccordionContent
+  'layouts.accordion-content': AccordionContent,
+  'layouts.simple-hero': SimpleHero
   // ComponentSectionsLargeVideo: LargeVideo,
   // ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   // ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,

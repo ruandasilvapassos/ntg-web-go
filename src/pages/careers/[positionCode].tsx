@@ -1,14 +1,13 @@
 import { NextSeo } from 'next-seo'
 
+import Sections from '@components/DynamicSections'
 import { MainLayout } from '@components/Layouts/MainLayout'
-import { Footnote, JobDetailSection } from '@components/PageChunk/CareerDetail'
-import { BlockQuote } from '@components/Testimonials'
+import { JobDetailSection } from '@components/PageChunk/CareerDetail'
 import api from '@services/api'
 import routes from '@src/config/routes'
 import { extendSEO } from '@src/config/seo'
 
 import type { GetServerSidePropsContext, NextLayoutComponentType } from 'next'
-
 export interface Career {
   position?: string
   description?: string
@@ -22,6 +21,7 @@ export interface Career {
     content?: string
     description?: string
   }[]
+  contentSections?: any
 }
 
 interface CareerDetailPageProps {
@@ -35,8 +35,7 @@ const CareerDetailPage: NextLayoutComponentType<CareerDetailPageProps> = ({ data
     <div className="career-page">
       <NextSeo {...extendSEO(routes.en.product.seo)} />
       <JobDetailSection data={data?.attributes} />
-      <BlockQuote />
-      <Footnote />
+      <Sections sections={data?.attributes?.contentSections} />
     </div>
   )
 }
@@ -50,7 +49,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const positionCode = query?.positionCode?.toString()
 
   const data = await api
-    .get(`/careers?filters[positionCode][$eq]=${positionCode}&populate=contentSection`)
+    .get(`/careers?filters[positionCode][$eq]=${positionCode}&populate=*&resPopulate=contentSection`)
     .then(({ data }) => data?.data?.[0])
     .catch(() => null)
 

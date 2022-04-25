@@ -33,6 +33,41 @@
       "type": "uid",
       "targetField": "position",
       "required": true
+    },
+    "contentSections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "heros.hero",
+        "layouts.accordion-content",
+        "layouts.bkg-header",
+        "layouts.card",
+        "layouts.card-with-button",
+        "layouts.center-hero",
+        "layouts.component-type",
+        "layouts.contact",
+        "layouts.contact-info",
+        "layouts.content-container",
+        "layouts.featured-news",
+        "layouts.header",
+        "layouts.header-with-customer",
+        "layouts.hero-circle-image",
+        "layouts.hero-highlight",
+        "layouts.hero-square-image",
+        "layouts.image-hero",
+        "layouts.item-hero",
+        "layouts.mansory-image",
+        "layouts.partner",
+        "layouts.quote",
+        "layouts.simple-hero",
+        "layouts.step",
+        "layouts.support-hero",
+        "products.products"
+      ]
     }
   }
 }

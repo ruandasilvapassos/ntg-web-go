@@ -60,7 +60,7 @@ function createPopulatedController(uid, schema) {
           }, {})
           let populate = getPopulateFromSchema(schema)
           if (populated) {
-            populate = { ...getPopulateFromSchema(schema), ...populate }
+            populate = { ...getPopulateFromSchema(schema), ...populated }
           }
           ctx.query = {
             ...ctx.query,
