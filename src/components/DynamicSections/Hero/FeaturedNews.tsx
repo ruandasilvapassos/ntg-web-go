@@ -11,7 +11,7 @@ interface FeaturedNewsProps {
 }
 export const FeaturedNews: React.FC<FeaturedNewsProps> = ({ data }) => {
   const { data: insight } = data?.insight
-  console.log(insight)
+  // console.log(insight)
   return (
     <header>
       <div className="container my-sm-8 pt-7 pt-lg-0">

@@ -9,7 +9,7 @@ import Seo from '@components/SEO'
 import api, { getGlobalData, getPageData } from '@services/api'
 import { getLocalizedPaths } from '@utils/lib/localize'
 
-import NotFoundPage from '../404'
+import NotFoundPage from './404'
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:

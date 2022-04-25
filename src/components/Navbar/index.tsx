@@ -405,7 +405,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
               </Link>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <Link href="/career" passHref>
+              <Link href="/careers" passHref>
                 <a
                   className="cursor-pointer nav-link ps-2 d-flex align-items-center"
                   role="button"
@@ -415,25 +415,14 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
               </Link>
             </li>
             <li className="mx-2 nav-item dropdown dropdown-hover">
-              <a
-                className="cursor-pointer nav-link ps-2 d-flex align-items-center"
-                id="dropdownSignUp"
-                style={{ color: textColor }}>
-                <span>Connect</span>
-                <img src="/static/img/down-arrow.svg" alt="down-arrow" className="arrow ms-auto px-1" />
-              </a>
-              <div className="px-2 py-3 mt-0 dropdown-menu" aria-labelledby="dropdownSignUp">
-                <Link href="/contact" passHref>
-                  <a className="dropdown-item border-radius-md">
-                    <span>Connect</span>
-                  </a>
-                </Link>
-                <Link href="/contact/v2" passHref>
-                  <a className="dropdown-item border-radius-md">
-                    <span>Connect V2</span>
-                  </a>
-                </Link>
-              </div>
+              <Link href="/contact" passHref>
+                <a
+                  className="cursor-pointer nav-link ps-2 d-flex align-items-center"
+                  role="button"
+                  style={{ color: textColor }}>
+                  Connect
+                </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -19,7 +19,7 @@ interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ data }) => {
   const { title, overview, type, item } = data
-  console.log(item)
+  // console.log(item)
   switch (type) {
     case 'vertical':
       return <VerticalTimeline title={title} description={overview} items={item} />

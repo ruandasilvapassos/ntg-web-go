@@ -12,4 +12,14 @@ declare namespace Strapi {
   interface Media {
     data: MediaData
   }
+  interface Meta {
+    pagination?: {
+      start?: number
+      limit?: number
+      page?: number
+      pageSize?: number
+      pageCount?: number
+      total?: number
+    }
+  }
 }

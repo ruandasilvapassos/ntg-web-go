@@ -53,14 +53,18 @@ function createPopulatedController(uid, schema) {
               populate: '*'
             }
           }))
-          const populate = resPopulate?.reduce(function (result, item) {
+          const populated = resPopulate?.reduce(function (result, item) {
             var key = Object.keys(item)[0]
             result[key] = item[key]
             return result
           }, {})
+          let populate = getPopulateFromSchema(schema)
+          if (populated) {
+            populate = { ...getPopulateFromSchema(schema), ...populate }
+          }
           ctx.query = {
             ...ctx.query,
-            populate: { ...getPopulateFromSchema(schema), ...populate }
+            populate
           }
         }
 

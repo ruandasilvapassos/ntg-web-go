@@ -72,4 +72,30 @@ declare namespace Component {
       contentSections?: any
     }
   }
+  interface JobType {
+    name?: string
+    createdAt: Date | string
+  }
+  interface Career {
+    id: string
+    attributes?: {
+      contentSection?: {
+        content?: string
+        description?: string
+        id: number
+        title?: string
+      }[]
+      createdAt: Date | string
+      description?: string
+      position?: string
+      positionCode?: string
+      publishedAt?: Date | string
+      typeJob?: {
+        data?: {
+          id: number
+          attributes?: JobType
+        }
+      }
+    }
+  }
 }
