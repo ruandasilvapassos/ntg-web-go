@@ -1,4 +1,5 @@
-import type { Career } from '@src/pages/dynamic/careers/[positionCode]'
+import { Career } from '@src/pages/careers/[positionCode]'
+
 import { ApplyForm, JobDescription } from './'
 
 interface JobDetailSectionProps {

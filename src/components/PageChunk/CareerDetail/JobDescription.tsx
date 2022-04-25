@@ -1,19 +1,37 @@
+import toast from 'react-hot-toast'
+import { useCopyToClipboard, useUpdateEffect } from 'react-use'
+
 import Markdown, { useComponent } from '@components/Markdown'
 
-import type { Career } from '@src/pages/dynamic/careers/[positionCode]'
+import type { Career } from '@src/pages/careers/[positionCode]'
 interface JobDescriptionProps {
   data?: Career
 }
 
 export const JobDescription: React.FC<JobDescriptionProps> = ({ data }) => {
+  const [state, copyToClipboard] = useCopyToClipboard()
+
+  useUpdateEffect(() => {
+    if (!state.error) {
+      toast.success(`Link copied to clipboard.`, {
+        position: 'bottom-center'
+      })
+    } else {
+      toast.error(`Unable copied link to clipboard.`, {
+        position: 'bottom-center'
+      })
+    }
+  }, [state])
   return (
     <div className="co-md-12 col-lg-7 p-lg-4 pt-7 pt-lg-0">
       <div>
         <h1 className="secondary-font fw-bold mb-4 h1-extra">{data?.position}</h1>
         {data?.description && <p className="font-weight-normal text-black mb-5">{data?.description}</p>}
-        <a href="#" className="btn bg-gradient-primary text-white   fw-bold px-4 mb-4">
+        <button
+          onClick={() => copyToClipboard(window?.location?.href)}
+          className="btn bg-gradient-primary text-white   fw-bold px-4 mb-4">
           Share job
-        </a>
+        </button>
       </div>
 
       {data?.contentSection?.map((section, i) => (

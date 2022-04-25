@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
+import { Toaster } from 'react-hot-toast'
 import { useCookie } from 'react-use'
 
 import { CookieBlock } from '@components/Modals/CookieBlock'
@@ -66,7 +67,7 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       <Script src="https://kit.fontawesome.com/42d5adcbca.js" />
 
       {getLayout(<Component {...pageProps} />)}
-
+      <Toaster />
       {showCookie && (
         <CookieBlock state={showCookie} handleUseCookie={handleUseCookie} onClose={() => setShowCookie(false)} />
       )}
