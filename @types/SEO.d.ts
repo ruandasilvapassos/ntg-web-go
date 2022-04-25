@@ -4,7 +4,8 @@ declare namespace SEO {
     canonicalURL?: string
     keywords?: string
     metaDescription?: string
-    metaImage?: Strapi.Media
+    shareImage?: shareImage
+    metaImage?: shareImage
     metaRobots?: string
     metaSocial?: {
       id: number
