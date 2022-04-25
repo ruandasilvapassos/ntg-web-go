@@ -67,7 +67,9 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
 
       {getLayout(<Component {...pageProps} />)}
 
-      <CookieBlock state={showCookie} handleUseCookie={handleUseCookie} onClose={() => setShowCookie(false)} />
+      {showCookie && (
+        <CookieBlock state={showCookie} handleUseCookie={handleUseCookie} onClose={() => setShowCookie(false)} />
+      )}
     </>
   )
 }
