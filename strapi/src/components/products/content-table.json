@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_products_content_tables",
+  "info": {
+    "displayName": "contentTable",
+    "icon": "table"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

@@ -19,6 +19,7 @@ const populateAttribute = ({ components }) => {
     }, {})
     // add insight statically
     populate.insight = { populate: '*' }
+
     return { populate }
   }
   return { populate: '*' }
@@ -26,7 +27,7 @@ const populateAttribute = ({ components }) => {
 
 const getPopulateFromSchema = function (schema) {
   // console.log('schema', schema)
-  return Object.keys(schema.attributes).reduce((currentValue, current) => {
+  const res = Object.keys(schema.attributes).reduce((currentValue, current) => {
     const attribute = schema.attributes[current]
     if (!['dynamiczone', 'component', 'media'].includes(attribute.type)) {
       return { [current]: populateAttribute(attribute) }
@@ -36,6 +37,8 @@ const getPopulateFromSchema = function (schema) {
       [current]: populateAttribute(attribute)
     }
   }, {})
+  // res[schema?.collectionName] = { populate: '*' }
+  return res
 }
 
 function createPopulatedController(uid, schema) {
@@ -45,20 +48,33 @@ function createPopulatedController(uid, schema) {
       async find(ctx) {
         // deeply populate all attributes with ?populate=*, else retain vanilla functionality
         if (ctx.query.populate === '*') {
+          const resPopulate = ctx?.query?.resPopulate?.split(',')?.map((res) => ({
+            [res]: {
+              populate: '*'
+            }
+          }))
+          const populate = resPopulate?.reduce(function (result, item) {
+            var key = Object.keys(item)[0]
+            result[key] = item[key]
+            return result
+          }, {})
           ctx.query = {
             ...ctx.query,
-            populate: getPopulateFromSchema(schema)
+            populate: { ...getPopulateFromSchema(schema), ...populate }
           }
         }
+
         return await super.find(ctx)
       },
       async findOne(ctx) {
         if (ctx.query.populate === '*') {
+          // console.log(getPopulateFromSchema(schema))
           ctx.query = {
             ...ctx.query,
             populate: getPopulateFromSchema(schema)
           }
         }
+        console.log(ctx)
         return await super.findOne(ctx)
       }
     }

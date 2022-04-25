@@ -18,4 +18,16 @@ body {
           line-clamp: 3; 
   -webkit-box-orient: vertical;
 }
+
+table {
+  &.first-backgrounded {
+    tr {
+      &:first-child {
+        background: #BA1A18;
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+}
 /* Your own custom utilities */

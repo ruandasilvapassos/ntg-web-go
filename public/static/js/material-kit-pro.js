@@ -358,12 +358,14 @@ var total = document.querySelectorAll('.nav-pills')
 total.forEach(function (item, i) {
   var moving_div = document.createElement('div')
   var first_li = item.querySelector('li:first-child .nav-link')
-  var tab = first_li.cloneNode()
-  tab.innerHTML = '-'
+  var tab = first_li?.cloneNode()
+  if (tab) {
+    tab.innerHTML = '-'
+  }
 
   moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
-  moving_div.appendChild(tab)
-  item.appendChild(moving_div)
+  moving_div?.appendChild(tab)
+  item?.appendChild(moving_div)
 
   var list_length = item.getElementsByTagName('li').length
 
@@ -405,8 +407,10 @@ window.addEventListener('resize', function (event) {
   total.forEach(function (item, i) {
     item.querySelector('.moving-tab').remove()
     var moving_div = document.createElement('div')
-    var tab = item.querySelector('.nav-link.active').cloneNode()
-    tab.innerHTML = '-'
+    var tab = item.querySelector('.nav-link.active')?.cloneNode()
+    if (tab) {
+      tab.innerHTML = '-'
+    }
 
     moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
     moving_div.appendChild(tab)
@@ -496,7 +500,9 @@ function copyCode(el) {
       alert.style.transform = 'translate3d(0px, 20px, 0px)'
       alert.style.setProperty('opacity', '1', 'important')
     }, 100)
-    alert.innerHTML = 'Code successfully copied!'
+    if (alert) {
+      alert.innerHTML = 'Code successfully copied!'
+    }
     el.parentElement.appendChild(alert)
     setTimeout(function () {
       alert.style.transform = 'translate3d(0px, 0px, 0px)'

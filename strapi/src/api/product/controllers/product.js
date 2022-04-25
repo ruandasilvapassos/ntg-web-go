@@ -1,9 +1,12 @@
-'use strict';
+'use strict'
 
 /**
  *  product controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const collectionType = 'product'
 
-module.exports = createCoreController('api::product.product');
+const schema = require(`../content-types/${collectionType}/schema.json`)
+const createPopulatedController = require('../../../helpers/populate')
+
+module.exports = createPopulatedController(`api::${collectionType}.${collectionType}`, schema)

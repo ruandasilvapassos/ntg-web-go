@@ -18,21 +18,6 @@
     "summary": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
-    "overview": {
-      "type": "richtext"
-    },
-    "plan_price": {
-      "type": "richtext"
-    },
-    "integration": {
-      "type": "richtext"
-    },
-    "how_buy": {
-      "type": "richtext"
-    },
     "platform": {
       "type": "relation",
       "relation": "oneToOne",
@@ -43,10 +28,10 @@
       "relation": "oneToMany",
       "target": "api::category-product.category-product"
     },
-    "start_price": {
+    "startPrice": {
       "type": "string"
     },
-    "featured_product": {
+    "featuredProduct": {
       "type": "boolean",
       "default": false
     },
@@ -58,6 +43,67 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "contentTable": {
+      "displayName": "contentTable",
+      "type": "component",
+      "repeatable": true,
+      "component": "products.content-table"
+    },
+    "platformRating": {
+      "displayName": "Product Rating",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.product-rating"
+    },
+    "productMarketplace": {
+      "displayName": "Product Marketplace",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.product-marketplace"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "customers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::customer.customer"
+    },
+    "contentSections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "heros.hero",
+        "layouts.accordion-content",
+        "layouts.bkg-header",
+        "layouts.card",
+        "layouts.card-with-button",
+        "layouts.center-hero",
+        "layouts.component-type",
+        "layouts.contact",
+        "layouts.contact-info",
+        "layouts.content-container",
+        "layouts.featured-news",
+        "layouts.header",
+        "layouts.header-with-customer",
+        "layouts.hero-circle-image",
+        "layouts.hero-highlight",
+        "layouts.hero-square-image",
+        "layouts.image-hero",
+        "layouts.item-hero",
+        "layouts.mansory-image",
+        "layouts.partner",
+        "layouts.quote",
+        "layouts.simple-hero",
+        "layouts.step",
+        "layouts.support-hero",
+        "products.products"
+      ]
     }
   }
 }
