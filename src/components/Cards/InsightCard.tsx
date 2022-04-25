@@ -1,5 +1,8 @@
+import Link from 'next/link'
+
 interface InsightCardProps {
   title?: string
+  slug?: string
   description?: string
   category?: string
   author?: string
@@ -10,16 +13,18 @@ interface InsightCardProps {
 }
 
 export const InsightCard: React.FC<InsightCardProps> = (props) => {
-  const { title, description, author, created_at, thumbnail, trending, category, categoryColor } = props
+  const { title, description, author, created_at, thumbnail, trending, category, categoryColor, slug } = props
   return (
     <div className="card card-plain card-blog mb-5">
       <div className="row">
         <div className="col-md-4">
           <div className="card-header-image">
             {thumbnail && (
-              <a href="#pablito">
-                <img className="img border-radius-lg shadow-lg" src={thumbnail} />
-              </a>
+              <Link href={`/blog/${slug}`} passHref>
+                <a>
+                  <img className="img border-radius-lg shadow-lg" src={thumbnail} />
+                </a>
+              </Link>
             )}
             <div
               className="colored-shadow"
@@ -32,7 +37,11 @@ export const InsightCard: React.FC<InsightCardProps> = (props) => {
             {trending && <i className="material-icons">trending_up</i>}
             {category}
           </h6>
-          <h4 className="card-title">{title}</h4>
+          <Link href={`/blog/${slug}`} passHref>
+            <a>
+              <h4 className="card-title">{title}</h4>
+            </a>
+          </Link>
           <p className="card-description">{description}</p>
           <p className="author">
             <b>{author}</b>

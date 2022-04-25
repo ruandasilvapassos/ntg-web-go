@@ -51,6 +51,7 @@ export const NewsWithCategoryList: React.FC<NewsWithCategoryListProps> = ({ titl
           <InsightCard
             key={i}
             title={insight?.attributes?.title}
+            slug={insight?.attributes?.slug}
             description={
               insight?.attributes?.excerpt ||
               insight?.attributes?.overview ||
