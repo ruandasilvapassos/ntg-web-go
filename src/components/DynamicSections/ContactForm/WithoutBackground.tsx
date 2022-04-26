@@ -1,18 +1,41 @@
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+
+import api from '@services/api'
 
 interface ContactFormWithoutBackgroundProps {
   title?: string
   overview?: string
 }
 export const ContactFormWithoutBackground: React.FC<ContactFormWithoutBackgroundProps> = ({ title, overview }) => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
 
   // we set ts to any, temporarily
-  const handleContactForm = (data: any) => {
-    console.log(data)
+  const handleContactForm = async (data: any) => {
+    await api
+      .post(`/contacts`, {
+        data
+      })
+      .then(({ data }) => {
+        if (data?.data?.id) {
+          toast.success(`Message sent, thank you for your message.`, {
+            position: 'bottom-center'
+          })
+        } else {
+          toast.error(`Something went wrong when trying to send a message.`, {
+            position: 'bottom-center'
+          })
+        }
+      })
+      .catch(() =>
+        toast.error(`Something went wrong when trying to send a message.`, {
+          position: 'bottom-center'
+        })
+      )
+      .finally(() => reset())
   }
   return (
-    <section>
+    <section id="contact">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mx-auto text-center pb-4">

@@ -1,4 +1,7 @@
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+
+import api from '@services/api'
 
 interface ContactFormWithBackgroundProps {
   title?: string
@@ -6,15 +9,40 @@ interface ContactFormWithBackgroundProps {
   image?: Strapi.Media
 }
 export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps> = ({ title, overview, image }) => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
 
   // we set ts to any, temporarily
-  const handleContactForm = (data: any) => {
-    console.log(data)
+  const handleContactForm = async (data: any) => {
+    if (data?.first_name || data?.last_name) {
+      data.fullname = `${data?.first_name} ${data?.last_name}`
+      delete data.first_name
+      delete data.last_name
+    }
+    await api
+      .post(`/contacts`, {
+        data
+      })
+      .then(({ data }) => {
+        if (data?.data?.id) {
+          toast.success(`Message sent, thank you for your message.`, {
+            position: 'bottom-center'
+          })
+        } else {
+          toast.error(`Something went wrong when trying to send a message.`, {
+            position: 'bottom-center'
+          })
+        }
+      })
+      .catch(() =>
+        toast.error(`Something went wrong when trying to send a message.`, {
+          position: 'bottom-center'
+        })
+      )
+      .finally(() => reset())
   }
 
   return (
-    <section className="py-5">
+    <section id="contact" className="py-5">
       <div className="page-header">
         {image?.data?.attributes?.url && (
           <div
