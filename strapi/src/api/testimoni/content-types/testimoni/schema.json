@@ -4,7 +4,8 @@
   "info": {
     "singularName": "testimoni",
     "pluralName": "testimonis",
-    "displayName": "Testimoni"
+    "displayName": "Testimonies",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,11 +19,12 @@
       "type": "string"
     },
     "profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "message": {
       "type": "text"

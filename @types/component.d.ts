@@ -93,6 +93,15 @@ declare namespace Component {
       contentSections?: any
     }
   }
+  interface Testimonial {
+    id: number
+    attributes?: {
+      name?: string
+      username?: string
+      profile_picture?: Strapi.Media
+      message?: string
+    }
+  }
   interface Platform {
     id: number
     attributes?: {
