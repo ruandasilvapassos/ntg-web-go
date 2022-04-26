@@ -1,11 +1,18 @@
 import Link from 'next/link'
 
+import Markdown, { useComponent } from '@components/Markdown'
+import { useFetcher } from '@hooks/useFetcher'
+
 interface FeaturedProductProps {
   title?: string
   description?: string
   button?: Component.Link
 }
 export const FeaturedProduct: React.FC<FeaturedProductProps> = ({ title, description, button }) => {
+  const { data } = useFetcher<Component.Product[]>(
+    `/products?populate=platform,category_products,service,service.logo,product_instance&filters[featuredProduct][$eq]=true&pagination[limit]=3`
+  )
+
   return (
     <section className="py-5 bg-gray-200 py-lg-7">
       <div className="container">
@@ -28,63 +35,49 @@ export const FeaturedProduct: React.FC<FeaturedProductProps> = ({ title, descrip
           )}
         </div>
         <div className="row">
-          <div className="col-lg-4 col-md-6">
-            <div className="mt-5 card">
-              <div className="pt-3 card-body">
-                <img className="mb-3 width-32-px" src="/static/img/logos/small-logos/logo-github.svg" alt="logo" />
-                <a href="#!">
-                  <h4 className="mb-5">SQL Server Evaluation for Ubuntu:18-04</h4>
-                </a>
-                <p className="mb-2 fw-bold">Container Instance</p>
-                <p className="mb-4">
-                  Azure Marketplace: Microsoft SQL Server Evaluation 2019 for Ubuntu:18-04 container image
-                </p>
-                <Link href="/product/example" passHref>
-                  <a type="button" className="mb-0 btn bg-gradient-primary w-100">
-                    View Product
-                  </a>
-                </Link>
+          {data?.map((product, i) => (
+            <div key={i} className="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div className="mt-5 card">
+                <div className="pt-4 card-body">
+                  {product?.attributes?.service?.data?.attributes?.logo?.data?.attributes?.url && (
+                    <img
+                      className="mb-3"
+                      src={product?.attributes?.service?.data?.attributes?.logo?.data?.attributes?.url}
+                      alt="logo"
+                      style={{ height: '32px', objectFit: 'contain' }}
+                    />
+                  )}
+                  <Link href={button?.url || '#!'} passHref>
+                    <a>
+                      <h4
+                        style={{
+                          minHeight: '84px'
+                        }}>
+                        {product?.attributes?.name}
+                      </h4>
+                    </a>
+                  </Link>
+                  {product?.attributes?.product_instance?.data?.attributes?.name && (
+                    <p className="mb-2 fw-bold">{product?.attributes?.product_instance?.data?.attributes?.name}</p>
+                  )}
+                  <div className="mb-3" style={{ minHeight: '5rem' }}>
+                    <Markdown
+                      components={useComponent?.content}
+                      children={
+                        product?.attributes?.summary ||
+                        product?.attributes?.description?.replace(/<[^>]*>/g, '')?.substring(0, 160)
+                      }
+                    />
+                  </div>
+                  <Link href={`/product/${product?.attributes?.slug}`} passHref>
+                    <a type="button" className="mb-0 btn bg-gradient-primary w-100">
+                      View Product
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="mt-5 card">
-              <div className="pt-3 card-body">
-                <img className="mb-3 width-32-px" src="/static/img/logos/small-logos/logo-amazon.svg" alt="logo" />
-                <a href="#!">
-                  <h4 className="mb-5">SQL Server Evaluation for Ubuntu:18-04</h4>
-                </a>
-                <p className="mb-2 fw-bold">Container Instance</p>
-                <p className="mb-4">
-                  Azure Marketplace: Microsoft SQL Server Evaluation 2019 for Ubuntu:18-04 container image
-                </p>
-                <Link href="/product/example" passHref>
-                  <a type="button" className="mb-0 btn bg-gradient-primary w-100">
-                    View Product
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="mt-5 card">
-              <div className="pt-3 card-body">
-                <img className="mb-3 width-32-px" src="/static/img/logos/small-logos/logo-google-cloud.svg" alt="logo" />
-                <a href="#!">
-                  <h4 className="mb-5">SQL Server Evaluation for Ubuntu:18-04</h4>
-                </a>
-                <p className="mb-2 fw-bold">Container Instance</p>
-                <p className="mb-4">
-                  Azure Marketplace: Microsoft SQL Server Evaluation 2019 for Ubuntu:18-04 container image
-                </p>
-                <Link href="/product/example" passHref>
-                  <a type="button" className="mb-0 btn bg-gradient-primary w-100">
-                    View Product
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

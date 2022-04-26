@@ -59,9 +59,15 @@ const ProductComponents: Components = {
   }
 } as const
 
+const ContentComponents: Components = {
+  p: ({ ...props }) => {
+    return <p className="mb-0" {...omit(props, 'node')} />
+  }
+} as const
 export const useComponent = {
   default: MarkdownComponents,
-  product: ProductComponents
+  product: ProductComponents,
+  content: ContentComponents
 } as const
 
 /**

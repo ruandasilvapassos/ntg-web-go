@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_instances",
+  "info": {
+    "singularName": "product-instance",
+    "pluralName": "product-instances",
+    "displayName": "Product Instance"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,97 +1,75 @@
+import { useRouter } from 'next/router'
+import qs from 'qs'
+import { ChangeEvent, useMemo } from 'react'
+
+import { useFetcher } from '@hooks/useFetcher'
+import { useState } from '@hookstate/core'
+import { objectToQuery } from '@utils/index'
+
+// import { filterState } from '@states/Filters'
+
 export const ProductCheckbox: React.FC = () => {
+  const { data } = useFetcher<Component.CategoryProduct[]>(`/category-products`)
+  const filter = useState<any>({})
+  const router = useRouter()
+
+  const filters = useMemo(() => {
+    const os = data?.filter((v) => v.attributes?.isOperatingSystem)
+    const filter = data?.filter((v) => !v.attributes?.isOperatingSystem)
+    return { os, filter }
+  }, [data])
+
+  const handleFilter = (value: string) => {
+    const pagePath = router?.query?.slug ? router?.query?.slug : ''
+    // const currentQuery = qs.stringify(params.get())
+    let currentQuery = {}
+    if (router?.query?._q) {
+      currentQuery = { ...currentQuery, _q: router?.query?._q }
+    }
+    if (router?.query?.['filters[platform][id][$eq]']) {
+      currentQuery = { ...currentQuery, 'filters[platform][id][$eq]': router?.query?.['filters[platform][id][$eq]'] }
+    }
+
+    router.push(`/${pagePath}?${value ? value : ''}${currentQuery ? `&${qs.stringify(currentQuery)}` : ''}`, '', {
+      shallow: true
+    })
+    return
+  }
+
+  const handleCheckbox = (evt: ChangeEvent<HTMLInputElement>) => {
+    const value = evt.target?.value
+    const checked = evt.target?.checked
+
+    filter.merge({ ...filter.get(), [value]: checked })
+
+    const filterize = Object.keys(filter.get())
+      .map((key) => (filter.get()?.[key] ? `filters[category_products][id][$in]=${key}` : null))
+      ?.filter(Boolean)
+      ?.join('&')
+      ?.replace('&&', '&')
+    handleFilter(filterize)
+  }
   return (
     <div>
-      <div className="OsWrap">
-        <label className="mb-3 d-block is-filled">
-          <input type="checkbox" />
-          <span className="mx-1">Windows</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Linux</span>
-        </label>
+      <div className="OsWrap border-bottom">
+        {filters?.os?.map((os) => (
+          <label key={os.id} className="d-block is-filled">
+            <input onChange={handleCheckbox} type="checkbox" name="category_product" defaultValue={os?.id} />
+            <span className="mx-1">{os?.attributes?.name}</span>
+          </label>
+        ))}
       </div>
-      <div>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
+      <div className="mt-3">
+        {/* <label className="mb-3 d-block">
+          <input onChange={handleCheckbox} type="checkbox" name="category_product" defaultValue="" />
           <span className="mx-1">All</span>
-        </label>
-        <label className="mb-3 d-block is-filled">
-          <input type="checkbox" />
-          <span className="mx-1">AI + Machine Learning</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Analytics</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Blockchain</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Compute</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Containers</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Database</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Developer Tools</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">DevOps</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Integration</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Internet of Things</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">IT &amp; Management Tools</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Media</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Mixed Reality</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Migration</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Monioring &amp; Diagnostics</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Networking</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Security</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Storage</span>
-        </label>
-        <label className="mb-3 d-block">
-          <input type="checkbox" />
-          <span className="mx-1">Web</span>
-        </label>
+        </label> */}
+        {filters?.filter?.map((filter) => (
+          <label key={filter?.id} className="mb-3 d-block">
+            <input onChange={handleCheckbox} type="checkbox" name="category_product" defaultValue={filter?.id} />
+            <span className="mx-1">{filter?.attributes?.name}</span>
+          </label>
+        ))}
       </div>
     </div>
   )

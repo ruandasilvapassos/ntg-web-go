@@ -26,8 +26,10 @@
         "images"
       ]
     },
-    "url": {
-      "type": "string"
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
     }
   }
 }

@@ -357,7 +357,10 @@ var total = document.querySelectorAll('.nav-pills')
 
 total.forEach(function (item, i) {
   var moving_div = document.createElement('div')
-  var first_li = item.querySelector('li:first-child .nav-link')
+  const leftOffset = item?.getBoundingClientRect()?.left
+  const topOffset = item?.getBoundingClientRect()?.top
+
+  var first_li = item.querySelector('.nav-link.active')
   var tab = first_li?.cloneNode()
   if (tab) {
     tab.innerHTML = '-'
@@ -367,11 +370,20 @@ total.forEach(function (item, i) {
   moving_div?.appendChild(tab)
   item?.appendChild(moving_div)
 
-  var list_length = item.getElementsByTagName('li').length
-
   moving_div.style.padding = '0px'
-  moving_div.style.width = item.querySelector('li:nth-child(1)').offsetWidth + 'px'
-  moving_div.style.transform = 'translate3d(0px, 0px, 0px)'
+
+  if (window.innerWidth < 991 && item.classList.contains('flex-column')) {
+    moving_div.style.width = item.querySelector('li .nav-link.active')?.offsetWidth + 'px'
+    const top = item.querySelector('li .nav-link.active')?.getBoundingClientRect()?.top - topOffset
+
+    moving_div.style.transform = `translate3d(0px, ${top || 0}px, 0px)`
+  } else {
+    moving_div.style.width = item.querySelector('li .nav-link.active').offsetWidth + 'px'
+    const left = item.querySelector('li .nav-link.active')?.getBoundingClientRect()?.left - leftOffset
+
+    moving_div.style.transform = `translate3d(${left || 0}px, 0px, 0px)`
+  }
+
   moving_div.style.transition = '.5s ease'
 
   item.onmouseover = function (event) {

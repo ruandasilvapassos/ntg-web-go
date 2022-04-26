@@ -50,6 +50,13 @@ declare namespace Component {
     logo?: Strapi.Media
     website?: string
   }
+  interface CategoryProduct {
+    id: number
+    attributes?: {
+      name?: string
+      isOperatingSystem?: boolean
+    }
+  }
   interface Product {
     id: number
     attributes?: {
@@ -68,8 +75,29 @@ declare namespace Component {
           attributes?: Component.Customers
         }[]
       }
+      service?: {
+        data?: {
+          id: number
+          attributes?: Service
+        }
+      }
+      product_instance?: {
+        data?: {
+          id: number
+          attributes?: {
+            name?: string
+          }
+        }
+      }
       metadata?: SEO.Metadata
       contentSections?: any
+    }
+  }
+  interface Platform {
+    id: number
+    attributes?: {
+      name?: string
+      logo?: Strapi.Media
     }
   }
   interface JobType {
@@ -135,5 +163,18 @@ declare namespace Component {
   interface InsightResponse {
     id: string
     attributes?: Insight
+  }
+  interface Service {
+    createdAt: Date | string
+    description?: string
+    logo?: Strapi.Media
+    publishedAt?: Date | string
+    title: string
+    updatedAt?: Date | string
+    link?: Link
+  }
+  interface ServiceResponse {
+    id: string
+    attributes?: Service
   }
 }
