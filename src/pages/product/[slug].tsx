@@ -48,7 +48,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     )
     .then(({ data }) => data?.data?.[0])
     .catch(() => null)
-
+  console.log(data)
   return {
     props: {
       slug,

@@ -67,6 +67,19 @@
       "relation": "oneToMany",
       "target": "api::customer.customer"
     },
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service.service"
+    },
+    "product_instance": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-instance.product-instance"
+    },
+    "summary": {
+      "type": "richtext"
+    },
     "contentSections": {
       "pluginOptions": {
         "i18n": {
@@ -101,19 +114,6 @@
         "layouts.support-hero",
         "products.products"
       ]
-    },
-    "service": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::service.service"
-    },
-    "product_instance": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::product-instance.product-instance"
-    },
-    "summary": {
-      "type": "richtext"
     }
   }
 }

@@ -4,7 +4,6 @@ import { ChangeEvent, useMemo } from 'react'
 
 import { useFetcher } from '@hooks/useFetcher'
 import { useState } from '@hookstate/core'
-import { objectToQuery } from '@utils/index'
 
 // import { filterState } from '@states/Filters'
 

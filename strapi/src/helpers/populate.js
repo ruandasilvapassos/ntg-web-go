@@ -17,9 +17,9 @@ const populateAttribute = ({ components }) => {
         ...attrPopulates
       }
     }, {})
+
     // add insight statically
     populate.insight = { populate: '*' }
-
     return { populate }
   }
   return { populate: '*' }
@@ -38,12 +38,12 @@ const getPopulateFromSchema = function (schema) {
     }
   }, {})
   // res[schema?.collectionName] = { populate: '*' }
+
   return res
 }
 
 function createPopulatedController(uid, schema) {
   return createCoreController(uid, () => {
-    // console.log(schema.collectionName, getPopulateFromSchema(schema))
     return {
       async find(ctx) {
         // deeply populate all attributes with ?populate=*, else retain vanilla functionality
@@ -59,8 +59,9 @@ function createPopulatedController(uid, schema) {
             return result
           }, {})
           let populate = getPopulateFromSchema(schema)
+
           if (populated) {
-            populate = { ...getPopulateFromSchema(schema), ...populated }
+            populate = { ...populate, ...populated }
           }
           ctx.query = {
             ...ctx.query,
@@ -78,7 +79,6 @@ function createPopulatedController(uid, schema) {
             populate: getPopulateFromSchema(schema)
           }
         }
-        console.log(ctx)
         return await super.findOne(ctx)
       }
     }

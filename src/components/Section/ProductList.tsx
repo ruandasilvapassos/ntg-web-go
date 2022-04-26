@@ -141,10 +141,12 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
                               <span className="material-icons">close</span>
                             </button>
                             <div>
-                              <button type="button" className="mb-0 btn btn-outline-secondary btn-sm me-2">
-                                Clear
-                              </button>
-                              <button type="button" className="mb-0 btn btn-primary btn-sm">
+                              <button
+                                type="button"
+                                className="mb-0 btn btn-primary btn-sm"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample"
+                                aria-controls="offcanvasExample">
                                 Apply
                               </button>
                             </div>
