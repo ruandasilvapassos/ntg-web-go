@@ -31,7 +31,13 @@ export async function getPageData({ slug, locale, preview }: any) {
 
 // Get site data from Strapi (metadata, navbar, footer...)
 export async function getGlobalData(locale?: string) {
-  const globalRes = await api.get(`/global?locale=${locale || 'en'}&populate=*`).then(({ data }) => data)
+  const globalRes = await api
+    .get(
+      `/global?locale=${
+        locale || 'en'
+      }&populate=favicon,logo,metadata,footer,footer.copylinks,footer.columns,footer.columns.links`
+    )
+    .then(({ data }) => data)
 
   if (!globalRes?.data?.id) {
     return null

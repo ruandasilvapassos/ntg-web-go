@@ -55,7 +55,7 @@ const DynamicPage: React.FC<DynamicPageProps> = ({ sections, metadata, preview, 
   }
 
   return (
-    <MainLayout navbarTheme={settings?.navbarStyle}>
+    <MainLayout navbarTheme={settings?.navbarStyle} metadata={global}>
       {/* Add meta tags for SEO*/}
       <Seo {...metadataWithDefaults} />
       {/* Display content sections */}

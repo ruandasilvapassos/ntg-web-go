@@ -10,6 +10,9 @@
     "copyright": {
       "type": "text"
     },
+    "copyText": {
+      "type": "text"
+    },
     "copylinks": {
       "type": "component",
       "repeatable": true,

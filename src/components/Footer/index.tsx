@@ -1,6 +1,23 @@
 import Link from 'next/link'
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  data?: {
+    id: number
+    attributes?: SEO.Metadata & {
+      footer: {
+        id: number
+        copyright?: string
+        copyText?: string
+        copylinks?: Component.Link[]
+        columns?: {
+          title?: string
+          links?: Component.Link[]
+        }[]
+      }
+    }
+  }
+}
+export const Footer: React.FC<FooterProps> = ({ data }) => {
   return (
     <footer className="pt-6 bg-gray-200 footer">
       <div className="container">
@@ -11,13 +28,11 @@ export const Footer: React.FC = () => {
                 <img src="/static/img/logo-light.png" alt="main_logo" style={{ height: '25px' }} />
               </a>
               <div className="mt-3 pe-4">
-                <p className="p-0 mb-2 nav-link ">
-                  If you're looking to get started on your project, or need help implementing a existing effort. We'd love to
-                  speak with you.
-                </p>
-                <p className="p-0 nav-link">
-                  We constantly strive to be a company that delivers outstanding products and services.
-                </p>
+                {data?.attributes?.footer?.copyText?.split('\n')?.map((copy, i) => (
+                  <p key={i} className="p-0 mb-2 nav-link ">
+                    {copy}
+                  </p>
+                ))}
               </div>
 
               <div className="pb-4">
@@ -50,106 +65,41 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="mb-4 col-md-2 col-sm-6 col-6">
-            <div>
-              <h6 className="text-sm">Products</h6>
-              <ul className="flex-column ms-n3 nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    AWS
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    Microsoft Azure
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    Oracle
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    IBM
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    RedHat
-                  </a>
-                </li>
-              </ul>
+          {data?.attributes?.footer?.columns?.map((menu, i) => (
+            <div key={i} className="mb-4 col-md-2 col-sm-6 col-6">
+              <div>
+                <h6 className="text-sm">{menu?.title}</h6>
+                <ul className="flex-column ms-n3 nav">
+                  {menu?.links?.map((link) => (
+                    <li key={link.id} className="nav-item">
+                      <Link href={`${link?.url || '#!'}`} passHref>
+                        <a className="nav-link" target="_blank">
+                          {link?.text}
+                        </a>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="mb-4 col-md-2 col-sm-6 col-6">
-            <div>
-              <h6 className="text-sm">Services</h6>
-              <ul className="flex-column ms-n3 nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    Salesforce Cosulting
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    Azure Cosulting
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    AWS Consulting
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mb-4 col-md-2 col-sm-6 col-6">
-            <div>
-              <h6 className="text-sm">Insights</h6>
-              <ul className="flex-column ms-n3 nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="./insights.html" target="_blank">
-                    New Products
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    Case Studies
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mb-4 col-md-2 col-sm-6 col-6 me-auto">
-            <div>
-              <h6 className="text-sm">Career</h6>
-              <ul className="flex-column ms-n3 nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="./career-list.html">
-                    Opportunites
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="pt-3 pb-3 mt-4 border-top">
           <div className="py-2 row justify-content-between align-items-center">
             <div className="col-md-6">
-              <p className="p-0 m-0 text-sm text-muted font-weight-normal">© 2022 Ntegral Inc. All Rights Reserved</p>
+              {data?.attributes?.footer?.copyright && (
+                <p className="p-0 m-0 text-sm text-muted font-weight-normal">{data?.attributes?.footer?.copyright}</p>
+              )}
             </div>
             <div className="col-md-6 text-md-end">
-              <Link href="/privacy" passHref>
-                <a className="text-xs text-muted ms-0">PRIVACY POLICY</a>
-              </Link>
-              <Link href="/terms" passHref>
-                <a className="text-xs text-muted ms-3">TERMS</a>
-              </Link>
-              <Link href="/contact/v2" passHref>
-                <a className="text-xs text-muted ms-3">CONNECT</a>
-              </Link>
+              {data?.attributes?.footer?.copylinks?.map((link) => (
+                <Link key={link.id} href={link?.url || '#!'} passHref>
+                  <a className="text-xs text-muted ms-3" title={link?.title}>
+                    {link?.text}
+                  </a>
+                </Link>
+              ))}
             </div>
           </div>
 
