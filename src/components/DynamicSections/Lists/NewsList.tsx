@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 import { NewsCard } from '@components/Cards/NewsCard'
 import { useFetcher } from '@hooks/useFetcher'
 
@@ -19,11 +21,7 @@ export const NewsList: React.FC<NewsListProps> = ({ title }) => {
               title={news?.attributes?.title || ''}
               thumbnail={news?.attributes?.image?.data?.attributes?.url}
               slug={news?.attributes?.slug}
-              description={
-                news?.attributes?.excerpt ||
-                news?.attributes?.overview ||
-                news?.attributes?.content?.replace(/<[^>]*>/g, '')?.substr(0, 160)
-              }
+              description={dayjs(news?.attributes?.createdAt)?.fromNow()}
             />
           ))}
         </div>
