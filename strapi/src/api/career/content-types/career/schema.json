@@ -34,6 +34,11 @@
       "targetField": "position",
       "required": true
     },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
     "contentSections": {
       "pluginOptions": {
         "i18n": {
@@ -68,11 +73,6 @@
         "layouts.support-hero",
         "products.products"
       ]
-    },
-    "metadata": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
     }
   }
 }

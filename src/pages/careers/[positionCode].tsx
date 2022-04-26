@@ -35,16 +35,14 @@ const CareerDetailPage: NextLayoutComponentType<CareerDetailPageProps> = ({ data
     ...data?.attributes?.metadata
   }
   return (
-    <div className="career-page">
-      <SEO {...metadataWithDefaults} />
-      <JobDetailSection data={data?.attributes} />
-      <Sections sections={data?.attributes?.contentSections} />
-    </div>
+    <MainLayout metadata={global}>
+      <div className="career-page">
+        <SEO {...metadataWithDefaults} />
+        <JobDetailSection data={data?.attributes} />
+        <Sections sections={data?.attributes?.contentSections} />
+      </div>
+    </MainLayout>
   )
-}
-
-CareerDetailPage.getLayout = function getLayout(page) {
-  return <MainLayout children={page} />
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

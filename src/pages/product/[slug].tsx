@@ -17,22 +17,20 @@ const ProductDetailPage: NextLayoutComponentType<ProductDetailPageProps> = ({ da
   }
 
   return (
-    <div className="product-page">
-      <SEO {...metadataWithDefaults} />
-      {/* Product detail section */}
-      <section className="py-lg-7 py-5 bg-gray-100">
-        <div className="container">
-          <ProductDetail data={data} />
-          <ProductDetailTab data={data} />
-        </div>
-      </section>
-      <Sections sections={data?.attributes?.contentSections} />
-    </div>
+    <MainLayout metadata={global}>
+      <div className="product-page">
+        <SEO {...metadataWithDefaults} />
+        {/* Product detail section */}
+        <section className="py-lg-7 py-5 bg-gray-100">
+          <div className="container">
+            <ProductDetail data={data} />
+            <ProductDetailTab data={data} />
+          </div>
+        </section>
+        <Sections sections={data?.attributes?.contentSections} />
+      </div>
+    </MainLayout>
   )
-}
-
-ProductDetailPage.getLayout = function getLayout(page) {
-  return <MainLayout children={page} />
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

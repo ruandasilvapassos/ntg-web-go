@@ -14,15 +14,13 @@ const BlogPage: NextLayoutComponentType<BlogPageProps> = ({ data, global }) => {
     ...data?.attributes?.metadata
   }
   return (
-    <div className="home-page">
-      <SEO {...metadataWithDefaults} />
-      <BlogPost data={data?.attributes} />
-    </div>
+    <MainLayout navbarTheme="light" metadata={global}>
+      <div className="home-page">
+        <SEO {...metadataWithDefaults} />
+        <BlogPost data={data?.attributes} />
+      </div>
+    </MainLayout>
   )
-}
-
-BlogPage.getLayout = function getLayout(page) {
-  return <MainLayout children={page} navbarTheme="light" />
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

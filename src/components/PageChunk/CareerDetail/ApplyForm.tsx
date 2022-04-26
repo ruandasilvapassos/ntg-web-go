@@ -1,11 +1,35 @@
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+
+import { Dropzone } from '@components/Forms/Dropzone'
+import api from '@services/api'
 
 export const ApplyForm: React.FC = () => {
-  const { register, handleSubmit } = useForm()
+  const { reset, register, handleSubmit } = useForm()
 
   // we set ts to any, temporarily
-  const handleContactForm = (data: any) => {
-    console.log(data)
+  const handleContactForm = async (data: any) => {
+    await api
+      .post(`/applicants`, {
+        data
+      })
+      .then(({ data }) => {
+        if (data?.data?.id) {
+          toast.success(`Your application sent. Thank you for applying!`, {
+            position: 'bottom-center'
+          })
+        } else {
+          toast.error(`Something went wrong, please try again.`, {
+            position: 'bottom-center'
+          })
+        }
+      })
+      .catch(() =>
+        toast.error(`Something went wrong, please try again.`, {
+          position: 'bottom-center'
+        })
+      )
+      .finally(() => reset())
   }
 
   return (
@@ -22,7 +46,7 @@ export const ApplyForm: React.FC = () => {
           First Name <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
-          <input className="form-control" type="text" {...register('first_name')} />
+          <input className="form-control" type="text" {...register('firstName')} />
         </div>
       </div>
       <div className="mb-4">
@@ -30,7 +54,7 @@ export const ApplyForm: React.FC = () => {
           Last Name <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
-          <input className="form-control" type="text" {...register('last_name')} />
+          <input className="form-control" type="text" {...register('lastName')} />
         </div>
       </div>
       <div className="mb-4">
@@ -46,24 +70,21 @@ export const ApplyForm: React.FC = () => {
           Contact <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
-          <input className="form-control" type="text" />
+          <input className="form-control" type="text" {...register('contact')} />
         </div>
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
           Resume <span className="text-primary">*</span>
         </p>
-        <label className="position-relative">
-          <p className="fw-500 mb-2 text-muted">Attach resume or Paste resume </p>
-          <input type="file" className="h-0 w-0 position-absolute" />
-        </label>
+        <Dropzone {...register('resume')} />
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
           Desired Salary <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
-          <input className="form-control" type="text" {...register('salary')} />
+          <input className="form-control" type="text" {...register('desiredSalary')} />
         </div>
       </div>
       <div className="mb-4">
