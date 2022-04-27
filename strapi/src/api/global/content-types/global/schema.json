@@ -83,6 +83,17 @@
         }
       },
       "component": "shared.seo"
+    },
+    "headerMenu": {
+      "displayName": "header",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.header"
     }
   }
 }

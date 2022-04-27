@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_elements_headers",
+  "info": {
+    "displayName": "header",
+    "icon": "equals"
+  },
+  "options": {},
+  "attributes": {
+    "menuItems": {
+      "displayName": "menuItems",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.menu-items"
+    }
+  }
+}

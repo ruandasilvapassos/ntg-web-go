@@ -35,7 +35,7 @@ export async function getGlobalData(locale?: string) {
     .get(
       `/global?locale=${
         locale || 'en'
-      }&populate=favicon,logo,metadata,footer,footer.copylinks,footer.columns,footer.columns.links`
+      }&populate=favicon,logo,metadata,footer,footer.copylinks,footer.columns,footer.columns.links,headerMenu,headerMenu.menuItems,headerMenu.menuItems.items`
     )
     .then(({ data }) => data)
 

@@ -11,7 +11,7 @@ interface MainLayoutProps {
 export const MainLayout: React.FC<MainLayoutProps> = ({ noHeader = false, noFooter, navbarTheme, children, metadata }) => {
   return (
     <>
-      {!noHeader && <Navbar theme={navbarTheme} />}
+      {!noHeader && <Navbar theme={navbarTheme} data={metadata} />}
       {children}
       {!noFooter && <Footer data={metadata} />}
     </>
