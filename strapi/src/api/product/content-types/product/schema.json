@@ -10,10 +10,19 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "platform": {
       "type": "relation",
@@ -26,11 +35,21 @@
       "target": "api::category-product.category-product"
     },
     "startPrice": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "featuredProduct": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
@@ -39,28 +58,53 @@
     "metadata": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "contentTable": {
       "displayName": "contentTable",
       "type": "component",
       "repeatable": true,
-      "component": "products.content-table"
+      "component": "products.content-table",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "platformRating": {
       "displayName": "Product Rating",
       "type": "component",
       "repeatable": true,
-      "component": "elements.product-rating"
+      "component": "elements.product-rating",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "productMarketplace": {
       "displayName": "Product Marketplace",
       "type": "component",
       "repeatable": true,
-      "component": "elements.product-marketplace"
+      "component": "elements.product-marketplace",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "customers": {
       "type": "relation",
@@ -78,7 +122,12 @@
       "target": "api::product-instance.product-instance"
     },
     "summary": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "contentSections": {
       "pluginOptions": {

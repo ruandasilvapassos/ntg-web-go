@@ -23,7 +23,7 @@ export const CTACard: React.FC<CTACardProps> = ({ data }) => {
             <ProcessCard
               key={i}
               title={item?.title}
-              description={item?.overview}
+              description={item?.description}
               icon={item?.image?.data?.attributes?.url}
               buttonText={item?.buttonText}
               buttonUrl={item?.buttonUrl}

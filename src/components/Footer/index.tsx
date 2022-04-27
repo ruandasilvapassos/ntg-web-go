@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 interface FooterProps {
   data?: {
@@ -18,6 +19,7 @@ interface FooterProps {
   }
 }
 export const Footer: React.FC<FooterProps> = ({ data }) => {
+  const { locale, replace } = useRouter()
   return (
     <footer className="pt-6 bg-gray-200 footer">
       <div className="container">
@@ -43,18 +45,27 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                     id="dropdownMenuButton"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img alt="" src="/static/img/united-states.png" />
-                    English (US)
+                    {locale === 'en' ? (
+                      <>
+                        <img alt="" src="/static/img/united-states.png" />
+                        English (US)
+                      </>
+                    ) : (
+                      <>
+                        <img alt="" src="/static/img/spain.png" />
+                        Spanish
+                      </>
+                    )}
                   </button>
                   <ul className="px-2 py-3 dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li>
-                      <a className="dropdown-item border-radius-md">
+                      <a onClick={() => replace('/', '', { locale: 'en' })} className="dropdown-item border-radius-md">
                         <img alt="" src="/static/img/united-states.png" />
                         English (US)
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item border-radius-md">
+                      <a onClick={() => replace('/es', '', { locale: 'es' })} className="dropdown-item border-radius-md">
                         <img alt="" src="/static/img/spain.png" />
                         Spanish
                       </a>

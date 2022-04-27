@@ -4,6 +4,7 @@ import '@shared/styles/vendor/nucleo/nucleo-svg.css'
 
 import * as dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import App from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
@@ -12,9 +13,9 @@ import { Toaster } from 'react-hot-toast'
 import { useCookie } from 'react-use'
 
 import { CookieBlock } from '@components/Modals/CookieBlock'
+import api from '@services/api'
 
-import type { AppLayoutProps } from 'next/app'
-
+import type { AppContext, AppLayoutProps } from 'next/app'
 dayjs.extend(relativeTime)
 
 const _APP = ({ Component, pageProps }: AppLayoutProps) => {
@@ -24,6 +25,10 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
 
   const getLayout = Component.getLayout ?? ((page) => page)
 
+  if (api) {
+    api.defaults.params = {}
+    api.defaults.params['locale'] = pageProps?.locale || 'en'
+  }
   useEffect(() => {
     // create a dom to force script to re-fetch each page change
     // it fix nav pills issue on product list
@@ -34,6 +39,7 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
     return () => {
       script.src = ''
       document.body.appendChild(script)
+      api.defaults.params = {}
     }
   }, [pathname])
 
@@ -73,6 +79,12 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       )}
     </>
   )
+}
+
+_APP.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext)
+  const locale = appContext.ctx?.locale
+  return { pageProps: { ...appProps.pageProps, locale } }
 }
 
 export default _APP

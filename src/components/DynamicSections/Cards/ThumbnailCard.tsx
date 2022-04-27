@@ -8,7 +8,7 @@ interface ThumbnailCardSectionProps {
 
 export const ThumbnailCardSection: React.FC<ThumbnailCardSectionProps> = ({ data }) => {
   const { title, overview, card: cards } = data
-  // console.log(cards)
+  console.log(cards)
   return (
     <section className="py-5 bg-white py-lg-7">
       <div className="container">
@@ -20,7 +20,7 @@ export const ThumbnailCardSection: React.FC<ThumbnailCardSectionProps> = ({ data
         </div>
         <div className="mt-5 row">
           {cards?.map((card, i) => (
-            <div key={i} className="mb-4 col-lg-4 mb-lg-0">
+            <div key={i} className="mb-4 col-lg-4 mb-lg-0 d-flex align-items-stretch">
               <div className="mt-5 card">
                 <div className="p-0 mx-3 card-header position-relative mt-n4 z-index-2">
                   <a className="d-block blur-shadow-image">
@@ -36,7 +36,7 @@ export const ThumbnailCardSection: React.FC<ThumbnailCardSectionProps> = ({ data
                 </div>
                 <div className="card-body">
                   {card?.title && <h5 className="mt-3">{card?.title}</h5>}
-                  {card?.overview && <p>{overview}</p>}
+                  {card?.overview && <p>{card?.overview}</p>}
                 </div>
               </div>
             </div>

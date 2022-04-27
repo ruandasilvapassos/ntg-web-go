@@ -93,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
                     className="cursor-pointer nav-link ps-2 d-flex align-items-center"
                     role="button"
                     id={`dropdownMenu${item?.id}`}
-                    data-bs-toggle="dropdown"
+                    data-bs-toggle={item?.items && item?.items?.length > 0 ? 'dropdown' : ''}
                     aria-expanded="false"
                     style={{ color: textColor }}>
                     {item?.title}

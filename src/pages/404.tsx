@@ -1,16 +1,15 @@
-import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 
 import { MainLayout } from '@components/Layouts/MainLayout'
-import routes from '@src/config/routes'
-import { extendSEO } from '@src/config/seo'
+import SEO from '@components/SEO'
+import { getGlobalData } from '@services/api'
 
-import type { NextLayoutComponentType } from 'next'
+import type { GetServerSidePropsContext, NextLayoutComponentType } from 'next'
 
-const NotFoundPage: NextLayoutComponentType = () => {
+const NotFoundPage: NextLayoutComponentType = ({ global }: any) => {
   return (
-    <div className="home-page">
-      <NextSeo {...extendSEO(routes.en.home.seo)} />
+    <MainLayout metadata={global}>
+      <SEO {...global?.attributes?.metadata} />
       <section className="py-lg-7 py-5 bg-gray-100 product-section">
         <div className="container my-auto">
           <div className="row pt-7 pb-5 mt-3">
@@ -27,12 +26,23 @@ const NotFoundPage: NextLayoutComponentType = () => {
           </div>
         </div>
       </section>
-    </div>
+    </MainLayout>
   )
 }
 
-NotFoundPage.getLayout = function getLayout(page) {
-  return <MainLayout children={page} />
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const query = ctx?.query
+  const slug = query?.slug?.toString()
+  const { locale } = ctx
+
+  const globalLocale = await getGlobalData(locale)
+  console.log(globalLocale)
+  return {
+    props: {
+      slug,
+      global: globalLocale?.data
+    }
+  }
 }
 
 export default NotFoundPage

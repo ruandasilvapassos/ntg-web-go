@@ -10,12 +10,12 @@ export const fetcher = (url: string | null, locale?: 'id' | 'en' | 'disabled', c
     editedConfig = {
       ...config,
       params: {
-        _locale: locale
+        locale
       }
     }
   }
   if (locale === 'disabled') {
-    delete api.defaults.params?._locale
+    delete api.defaults.params?.locale
   }
   return api
     .get(url, editedConfig)

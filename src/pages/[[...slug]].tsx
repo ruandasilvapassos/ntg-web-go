@@ -2,14 +2,13 @@ import { NextPageContext } from 'next'
 import { useRouter } from 'next/router'
 
 import Sections from '@components/DynamicSections'
+import { NotFoundPage } from '@components/DynamicSections/NotFoundPage'
 import { MainLayout } from '@components/Layouts'
 // import { fetchAPI, getGlobalData, getPageData } from 'utils/api'
 // import { getLocalizedPaths } from 'utils/localize'
 import Seo from '@components/SEO'
 import api, { getGlobalData, getPageData } from '@services/api'
 import { getLocalizedPaths } from '@utils/lib/localize'
-
-import NotFoundPage from './404'
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
@@ -34,7 +33,7 @@ const DynamicPage: React.FC<DynamicPageProps> = ({ sections, metadata, preview, 
   // Check if the required data was provided
   if (!router.isFallback && !sections?.length) {
     return (
-      <MainLayout>
+      <MainLayout metadata={global}>
         <NotFoundPage />
       </MainLayout>
     )
@@ -76,7 +75,6 @@ export async function getStaticPaths(context: NextPageContext) {
     const { slug, locale } = page.attributes
     // Decompose the slug that was saved in Strapi
     const slugArray = !slug ? false : slug.split('/')
-
     return {
       params: { slug: slugArray },
       // Specify the locale to render
@@ -98,7 +96,6 @@ export async function getStaticProps(context: StaticPropsTypes) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
   const globalLocale = await getGlobalData(locale)
-
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getPageData({
     slug: (!params.slug ? [''] : params.slug).join('/'),
@@ -108,7 +105,11 @@ export async function getStaticProps(context: StaticPropsTypes) {
 
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
-    return { props: {} }
+    return {
+      props: {
+        global: globalLocale?.data
+      }
+    }
   }
 
   // We have the required page data, pass it to the page component

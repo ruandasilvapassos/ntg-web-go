@@ -32,6 +32,7 @@ declare namespace Component {
     id: number
     title?: string
     overview?: string
+    description?: string
     buttonText?: string
     buttonUrl?: string
     image?: Strapi.Media

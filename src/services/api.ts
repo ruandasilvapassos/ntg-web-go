@@ -20,7 +20,9 @@ export async function getPageData({ slug, locale, preview }: any) {
   const publicationState = preview ? 'preview' : 'live'
 
   const pagesRes = await api
-    .get(`/pages?filters[slug][$eq]=${slug}&locale=${locale}&publicationState=${publicationState}&populate=*`)
+    .get(
+      `/pages?filters[slug][$eq]=${slug}&locale=${locale}&publicationState=${publicationState}&populate=*&resPopulate=metadata,settings`
+    )
     .then(({ data }) => data)
 
   if (pagesRes.meta?.pagination?.page == null || pagesRes.meta?.pagination?.pageCount === 0) {

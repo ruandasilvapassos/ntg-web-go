@@ -8,7 +8,7 @@ interface MainHeroProps {
     background?: Strapi.Media
     button?: Component.Link
     logo?: Component.Logo[]
-    logo_title?: string
+    logoTitle?: string
   }
 }
 export const MainHero: React.FC<MainHeroProps> = ({ data }) => {
@@ -35,9 +35,9 @@ export const MainHero: React.FC<MainHeroProps> = ({ data }) => {
               )}
 
               <div className="mt-5 mb-5 row mt-lg-3">
-                {data?.logo_title && (
+                {data?.logoTitle && (
                   <div className="col-12">
-                    <p className="mb-2 fw-bold">{data?.logo_title}</p>
+                    <p className="mb-2 fw-bold">{data?.logoTitle}</p>
                   </div>
                 )}
                 <div className="col-md-5">
