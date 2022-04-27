@@ -1,0 +1,42 @@
+{
+  "contact": {
+    "forms": {
+      "fullName": "Nombre completo",
+      "firstName": "Primer Nombre",
+      "lastName": "Apellido",
+      "email": "Dirección de correo electrónico",
+      "company": "Empresa",
+      "topic": "Tema",
+      "message": "Tu mensaje",
+      "agree": "Estoy de acuerdo con la",
+      "terms": "Términos y condiciones.",
+      "help": "¿En qué podemos ayudarte?",
+      "describeProblem": "Describa su problema en al menos 250 caracteres"
+    }
+  },
+  "buttons": {
+    "sendMessage": "Enviar mensaje",
+    "shareJob": "Compartir trabajo",
+    "submitApplication": "Presentar la solicitud",
+    "seeDetail": "Ver detalle"
+  },
+  "applicant": {
+    "title": "Solicitar esta posición",
+    "forms": {
+      "firstName": "Primer Nombre",
+      "lastName": "Apellido",
+      "email": "Dirección de correo electrónico",
+      "contact": "Contacto",
+      "resume": "Resumir",
+      "attachResume": "Adjunte currículum o arrastre y suelte",
+      "desiredSalary": "Salario deseado",
+      "earliest": "Más Temprano"
+    }
+  },
+  "commons": {
+    "required": "Requerido",
+    "attachFile": "Adjuntar archivo",
+    "dnd": "o arrastrar y soltar",
+    "topCompanies": "Principales empresas que utilizan este producto"
+  }
+}

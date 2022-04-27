@@ -10,7 +10,8 @@
     "lint": "next lint",
     "lint:ts": "eslint --fix '**/*.{ts,tsx}'",
     "test:tsc": "tsc -p . --noEmit",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "i18n": "node ./bin/formatintl.sh"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -31,6 +32,7 @@
     "react-dropzone": "^12.1.0",
     "react-hook-form": "^7.30.0",
     "react-hot-toast": "^2.2.0",
+    "react-intl": "^5.25.0",
     "react-markdown": "^8.0.3",
     "react-scroll": "^1.8.7",
     "react-use": "^17.3.2",

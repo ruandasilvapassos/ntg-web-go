@@ -2,6 +2,7 @@ import toast from 'react-hot-toast'
 import { useCopyToClipboard, useUpdateEffect } from 'react-use'
 
 import Markdown, { useComponent } from '@components/Markdown'
+import { useFormatMessage } from '@hooks/useFormatMessage'
 
 import type { Career } from '@src/pages/careers/[positionCode]'
 interface JobDescriptionProps {
@@ -10,6 +11,7 @@ interface JobDescriptionProps {
 
 export const JobDescription: React.FC<JobDescriptionProps> = ({ data }) => {
   const [state, copyToClipboard] = useCopyToClipboard()
+  const f = useFormatMessage()
 
   useUpdateEffect(() => {
     if (!state.error) {
@@ -30,7 +32,7 @@ export const JobDescription: React.FC<JobDescriptionProps> = ({ data }) => {
         <button
           onClick={() => copyToClipboard(window?.location?.href)}
           className="btn bg-gradient-primary text-white   fw-bold px-4 mb-4">
-          Share job
+          {f('buttons.shareJob')}
         </button>
       </div>
 

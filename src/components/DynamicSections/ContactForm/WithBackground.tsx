@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
+import { useFormatMessage } from '@hooks/useFormatMessage'
 import api from '@services/api'
 
 interface ContactFormWithBackgroundProps {
@@ -10,7 +12,7 @@ interface ContactFormWithBackgroundProps {
 }
 export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps> = ({ title, overview, image }) => {
   const { register, handleSubmit, reset } = useForm()
-
+  const f = useFormatMessage()
   // we set ts to any, temporarily
   const handleContactForm = async (data: any) => {
     if (data?.first_name || data?.last_name) {
@@ -65,7 +67,7 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                     <div className="row">
                       <div className="col-md-6">
                         <div className="input-group input-group-static mb-4">
-                          <label>First Name</label>
+                          <label>{f('contact.forms.firstName')}</label>
                           <input
                             className="form-control"
                             placeholder="eg. Jack"
@@ -77,7 +79,7 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                       </div>
                       <div className="col-md-6 ps-2">
                         <div className="input-group input-group-static">
-                          <label>Last Name</label>
+                          <label>{f('contact.forms.lastName')}</label>
                           <input
                             type="text"
                             className="form-control"
@@ -90,7 +92,7 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                     </div>
                     <div className="mb-4">
                       <div className="input-group input-group-static">
-                        <label>Email Address</label>
+                        <label>{f('contact.forms.email')}</label>
                         <input
                           type="email"
                           className="form-control"
@@ -101,7 +103,7 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                     </div>
                     <div className="mb-4">
                       <div className="input-group input-group-static">
-                        <label>Company</label>
+                        <label>{f('contact.forms.company')}</label>
                         <input
                           type="texy"
                           className="form-control"
@@ -113,7 +115,7 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                     </div>
                     <div className="mb-4">
                       <div className="input-group input-group-static">
-                        <label>Topic</label>
+                        <label>{f('contact.forms.topic')}</label>
                         <input
                           type="texy"
                           className="form-control"
@@ -124,7 +126,7 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                       </div>
                     </div>
                     <div className="input-group input-group-static mb-4">
-                      <label>Your message</label>
+                      <label>{f('contact.forms.message')}</label>
                       <textarea className="form-control" id="message" rows={4} {...register('message')}></textarea>
                     </div>
                     <div className="row">
@@ -139,17 +141,19 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                             required
                           />
                           <label className="form-check-label ms-3 mb-0" htmlFor="flexSwitchCheckDefault">
-                            I agree to the{' '}
-                            <span className="text-primary">
-                              <u>Terms and Conditions</u>
-                            </span>
+                            {f('contact.forms.agree')}{' '}
+                            <Link href="/terms" passHref>
+                              <a className="text-primary">
+                                <u>{f('contact.forms.terms')}</u>
+                              </a>
+                            </Link>
                             .
                           </label>
                         </div>
                       </div>
                       <div className="col-md-12">
                         <button type="submit" className="btn bg-gradient-primary w-100">
-                          Send Message
+                          {f('buttons.sendMessage')}
                         </button>
                       </div>
                     </div>

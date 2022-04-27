@@ -1,16 +1,20 @@
 import classNames from 'classnames'
 
 import Markdown, { useComponent } from '@components/Markdown'
+import { useFormatMessage } from '@hooks/useFormatMessage'
 
 interface ProductDetailProps {
   data?: Component.Product
 }
 export const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
+  const f = useFormatMessage()
   return (
     <div className="row mt-8 mb-7">
       <div className="col-lg-7 col-md-9 d-flex justify-content-center flex-column">
         <div>
-          <p className="m-0  fw-bolder text-gray text-sm">Linux based Operating System</p>
+          {data?.attributes?.product_instance?.data?.attributes?.name && (
+            <p className="m-0  fw-bolder text-gray text-sm">{data?.attributes?.product_instance?.data?.attributes?.name}</p>
+          )}
           <h1 className="secondary-font fw-bold mb-0 h1-extra">{data?.attributes?.name}</h1>
 
           <div className="d-flex align-items-center mb-3">
@@ -48,7 +52,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
       <div className="col-lg-2"></div>
       <div className="col-lg-3 card-border p-0 top-companies  border border-radius-sm">
         <div className="max-height-400 overflow-y-auto">
-          <p className="px-3 py-3 text-bold text-sm border-bottom-sm">Top Companies Using this product</p>
+          <p className="px-3 py-3 text-bold text-sm border-bottom-sm">{f('commons.topCompanies')}</p>
           {data?.attributes?.customers?.data?.map((customer, i) => (
             <div key={i} className="py-3 border-bottom-sm px-3">
               {customer?.attributes?.logo?.data?.attributes?.url && (

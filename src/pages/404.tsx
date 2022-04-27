@@ -36,7 +36,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const { locale } = ctx
 
   const globalLocale = await getGlobalData(locale)
-  console.log(globalLocale)
+  // console.log(globalLocale)
   return {
     props: {
       slug,

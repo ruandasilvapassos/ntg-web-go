@@ -1,0 +1,42 @@
+{
+  "contact": {
+    "forms": {
+      "fullName": "Full Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "company": "Company",
+      "topic": "Topic",
+      "message": "Your Message",
+      "agree": "I agree to the",
+      "terms": "Terms and Conditions.",
+      "help": "What can we help you?",
+      "describeProblem": "Describe your problem in at least 250 characters"
+    }
+  },
+  "buttons": {
+    "sendMessage": "Send Message",
+    "shareJob": "Share Job",
+    "submitApplication": "Submit Application",
+    "seeDetail": "See Detail"
+  },
+  "applicant": {
+    "title": "Apply for this position",
+    "forms": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "contact": "Contact",
+      "resume": "Resume",
+      "attachResume": "Attach resume or drag and drop",
+      "desiredSalary": "Desired Salary",
+      "earliest": "Earliest"
+    }
+  },
+  "commons": {
+    "required": "Required",
+    "attachFile": "Attach file",
+    "dnd": "or drag and drop",
+    "topCompanies": "Top Companies Using this product"
+  }
+}

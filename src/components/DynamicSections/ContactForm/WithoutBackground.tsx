@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
+import { useFormatMessage } from '@hooks/useFormatMessage'
 import api from '@services/api'
 
 interface ContactFormWithoutBackgroundProps {
@@ -9,6 +10,7 @@ interface ContactFormWithoutBackgroundProps {
 }
 export const ContactFormWithoutBackground: React.FC<ContactFormWithoutBackgroundProps> = ({ title, overview }) => {
   const { register, handleSubmit, reset } = useForm()
+  const f = useFormatMessage()
 
   // we set ts to any, temporarily
   const handleContactForm = async (data: any) => {
@@ -50,45 +52,65 @@ export const ContactFormWithoutBackground: React.FC<ContactFormWithoutBackground
                 <div className="card-body">
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Full Name</label>
+                      <label>{f('contact.forms.fullName')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="text" className="form-control" placeholder="Full Name" {...register('fullname')} />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder={f('contact.forms.fullName')}
+                          {...register('fullname')}
+                        />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <label>Email</label>
+                      <label>{f('contact.forms.email')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="email" className="form-control" placeholder="Email" {...register('email')} />
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder={f('contact.forms.email')}
+                          {...register('email')}
+                        />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <label>Company</label>
+                      <label>{f('contact.forms.company')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="text" className="form-control" placeholder="Company" {...register('company')} />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder={f('contact.forms.company')}
+                          {...register('company')}
+                        />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <label>Topic</label>
+                      <label>{f('contact.forms.fullName')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
-                        <input type="text" className="form-control" placeholder="Topic" {...register('topic')} />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder={f('contact.forms.fullName')}
+                          {...register('topic')}
+                        />
                       </div>
                     </div>
                   </div>
                   <div className="form-group mb-4 mt-md-0 mt-4">
-                    <label>What can we help you?</label>
+                    <label>{f('contact.forms.help')}</label>
                     <div className="input-group input-group-outline is-filled mb-4">
                       <textarea
                         className="form-control"
                         id="message"
                         rows={6}
-                        placeholder="Describe your problem in at least 250 characters"
+                        placeholder={f('contact.forms.describeProblem')}
                         {...register('message')}></textarea>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-12 text-center">
                       <button type="submit" className="btn bg-gradient-primary mt-4">
-                        Send Message
+                        {f('buttons.sendMessage')}
                       </button>
                     </div>
                   </div>

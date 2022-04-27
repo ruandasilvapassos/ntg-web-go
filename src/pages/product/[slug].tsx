@@ -42,11 +42,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   const data = await api
     .get(
-      `/products?filters[slug][$eq]=${slug}&populate=*&resPopulate=contentTable,platformRating,productMarketplace,metadata,customers,customers.logo`
+      `/products?filters[slug][$eq]=${slug}&populate=*&resPopulate=contentTable,platformRating,productMarketplace,metadata,customers,customers.logo,product_instance`
     )
     .then(({ data }) => data?.data?.[0])
     .catch(() => null)
-  console.log(data)
+  // console.log(data)
   return {
     props: {
       slug,

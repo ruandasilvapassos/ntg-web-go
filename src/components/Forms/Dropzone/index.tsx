@@ -3,6 +3,7 @@ import ReactDropzone from 'react-dropzone'
 import toast from 'react-hot-toast'
 import { useBeforeUnload } from 'react-use'
 
+import { useFormatMessage } from '@hooks/useFormatMessage'
 import { Strapi } from '@utils/lib/strapi'
 import { StrapiMedia } from '@utils/lib/strapi/uploader'
 
@@ -60,6 +61,7 @@ const Loading: React.FC = () => {
 }
 
 const Label: React.FC<{ error?: boolean; file?: File; current?: StrapiMedia }> = ({ error, file, current }) => {
+  const f = useFormatMessage()
   if (!error && file?.name) {
     return <span>{file?.name}</span>
   } else if (current) {
@@ -67,7 +69,7 @@ const Label: React.FC<{ error?: boolean; file?: File; current?: StrapiMedia }> =
   } else {
     return (
       <>
-        <span className="text-primary">Attach resume </span> or drag and drop
+        <span className="text-primary">{f('commons.attachFile')} </span> {f('commons.dnd')}
       </>
     )
   }

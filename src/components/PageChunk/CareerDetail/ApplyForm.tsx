@@ -2,11 +2,12 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { Dropzone } from '@components/Forms/Dropzone'
+import { useFormatMessage } from '@hooks/useFormatMessage'
 import api from '@services/api'
 
 export const ApplyForm: React.FC = () => {
   const { reset, register, handleSubmit } = useForm()
-
+  const f = useFormatMessage()
   // we set ts to any, temporarily
   const handleContactForm = async (data: any) => {
     await api
@@ -35,15 +36,15 @@ export const ApplyForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(handleContactForm)} className="col-md-12 col-lg-4">
       <div className="mb-4 pt-4">
-        <h4 className="text-dark mb-0">Apply for this position</h4>
+        <h4 className="text-dark mb-0">{f('applicant.title')}</h4>
         <p className="fw-500 text-sm text-dark">
-          Required <span className="text-primary">*</span>
+          {f('commons.required')} <span className="text-primary">*</span>
         </p>
       </div>
 
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          First Name <span className="text-primary">*</span>
+          {f('applicant.forms.firstName')} <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
           <input className="form-control" type="text" {...register('firstName')} />
@@ -51,7 +52,7 @@ export const ApplyForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          Last Name <span className="text-primary">*</span>
+          {f('applicant.forms.lastName')} <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
           <input className="form-control" type="text" {...register('lastName')} />
@@ -59,7 +60,7 @@ export const ApplyForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          Email Address <span className="text-primary">*</span>
+          {f('applicant.forms.email')} <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
           <input className="form-control" type="text" {...register('email')} />
@@ -67,7 +68,7 @@ export const ApplyForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          Contact <span className="text-primary">*</span>
+          {f('applicant.forms.contact')} <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
           <input className="form-control" type="text" {...register('contact')} />
@@ -75,13 +76,13 @@ export const ApplyForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          Resume <span className="text-primary">*</span>
+          {f('applicant.forms.resume')} <span className="text-primary">*</span>
         </p>
         <Dropzone {...register('resume')} />
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          Desired Salary <span className="text-primary">*</span>
+          {f('applicant.forms.desiredSalary')} <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
           <input className="form-control" type="text" {...register('desiredSalary')} />
@@ -89,7 +90,7 @@ export const ApplyForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <p className="fw-500 mb-2">
-          Earliest <span className="text-primary">*</span>
+          {f('applicant.forms.earliest')} <span className="text-primary">*</span>
         </p>
         <div className="input-group input-group-outline is-filled">
           <input className="form-control" type="text" {...register('earliest')} />
@@ -97,7 +98,7 @@ export const ApplyForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <button type="submit" className="btn bg-gradient-primary text-white w-100   fw-bold px-4 mb-4">
-          Submit Application
+          {f('buttons.submitApplication')}
         </button>
       </div>
     </form>
