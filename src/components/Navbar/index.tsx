@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useWindowScroll } from 'react-use'
 
@@ -28,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
     'top-0 py-4 shadow-none navbar navbar-expand-lg position-fixed z-index-3 w-100 fixed-top navbar-transparent'
   ]
 
+  const { push } = useRouter()
   // console.log(data?.attributes?.headerMenu)
   const textColor = theme === 'dark' ? '#344767' : '#fff'
   const [navStyle, setNavStyle] = useState(initialNavStyle)
@@ -95,7 +97,8 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
                     id={`dropdownMenu${item?.id}`}
                     data-bs-toggle={item?.items && item?.items?.length > 0 ? 'dropdown' : ''}
                     aria-expanded="false"
-                    style={{ color: textColor }}>
+                    style={{ color: textColor }}
+                    onClick={() => (item?.items && item?.items?.length > 0 ? push(item?.url || '#!') : null)}>
                     {item?.title}
                     {item?.items && item?.items?.length > 0 && <span className="material-icons">expand_more</span>}
                   </a>
