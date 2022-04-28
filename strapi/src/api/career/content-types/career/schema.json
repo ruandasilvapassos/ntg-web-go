@@ -71,7 +71,7 @@
       },
       "type": "dynamiczone",
       "components": [
-        "heros.hero",
+        "layouts.hero",
         "layouts.accordion-content",
         "layouts.bkg-header",
         "layouts.card",
@@ -94,8 +94,7 @@
         "layouts.quote",
         "layouts.simple-hero",
         "layouts.step",
-        "layouts.support-hero",
-        "products.products"
+        "layouts.support-hero"
       ]
     }
   }

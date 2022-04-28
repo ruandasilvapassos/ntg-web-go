@@ -1,8 +1,9 @@
 {
   "collectionName": "components_heros_heroes",
   "info": {
-    "displayName": "Hero",
-    "icon": "tag"
+    "displayName": "Basic Hero",
+    "icon": "tag",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -18,14 +19,15 @@
       "component": "elements.link"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

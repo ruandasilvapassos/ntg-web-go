@@ -1,14 +1,24 @@
 import { NextPageContext } from 'next'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 
-import Sections from '@components/DynamicSections'
+// import Sections from '@components/DynamicSections'
 import { NotFoundPage } from '@components/DynamicSections/NotFoundPage'
 import { MainLayout } from '@components/Layouts'
 // import { fetchAPI, getGlobalData, getPageData } from 'utils/api'
 // import { getLocalizedPaths } from 'utils/localize'
+import { LoadingScreenPage } from '@components/PageLoading/LoadingScreenPage'
 import Seo from '@components/SEO'
 import api, { getGlobalData, getPageData } from '@services/api'
 import { getLocalizedPaths } from '@utils/lib/localize'
+
+// dynamic load sections to improve performance
+const Sections: any = dynamic(
+  () => {
+    return import('@components/DynamicSections')
+  },
+  { ssr: true, loading: () => <LoadingScreenPage /> }
+)
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:

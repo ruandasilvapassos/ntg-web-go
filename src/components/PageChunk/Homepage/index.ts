@@ -1,6 +1,0 @@
-export { MainHero } from './MainHero'
-export { OurValues } from './OurValues'
-export { OurProcess } from './OurProcess'
-export { Testimonies } from './Testimonies'
-export { LogoClouds } from './LogoClouds'
-export { GlobalPresence } from './GlobalPresence'

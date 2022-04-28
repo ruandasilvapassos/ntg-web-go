@@ -1,4 +1,4 @@
-import { Link } from 'react-scroll'
+import dynamic from 'next/dynamic'
 
 import Markdown, { useComponent } from '@components/Markdown'
 
@@ -15,6 +15,14 @@ interface AccordionContentProps {
     }[]
   }
 }
+
+const Link: any = dynamic<any>(
+  async () => {
+    return import('react-scroll').then((mod) => mod.Link)
+  },
+  { ssr: false }
+)
+
 export const AccordionContent: React.FC<AccordionContentProps> = ({ data }) => {
   const { title, overview, item: items } = data
 

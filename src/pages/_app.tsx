@@ -5,6 +5,7 @@ import '@shared/styles/vendor/nucleo/nucleo-svg.css'
 import * as dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import App from 'next/app'
+import dynamic from 'next/dynamic'
 import Error from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -13,6 +14,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { IntlProvider } from 'react-intl'
 import { useCookie } from 'react-use'
+import { SWRConfig } from 'swr'
 
 import { CookieBlock } from '@components/Modals/CookieBlock'
 import api from '@services/api'
@@ -21,6 +23,13 @@ import ES from '@shared/locales/out/es.json'
 
 import type { AppContext, AppLayoutProps } from 'next/app'
 dayjs.extend(relativeTime)
+
+const LoadingPage: any = dynamic(
+  () => {
+    return import('@components/PageLoading')
+  },
+  { ssr: false }
+)
 
 const _APP = ({ Component, pageProps }: AppLayoutProps) => {
   const [shortLocale] = pageProps?.locale ? pageProps?.locale.split('-') : ['en']
@@ -92,7 +101,13 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       <Script src="/static/js/core/bootstrap.min.js" />
       <Script src="https://kit.fontawesome.com/42d5adcbca.js" />
 
-      {getLayout(<Components {...pageProps} />)}
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false
+        }}>
+        <LoadingPage />
+        {getLayout(<Components {...pageProps} />)}
+      </SWRConfig>
       <Toaster />
       {showCookie && (
         <CookieBlock state={showCookie} handleUseCookie={handleUseCookie} onClose={() => setShowCookie(false)} />
