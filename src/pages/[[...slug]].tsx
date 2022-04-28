@@ -1,6 +1,8 @@
 import { NextPageContext } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 
 // import Sections from '@components/DynamicSections'
 import { NotFoundPage } from '@components/DynamicSections/NotFoundPage'
@@ -65,6 +67,29 @@ const DynamicPage: React.FC<DynamicPageProps> = ({ sections, metadata, preview, 
 
   return (
     <MainLayout navbarTheme={settings?.navbarStyle} metadata={global}>
+      <Head>
+        {global?.attributes?.favicon?.data?.attributes?.url && (
+          <link rel="icon" type="image/png" href={global?.attributes?.favicon?.data?.attributes?.url} />
+        )}
+      </Head>
+      {/* define google tag, throw nothing if its empty */}
+      {metadataWithDefaults?.gtagID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${metadataWithDefaults?.gtagID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', ${metadataWithDefaults?.gtagID});
+        `}
+          </Script>
+        </>
+      )}
       {/* Add meta tags for SEO*/}
       <Seo {...metadataWithDefaults} />
       {/* Display content sections */}

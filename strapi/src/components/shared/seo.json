@@ -49,6 +49,9 @@
     },
     "canonicalURL": {
       "type": "string"
+    },
+    "gtagID": {
+      "type": "string"
     }
   }
 }
