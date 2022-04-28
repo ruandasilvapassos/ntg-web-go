@@ -85,5 +85,5 @@
   "include": [
     "**/*.ts",
     "**/*.tsx"
-  ]
+, "server/index.js"  ]
 }
