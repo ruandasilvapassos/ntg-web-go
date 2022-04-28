@@ -1,5 +1,8 @@
+import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { animateScroll } from 'react-scroll'
+import { useWindowScroll } from 'react-use'
 
 interface FooterProps {
   data?: {
@@ -20,6 +23,7 @@ interface FooterProps {
 }
 export const Footer: React.FC<FooterProps> = ({ data }) => {
   const { locale, replace } = useRouter()
+  const { y } = useWindowScroll()
   return (
     <footer className="pt-6 bg-gray-200 footer">
       <div className="container">
@@ -117,7 +121,14 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
           <div className="text-center"></div>
         </div>
       </div>
-      <div className="back-to-top">
+      <div
+        onClick={() =>
+          animateScroll.scrollToTop({
+            delay: 0,
+            duration: 0
+          })
+        }
+        className={classNames(['fade back-to-top', y > 300 ? 'show' : ''])}>
         <div className="inner">
           <span className="material-icons">expand_less</span>
         </div>
