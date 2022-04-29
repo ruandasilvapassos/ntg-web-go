@@ -39,7 +39,12 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
     if (!value) {
       delete router.query?.[fields]
       params.merge({ [fields]: undefined })
-      router.push(`/${pagePath}${router.query ? `?${qs.stringify(router.query)}` : ''}`, '', { shallow: true })
+      console.log(qs.stringify(router.query))
+      router.push(
+        `/${pagePath}${router.query ? `${qs.stringify(router.query) ? `?${qs.stringify(router.query)}` : ''}` : ''}`,
+        '',
+        { shallow: true }
+      )
       return
     }
 
@@ -49,7 +54,8 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
     }
 
     params.merge({ [fields]: filterProduct })
-    router.push(`/${pagePath}?${qs.stringify(filterProduct)}`, '', { shallow: true })
+    console.log(`/${pagePath}${qs.stringify(filterProduct) ? `?${qs.stringify(filterProduct)}` : ''}`)
+    router.push(`/${pagePath}${qs.stringify(filterProduct) ? `?${qs.stringify(filterProduct)}` : ''}`, '', { shallow: true })
 
     return
   }

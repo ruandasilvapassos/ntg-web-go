@@ -135,7 +135,7 @@ window.onload = function () {
         rippleDiv = document.createElement('span')
         rippleDiv.classList.add('ripple')
         rippleDiv.style.width = rippleDiv.style.height = Math.max(targetEl.offsetWidth, targetEl.offsetHeight) + 'px'
-        targetEl.appendChild(rippleDiv)
+        targetEl?.appendChild(rippleDiv)
 
         rippleDiv.style.left = e.offsetX - rippleDiv.offsetWidth / 2 + 'px'
         rippleDiv.style.top = e.offsetY - rippleDiv.offsetHeight / 2 + 'px'
@@ -181,7 +181,7 @@ if (document.querySelector('.blur-shadow-image')) {
   if (shadowCardsRounded) {
     for (var i = 0; i < shadowCardsRounded.length; i++) {
       var div = document.createElement('DIV')
-      shadowCardsRounded[i].parentElement.appendChild(div)
+      shadowCardsRounded[i].parentElement?.appendChild(div)
       div.classList.add('colored-shadow', 'rounded')
 
       var currentSrc = shadowCardsRounded[i].children[0]?.getAttribute('src')
@@ -193,7 +193,7 @@ if (document.querySelector('.blur-shadow-image')) {
   if (shadowCards) {
     for (var i = 0; i < shadowCards.length; i++) {
       var div = document.createElement('DIV')
-      shadowCards[i].parentElement.appendChild(div)
+      shadowCards[i].parentElement?.appendChild(div)
       div.classList.add('colored-shadow')
 
       var currentSrc = shadowCards[i].children[0]?.getAttribute('src')
@@ -212,7 +212,7 @@ if (document.querySelector('.blur-shadow-avatar')) {
   if (shadowCardsRounded) {
     for (var i = 0; i < shadowCardsRounded.length; i++) {
       var div = document.createElement('DIV')
-      shadowCardsRounded[i].parentElement.appendChild(div)
+      shadowCardsRounded[i].parentElement?.appendChild(div)
       div.classList.add('colored-shadow', 'rounded', 'start-0', 'end-0', 'mx-auto')
 
       var avatarClasses = ['avatar-xs', 'avatar-sm', 'avatar-lg', 'avatar-xl', 'avatar-xxl']
@@ -232,7 +232,7 @@ if (document.querySelector('.blur-shadow-avatar')) {
   if (shadowCards) {
     for (var i = 0; i < shadowCards.length; i++) {
       var div = document.createElement('DIV')
-      shadowCards[i].parentElement.appendChild(div)
+      shadowCards[i].parentElement?.appendChild(div)
       div.classList.add('colored-shadow', 'start-0', 'end-0', 'mx-auto')
 
       var avatarClasses = ['avatar-xs', 'avatar-sm', 'avatar-lg', 'avatar-xl', 'avatar-xxl']
@@ -425,9 +425,9 @@ window.addEventListener('resize', function (event) {
     }
 
     moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
-    moving_div.appendChild(tab)
+    moving_div?.appendChild(tab)
 
-    item.appendChild(moving_div)
+    item?.appendChild(moving_div)
 
     moving_div.style.padding = '0px'
     moving_div.style.transition = '.5s ease'
@@ -515,7 +515,7 @@ function copyCode(el) {
     if (alert) {
       alert.innerHTML = 'Code successfully copied!'
     }
-    el.parentElement.appendChild(alert)
+    el.parentElement?.appendChild(alert)
     setTimeout(function () {
       alert.style.transform = 'translate3d(0px, 0px, 0px)'
       alert.style.setProperty('opacity', '0', 'important')
