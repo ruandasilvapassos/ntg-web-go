@@ -8,7 +8,7 @@ import { useState } from '@hookstate/core'
 // import { filterState } from '@states/Filters'
 
 export const ProductCheckbox: React.FC = () => {
-  const { data } = useFetcher<Component.CategoryProduct[]>(`/category-products`)
+  const { data } = useFetcher<Component.CategoryProduct[]>(`/category-products?sort[0]=name`)
   const filter = useState<any>({})
   const router = useRouter()
 

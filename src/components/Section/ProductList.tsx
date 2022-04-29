@@ -54,7 +54,6 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
     }
 
     params.merge({ [fields]: filterProduct })
-    console.log(`/${pagePath}${qs.stringify(filterProduct) ? `?${qs.stringify(filterProduct)}` : ''}`)
     router.push(`/${pagePath}${qs.stringify(filterProduct) ? `?${qs.stringify(filterProduct)}` : ''}`, '', { shallow: true })
 
     return
