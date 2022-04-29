@@ -104,7 +104,9 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
           <div className="py-2 row justify-content-between align-items-center">
             <div className="col-md-6">
               {data?.attributes?.footer?.copyright && (
-                <p className="p-0 m-0 text-sm text-muted font-weight-normal">{data?.attributes?.footer?.copyright}</p>
+                <p className="p-0 m-0 text-sm text-muted font-weight-normal">
+                  © {new Date().getFullYear()} {data?.attributes?.footer?.copyright}
+                </p>
               )}
             </div>
             <div className="col-md-6 text-md-end">

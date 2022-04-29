@@ -76,17 +76,16 @@ const DynamicPage: React.FC<DynamicPageProps> = ({ sections, metadata, preview, 
       {metadataWithDefaults?.gtagID && (
         <>
           <Script
+            async
             src={`https://www.googletagmanager.com/gtag/js?id=${metadataWithDefaults?.gtagID}`}
             strategy="afterInteractive"
           />
           <Script id="google-analytics" strategy="afterInteractive">
-            {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
+            {`window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-          gtag('config', ${metadataWithDefaults?.gtagID});
-        `}
+              gtag('config', '${metadataWithDefaults?.gtagID}');`}
           </Script>
         </>
       )}

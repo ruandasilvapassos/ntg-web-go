@@ -11,6 +11,7 @@ import { FeaturedNews } from './Hero/FeaturedNews'
 import { HeaderHero } from './Hero/HeaderHero'
 import { HeroHighlight } from './Hero/HeroHighlight'
 import { HeroSquareImage } from './Hero/HeroSquareImage'
+import { HeroStats } from './Hero/HeroStats'
 import { HeroWithLogo } from './Hero/HeroWithLogo'
 import { ItemHero } from './Hero/ItemHero'
 import { MainHero } from './Hero/MainHero'
@@ -28,6 +29,7 @@ export const sectionComponents = {
   'layouts.component-type': DynamicComponentType,
   'layouts.card-with-button': CTACard,
   'layouts.image-hero': SimpleHeroWithImage,
+  'layouts.hero-stats': HeroStats,
   'layouts.partner': LogoClouds,
   'layouts.bkg-header': BackgroundHero,
   'layouts.header': HeaderHero,

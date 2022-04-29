@@ -62,7 +62,6 @@
       },
       "type": "dynamiczone",
       "components": [
-        "layouts.hero",
         "layouts.accordion-content",
         "layouts.bkg-header",
         "layouts.card",
@@ -75,6 +74,7 @@
         "layouts.featured-news",
         "layouts.header",
         "layouts.header-with-customer",
+        "layouts.hero",
         "layouts.hero-circle-image",
         "layouts.hero-highlight",
         "layouts.hero-square-image",
@@ -85,7 +85,8 @@
         "layouts.quote",
         "layouts.simple-hero",
         "layouts.step",
-        "layouts.support-hero"
+        "layouts.support-hero",
+        "layouts.hero-stats"
       ]
     }
   }

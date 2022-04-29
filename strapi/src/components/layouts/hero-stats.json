@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_layouts_hero_stats",
+  "info": {
+    "displayName": "Hero Stats",
+    "icon": "chart-pie",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "Stats": {
+      "displayName": "Stats",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.stats"
+    }
+  }
+}
