@@ -4,6 +4,7 @@ import '@shared/styles/vendor/nucleo/nucleo-svg.css'
 
 import * as dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { identity, pickBy } from 'lodash'
 import App from 'next/app'
 import dynamic from 'next/dynamic'
 import Error from 'next/error'
@@ -17,7 +18,7 @@ import { useCookie } from 'react-use'
 import { SWRConfig } from 'swr'
 
 import { CookieBlock } from '@components/Modals/CookieBlock'
-import api from '@services/api'
+import api, { getGlobalData } from '@services/api'
 import EN from '@shared/locales/out/en.json'
 import ES from '@shared/locales/out/es.json'
 
@@ -33,7 +34,15 @@ const LoadingPage: any = dynamic(
 
 const _APP = ({ Component, pageProps }: AppLayoutProps) => {
   const [shortLocale] = pageProps?.locale ? pageProps?.locale.split('-') : ['en']
-  const { locale, pathname } = useRouter()
+  const metadata = pageProps?.metadata
+  const globalMeta = pageProps?.globalMeta
+
+  const metadataWithDefaults = {
+    ...pickBy(globalMeta?.data?.attributes?.metadata, identity),
+    ...pickBy(metadata, identity)
+  }
+
+  const { locale, pathname, events } = useRouter()
   const [value, updateCookie] = useCookie('agree-cookie')
   const [showCookie, setShowCookie] = useState(false)
 
@@ -53,6 +62,21 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
       api.defaults.params = {}
     }
   }, [pathname])
+
+  const handleRouteChange = (url: string) => {
+    if (typeof window?.gtag !== 'undefined' && metadataWithDefaults?.gtagID) {
+      window.gtag('config', metadataWithDefaults?.gtagID, {
+        page_path: url
+      })
+    }
+  }
+
+  useEffect(() => {
+    events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [events])
 
   useEffect(() => {
     if (api) {
@@ -97,6 +121,23 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
         <title>Ntegral</title>
         <meta name="robots" content="index, follow" />
       </Head>
+      {/* define google tag, throw nothing if its empty */}
+      {metadataWithDefaults?.gtagID && (
+        <>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${metadataWithDefaults?.gtagID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', '${metadataWithDefaults?.gtagID}');`}
+          </Script>
+        </>
+      )}
       <Script src="/static/js/core/popper.min.js" />
       <Script src="/static/js/core/bootstrap.min.js" />
       <Script src="https://kit.fontawesome.com/42d5adcbca.js" />
@@ -119,7 +160,17 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
 _APP.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
   const locale = appContext.ctx?.locale
-  return { pageProps: { ...appProps.pageProps, locale } }
+  const query = appContext?.ctx?.query
+  const slug = query?.slug?.toString()
+
+  const globalMeta = await getGlobalData(locale)
+
+  const metadata = await api
+    .get(`/pages?filters[slug][$eq]=${slug || ''}&locale=${locale}&populate=metadata`)
+    .then(({ data }) => data?.data?.[0])
+    .catch(() => null)
+
+  return { pageProps: { ...appProps.pageProps, metadata, globalMeta, locale } }
 }
 
 export default _APP

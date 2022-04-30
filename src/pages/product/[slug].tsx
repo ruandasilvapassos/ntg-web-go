@@ -1,7 +1,3 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-
 import Sections from '@components/DynamicSections'
 import { MainLayout } from '@components/Layouts/MainLayout'
 import { ProductDetail, ProductDetailTab } from '@components/PageChunk/Product'
@@ -14,33 +10,13 @@ interface ProductDetailPageProps {
   global?: any
 }
 const ProductDetailPage: NextLayoutComponentType<ProductDetailPageProps> = ({ data, global }) => {
-  const router = useRouter()
   const metadataWithDefaults = {
     ...global?.attributes?.metadata,
     ...data?.attributes?.metadata
   }
 
-  const handleRouteChange = (url: string) => {
-    if (typeof window?.gtag !== 'undefined' && metadataWithDefaults?.gtagID) {
-      window.gtag('config', metadataWithDefaults?.gtagID, {
-        page_path: url
-      })
-    }
-  }
-
-  useEffect(() => {
-    router?.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router?.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router?.events])
   return (
     <MainLayout metadata={global}>
-      <Head>
-        {global?.attributes?.favicon?.data?.attributes?.url && (
-          <link rel="icon" type="image/png" href={global?.attributes?.favicon?.data?.attributes?.url} />
-        )}
-      </Head>
       <div className="product-page">
         <SEO {...metadataWithDefaults} />
         {/* Product detail section */}
