@@ -1,3 +1,7 @@
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
 import { MainLayout } from '@components/Layouts/MainLayout'
 import { BlogPost } from '@components/PageChunk/BlogPost/Post'
 import SEO from '@components/SEO'
@@ -9,12 +13,32 @@ interface BlogPageProps {
   global?: any
 }
 const BlogPage: NextLayoutComponentType<BlogPageProps> = ({ data, global }) => {
+  const router = useRouter()
   const metadataWithDefaults = {
     ...global?.attributes?.metadata,
     ...data?.attributes?.metadata
   }
+  const handleRouteChange = (url: string) => {
+    if (typeof window?.gtag !== 'undefined' && metadataWithDefaults?.gtagID) {
+      window.gtag('config', metadataWithDefaults?.gtagID, {
+        page_path: url
+      })
+    }
+  }
+
+  useEffect(() => {
+    router?.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router?.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router?.events])
   return (
     <MainLayout navbarTheme="light" metadata={global}>
+      <Head>
+        {global?.attributes?.favicon?.data?.attributes?.url && (
+          <link rel="icon" type="image/png" href={global?.attributes?.favicon?.data?.attributes?.url} />
+        )}
+      </Head>
       <div className="home-page">
         <SEO {...metadataWithDefaults} />
         <BlogPost data={data?.attributes} />

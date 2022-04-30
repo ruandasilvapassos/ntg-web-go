@@ -15,7 +15,6 @@ interface HeroStatsProps {
 
 export const HeroStats: React.FC<HeroStatsProps> = ({ data }) => {
   const { title, overview, Stats: stats } = data
-  console.log(data)
   return (
     <section className="py-5 py-lg-7 ">
       <div className="container">

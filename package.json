@@ -53,6 +53,7 @@
     "@emotion/babel-plugin": "^11.3.0",
     "@next/eslint-plugin-next": "^12.1.4",
     "@types/compression": "^1.7.2",
+    "@types/gtag.js": "^0.0.10",
     "@types/node": "^16.4.10",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",

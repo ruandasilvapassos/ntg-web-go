@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
+import { useEffect } from 'react'
 
 // import Sections from '@components/DynamicSections'
 import { NotFoundPage } from '@components/DynamicSections/NotFoundPage'
@@ -65,6 +66,20 @@ const DynamicPage: React.FC<DynamicPageProps> = ({ sections, metadata, preview, 
     ...metadata
   }
 
+  const handleRouteChange = (url: string) => {
+    if (typeof window?.gtag !== 'undefined' && metadataWithDefaults?.gtagID) {
+      window.gtag('config', metadataWithDefaults?.gtagID, {
+        page_path: url
+      })
+    }
+  }
+
+  useEffect(() => {
+    router?.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router?.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router?.events])
   return (
     <MainLayout navbarTheme={settings?.navbarStyle} metadata={global}>
       <Head>

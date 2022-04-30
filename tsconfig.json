@@ -3,7 +3,8 @@
   "compilerOptions": {
     "allowJs": true,
     "types": [
-      "node"
+      "node",
+      "@types/gtag.js"
     ],
     "alwaysStrict": true,
     "esModuleInterop": true,
