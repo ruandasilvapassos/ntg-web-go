@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { useWindowScroll } from 'react-use'
+import { useWindowScroll, useWindowSize } from 'react-use'
 
 interface NavbarProps {
   theme?: 'light' | 'dark'
@@ -28,11 +28,14 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
   const initialNavStyle = [
     'top-0 py-4 shadow-none navbar navbar-expand-lg position-fixed z-index-3 w-100 fixed-top navbar-transparent'
   ]
+  const initialCollapseClass = ['pt-3 pb-2 collapse navbar-collapse w-100 py-lg-0']
 
-  const { push } = useRouter()
+  const { push, asPath } = useRouter()
+  const { width: windowWidth } = useWindowSize()
   // console.log(data?.attributes?.headerMenu)
   const textColor = theme === 'dark' ? '#344767' : '#fff'
   const [navStyle, setNavStyle] = useState(initialNavStyle)
+  const [collapseClass, setCollapseClass] = useState(initialCollapseClass)
   const { y } = useWindowScroll()
 
   useEffect(() => {
@@ -43,8 +46,11 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
     }
   }, [y])
 
+  useEffect(() => {
+    setCollapseClass(initialCollapseClass)
+  }, [asPath])
   return (
-    <nav id="MAIN_HEADER" className={classNames(navStyle)}>
+    <nav id="MAIN_HEADER" key={asPath} className={classNames(navStyle)}>
       <div className="container">
         {data?.attributes?.logo?.data?.attributes?.url && (
           <Link href="/" passHref>
@@ -86,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
             <span className="navbar-toggler-bar bar3"></span>
           </span>
         </button>
-        <div className="pt-3 pb-2 collapse navbar-collapse w-100 py-lg-0" id="navigation">
+        <div className={classNames(collapseClass)} id="navigation">
           <ul className="navbar-nav navbar-nav-hover ms-auto">
             {data?.attributes?.headerMenu?.menuItems?.map((item, i) => (
               <li key={i} className="mx-2 nav-item dropdown dropdown-hover">
@@ -98,7 +104,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
                     data-bs-toggle={item?.items && item?.items?.length > 0 ? 'dropdown' : ''}
                     aria-expanded="false"
                     style={{ color: textColor }}
-                    onClick={() => (item?.items && item?.items?.length > 0 ? push(item?.url || '#!') : null)}>
+                    onClick={() =>
+                      windowWidth > 475 && item?.items && item?.items?.length > 0 ? push(item?.url || '#!') : null
+                    }>
                     {item?.title}
                     {item?.items && item?.items?.length > 0 && <span className="material-icons">expand_more</span>}
                   </a>
@@ -106,9 +114,21 @@ export const Navbar: React.FC<NavbarProps> = ({ theme = 'dark', data }) => {
                 {item?.items && item?.items?.length > 0 && (
                   <div
                     className="p-3 mt-0 dropdown-menu dropdown-menu-animation dropdown-md border-radius-xl mt-lg-3"
-                    aria-labelledby={`dropdownMenu${item?.id}`}>
-                    <div className="d-none d-lg-flex">
+                    aria-labelledby={`dropdownMenu${item?.id}`}
+                    style={{
+                      maxHeight: '125px'
+                    }}>
+                    <div className="d-flex">
                       <ul className="list-group w-100">
+                        {windowWidth < 475 && item?.items && item?.items?.length && (
+                          <li className="p-0 border-0 nav-item dropdown dropdown-hover dropdown-subitem list-group-item">
+                            <Link href={item?.url || '#!'} passHref>
+                              <a className="mb-1 dropdown-item border-radius-md text-dark ps-3 d-flex align-items-center">
+                                {item?.title}
+                              </a>
+                            </Link>
+                          </li>
+                        )}
                         {item?.items?.map((child) => (
                           <li
                             key={child.id}

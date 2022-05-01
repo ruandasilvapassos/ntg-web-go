@@ -63,6 +63,15 @@ nav.fixed-top {
   }
 }
 
+#MAIN_HEADER {
+  &.fixed-top {
+    .nav-link {
+      @media screen and (max-width: 575px) {
+        color: $headings-color !important;
+      }
+    }
+  }
+}
 .fixed-top {
   position: fixed;
   top: 0;

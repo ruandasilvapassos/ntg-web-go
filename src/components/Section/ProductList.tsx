@@ -100,7 +100,7 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
   })
 
   return (
-    <section className={classNames(['py-5 bg-gray-100 py-lg-7 product-section', className])}>
+    <section className={classNames(['py-7 bg-gray-100 py-lg-7 product-section', className])}>
       <div className="container">
         {showHeading && (
           <div className="row pb-6">
