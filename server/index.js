@@ -51,7 +51,7 @@ app.prepare().then(() => {
       console.log(`> Ready on http://localhost:${port}`)
     })
     .on('error', (err) => {
-      console.log('error occurred', err)
+      // console.log('error occurred', err)
       throw err
     })
 })

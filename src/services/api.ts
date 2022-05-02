@@ -40,6 +40,7 @@ export async function getGlobalData(locale?: string) {
       }&populate=favicon,logo,metadata,footer,footer.copylinks,footer.columns,footer.columns.links,headerMenu,headerMenu.menuItems,headerMenu.menuItems.items`
     )
     .then(({ data }) => data)
+    .catch(() => null)
 
   if (!globalRes?.data?.id) {
     return null

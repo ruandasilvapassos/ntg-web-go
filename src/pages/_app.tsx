@@ -36,7 +36,6 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
   const [shortLocale] = pageProps?.locale ? pageProps?.locale.split('-') : ['en']
   const metadata = pageProps?.metadata
   const globalMeta = pageProps?.globalMeta
-
   const metadataWithDefaults = {
     ...pickBy(globalMeta?.data?.attributes?.metadata, identity),
     ...pickBy(metadata, identity)
@@ -52,7 +51,6 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
 
   useEffect(() => {
     const createScript = () => {
-      console.log('masuk sini')
       // create a dom to force script to re-fetch each page change
       // it fix nav pills issue on product list
       const elExist = document.getElementById('core-js')
@@ -172,7 +170,6 @@ _APP.getInitialProps = async (appContext: AppContext) => {
   const locale = appContext.ctx?.locale
   const query = appContext?.ctx?.query
   const slug = query?.slug?.toString()
-
   const globalMeta = await getGlobalData(locale)
 
   const metadata = await api
