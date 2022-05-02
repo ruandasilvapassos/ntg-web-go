@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                   {menu?.links?.map((link) => (
                     <li key={link.id} className="nav-item">
                       <Link href={`${link?.url || '#!'}`} passHref>
-                        <a className="nav-link" target="_blank">
+                        <a className="nav-link" target={`${link?.target || '_self'}`}>
                           {link?.text}
                         </a>
                       </Link>
