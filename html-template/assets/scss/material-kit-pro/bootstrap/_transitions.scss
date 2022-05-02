@@ -1,5 +1,6 @@
 .fade {
   @include transition($transition-fade);
+transition-delay: 3000;
 
   &:not(.show) {
     opacity: 0;

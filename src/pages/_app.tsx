@@ -42,7 +42,8 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
     ...pickBy(metadata, identity)
   }
 
-  const { locale, pathname, events } = useRouter()
+  const router = useRouter()
+  const { locale, events } = router
   const [value, updateCookie] = useCookie('agree-cookie')
   const [showCookie, setShowCookie] = useState(false)
 
@@ -50,18 +51,27 @@ const _APP = ({ Component, pageProps }: AppLayoutProps) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   useEffect(() => {
-    // create a dom to force script to re-fetch each page change
-    // it fix nav pills issue on product list
-    const script = document.createElement('script')
-    script.src = '/static/js/material-kit-pro.js'
-    script.async = true
-    document.body.appendChild(script)
-    return () => {
-      script.src = ''
+    const createScript = () => {
+      console.log('masuk sini')
+      // create a dom to force script to re-fetch each page change
+      // it fix nav pills issue on product list
+      const elExist = document.getElementById('core-js')
+      if (elExist) {
+        elExist.remove()
+      }
+      const script = document.createElement('script')
+      script.src = '/static/js/material-kit-pro.js'
+      script.id = 'core-js'
+      script.async = true
       document.body.appendChild(script)
-      api.defaults.params = {}
+      return script
     }
-  }, [pathname])
+
+    events.on('routeChangeComplete', createScript)
+    return () => {
+      events.off('routeChangeComplete', createScript)
+    }
+  }, [router])
 
   const handleRouteChange = (url: string) => {
     if (typeof window?.gtag !== 'undefined' && metadataWithDefaults?.gtagID) {

@@ -355,63 +355,70 @@ if (document.querySelector('#google-maps')) {
 
 var total = document.querySelectorAll('.nav-pills')
 
-total.forEach(function (item, i) {
-  var moving_div = document.createElement('div')
-  const leftOffset = item?.getBoundingClientRect()?.left
-  const topOffset = item?.getBoundingClientRect()?.top
+setTimeout(() => {
+  total.forEach(function (item, i) {
+    var moving_div = document.createElement('div')
+    moving_div.id = 'moving-tab-' + i
+    const divExist = document.getElementById('moving-tab-' + i)
+    if (divExist) {
+      return
+    }
+    const leftOffset = item?.getBoundingClientRect()?.left
+    const topOffset = item?.getBoundingClientRect()?.top
 
-  var first_li = item.querySelector('.nav-link.active')
-  var tab = first_li?.cloneNode()
-  if (tab) {
-    tab.innerHTML = '-'
-  }
+    var first_li = item.querySelector('.nav-link.active')
+    var tab = first_li?.cloneNode()
+    if (tab) {
+      tab.innerHTML = '-'
+    }
 
-  moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
-  moving_div?.appendChild(tab)
-  item?.appendChild(moving_div)
+    moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
+    moving_div?.appendChild(tab)
+    item?.appendChild(moving_div)
 
-  moving_div.style.padding = '0px'
+    moving_div.style.padding = '0px'
 
-  if (window.innerWidth < 991 && item.classList.contains('flex-column')) {
-    moving_div.style.width = item.querySelector('li .nav-link.active')?.offsetWidth + 'px'
-    const top = item.querySelector('li .nav-link.active')?.getBoundingClientRect()?.top - topOffset
+    if (window.innerWidth < 991 && item.classList.contains('flex-column')) {
+      moving_div.style.width = item.querySelector('li .nav-link.active')?.offsetWidth + 'px'
+      const top = item.querySelector('li .nav-link.active')?.getBoundingClientRect()?.top - topOffset
 
-    moving_div.style.transform = `translate3d(0px, ${top || 0}px, 0px)`
-  } else {
-    moving_div.style.width = item.querySelector('li .nav-link.active').offsetWidth + 'px'
-    const left = item.querySelector('li .nav-link.active')?.getBoundingClientRect()?.left - leftOffset
+      moving_div.style.transform = `translate3d(0px, ${top || 0}px, 0px)`
+    } else {
+      moving_div.style.width = item.querySelector('li .nav-link.active').offsetWidth + 'px'
+      const left = item.querySelector('li .nav-link.active')?.getBoundingClientRect()?.left - leftOffset
 
-    moving_div.style.transform = `translate3d(${left || 0}px, 0px, 0px)`
-  }
+      moving_div.style.transform = `translate3d(${left || 0}px, 0px, 0px)`
+    }
 
-  moving_div.style.transition = '.5s ease'
+    moving_div.style.transition = '.5s ease'
 
-  item.onmouseover = function (event) {
-    let target = getEventTarget(event)
-    let li = target.closest('li') // get reference
-    if (li) {
-      let nodes = Array.from(li.closest('ul').children) // get array
-      let index = nodes.indexOf(li) + 1
-      item.querySelector('li:nth-child(' + index + ') .nav-link').onclick = function () {
-        moving_div = item.querySelector('.moving-tab')
-        let sum = 0
-        if (window.innerWidth < 991 && item.classList.contains('flex-column')) {
-          for (var j = 1; j <= nodes.indexOf(li); j++) {
-            sum += item.querySelector('li:nth-child(' + j + ')').offsetHeight
+    item.onmouseover = function (event) {
+      let target = getEventTarget(event)
+      let li = target.closest('li') // get reference
+      if (li) {
+        let nodes = Array.from(li.closest('ul').children) // get array
+        let index = nodes.indexOf(li) + 1
+        item.querySelector('li:nth-child(' + index + ') .nav-link').onclick = function () {
+          moving_div = item.querySelector('.moving-tab')
+          let sum = 0
+          if (window.innerWidth < 991 && item.classList.contains('flex-column')) {
+            for (var j = 1; j <= nodes.indexOf(li); j++) {
+              sum += item.querySelector('li:nth-child(' + j + ')').offsetHeight
+            }
+            moving_div.style.transform = 'translate3d(0px,' + sum + 'px, 0px)'
+            moving_div.style.height = item.querySelector('li:nth-child(' + j + ')').offsetHeight
+          } else {
+            for (var j = 1; j <= nodes.indexOf(li); j++) {
+              sum += item.querySelector('li:nth-child(' + j + ')').offsetWidth
+            }
+            moving_div.style.transform = 'translate3d(' + sum + 'px, 0px, 0px)'
+            moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px'
           }
-          moving_div.style.transform = 'translate3d(0px,' + sum + 'px, 0px)'
-          moving_div.style.height = item.querySelector('li:nth-child(' + j + ')').offsetHeight
-        } else {
-          for (var j = 1; j <= nodes.indexOf(li); j++) {
-            sum += item.querySelector('li:nth-child(' + j + ')').offsetWidth
-          }
-          moving_div.style.transform = 'translate3d(' + sum + 'px, 0px, 0px)'
-          moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px'
         }
       }
     }
-  }
-})
+  })
+}, 100)
 
 // Tabs navigation resize
 
@@ -419,6 +426,11 @@ window.addEventListener('resize', function (event) {
   total.forEach(function (item, i) {
     item.querySelector('.moving-tab').remove()
     var moving_div = document.createElement('div')
+    moving_div.id = 'moving-tab-' + i
+    const divExist = document.getElementById('moving-tab-' + i)
+    if (divExist) {
+      return
+    }
     var tab = item.querySelector('.nav-link.active')?.cloneNode()
     if (tab) {
       tab.innerHTML = '-'

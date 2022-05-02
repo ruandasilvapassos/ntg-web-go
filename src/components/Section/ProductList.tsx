@@ -10,6 +10,7 @@ import { useFetcher } from '@hooks/useFetcher'
 import { useHeaderHeight } from '@hooks/useHeaderHeight'
 import { useState as useGlobalState } from '@hookstate/core'
 import { filterState } from '@states/Filters'
+import { objectToQuery } from '@utils/index'
 
 interface ProductListProps {
   className?: string
@@ -18,16 +19,45 @@ interface ProductListProps {
 }
 
 export const ProductList: React.FC<ProductListProps> = (props) => {
-  const [activePlatform, setActivePlatform] = useState<number>()
+  const [activePlatform, setActivePlatform] = useState<string>()
   const router = useRouter()
 
   const params = useGlobalState(filterState)
-  const filters = useGlobalState(qs.stringify(router?.query))
+  const filters = useGlobalState(objectToQuery(router?.query))
 
   const { className, title, description } = props
-  const { data } = useFetcher<Component.Product[]>(
+
+  const getFilter = () => {
+    const filter = qs.parse(filters?.get())
+    let param = {}
+    if (filter?.products && filter?.products !== 'all') {
+      param = {
+        ...param,
+        'filters[platform][name][$containsi]': filter?.['products']
+      }
+    }
+    if (filter?.category) {
+      const category = (filter?.category as any)?.split(',')
+      category.forEach((el: string, i: number) => {
+        const filterType = `filters[category_products][id][$in][${i}]`
+        param = {
+          ...param,
+          [filterType]: el
+        }
+      })
+    }
+    if (filter?.search) {
+      param = {
+        ...param,
+        _q: filter?.search
+      }
+    }
+    return objectToQuery(param)
+  }
+
+  const { data, isLoading } = useFetcher<Component.Product[]>(
     `/products?populate=platform,category_products,customers,customers.logo,product_instance&sort[0]=createdAt:desc${
-      filters?.get() ? `&${filters?.get()}` : ''
+      getFilter() ? `&${getFilter()}` : ''
     }`
   )
 
@@ -36,14 +66,19 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
 
   const handleFilter = (fields: string, value?: string) => {
     const pagePath = router?.query?.slug ? router?.query?.slug : ''
+    if (router?.query?.slug) {
+      delete router?.query?.slug
+    }
+
     if (!value) {
       delete router.query?.[fields]
       params.merge({ [fields]: undefined })
-      console.log(qs.stringify(router.query))
       router.push(
-        `/${pagePath}${router.query ? `${qs.stringify(router.query) ? `?${qs.stringify(router.query)}` : ''}` : ''}`,
+        `/${pagePath}${router?.query ? `${objectToQuery(router?.query) ? `?${objectToQuery(router?.query)}` : ''}` : ''}`,
         '',
-        { shallow: true }
+        {
+          shallow: true
+        }
       )
       return
     }
@@ -52,9 +87,10 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
       ...router.query,
       [fields]: value
     }
-
-    params.merge({ [fields]: filterProduct })
-    router.push(`/${pagePath}${qs.stringify(filterProduct) ? `?${qs.stringify(filterProduct)}` : ''}`, '', { shallow: true })
+    params.merge(filterProduct)
+    router.push(`/${pagePath}${objectToQuery(filterProduct) ? `?${objectToQuery(filterProduct)}` : ''}`, '', {
+      shallow: true
+    })
 
     return
   }
@@ -63,13 +99,10 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
     evt.preventDefault()
     const formData = new FormData(evt.currentTarget)
     const searchValue = formData.get('search')?.toString()
-    handleFilter('_q', searchValue)
+    handleFilter('search', searchValue)
   }
   const updateParams = () => {
-    // if (router?.query?.slug) {
-    //   delete router?.query?.slug
-    // }
-    filters.set(qs.stringify({ ...router?.query }))
+    filters.set(objectToQuery({ ...router?.query }))
     return
   }
 
@@ -79,7 +112,7 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
   }, [props])
 
   useEffect(() => {
-    handleFilter('filters[platform][id][$eq]', activePlatform?.toString())
+    handleFilter('products', activePlatform?.toString())
   }, [activePlatform])
 
   useUpdateEffect(() => {
@@ -87,8 +120,8 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
     // since we use shallow, any serverside request is ignored
     updateParams()
     // statically set active tab
-    if (router?.query?.['filters[platform][id][$eq]']) {
-      setActivePlatform(parseInt(router?.query?.['filters[platform][id][$eq]']?.toString()))
+    if (router?.query?.products) {
+      setActivePlatform(router?.query?.products?.toString())
     }
   }, [router?.query])
 
@@ -181,31 +214,34 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
                       aria-orientation="vertical">
                       <li className="nav-item">
                         <a
-                          className={classNames(['nav-link custom-tabs-links', !activePlatform ? 'active' : ''])}
+                          className={classNames([
+                            'nav-link custom-tabs-links',
+                            !activePlatform || activePlatform === 'all' ? 'active' : ''
+                          ])}
                           id="v-pills-home-tab"
                           data-bs-toggle="pill"
                           href="#v-pills-home"
                           role="tab"
                           aria-controls="v-pills-home"
                           aria-selected="true"
-                          onClick={() => setActivePlatform(undefined)}>
+                          onClick={() => setActivePlatform('all')}>
                           All Platfrom
                         </a>
                       </li>
                       {platforms?.map((platform) => (
-                        <li key={platform?.id} className="nav-item">
+                        <li key={platform?.attributes?.name?.toLowerCase()} className="nav-item">
                           <a
                             className={classNames([
                               'nav-link custom-tabs-links',
-                              activePlatform == platform?.id ? 'active' : ''
+                              activePlatform == platform?.attributes?.name?.toLowerCase() ? 'active' : ''
                             ])}
-                            id={`v-pills-${platform?.id}-tab`}
+                            id={`v-pills-${platform?.attributes?.name?.toLowerCase()}-tab`}
                             data-bs-toggle="pill"
-                            href={`#v-pills-${platform?.id}`}
+                            href={`#v-pills-${platform?.attributes?.name?.toLowerCase()}`}
                             role="tab"
-                            aria-controls={`v-pills-${platform?.id}`}
+                            aria-controls={`v-pills-${platform?.attributes?.name?.toLowerCase()}`}
                             aria-selected="false"
-                            onClick={() => setActivePlatform(platform?.id)}>
+                            onClick={() => setActivePlatform(platform?.attributes?.name?.toLowerCase())}>
                             {platform?.attributes?.name}
                           </a>
                         </li>
@@ -216,7 +252,10 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
                 <div className="col-lg-12 text-start">
                   <div className="tab-content" id="v-pills-tabContent">
                     <div
-                      className="tab-pane fade active show"
+                      className={classNames(['tab-pane fade active', isLoading ? '' : 'show'])}
+                      style={{
+                        transitionDelay: '300ms'
+                      }}
                       id={`v-pills-${activePlatform}`}
                       role="tabpanel"
                       aria-labelledby={`v-pills-${activePlatform}-tab`}>
@@ -230,7 +269,7 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
                                   name="search"
                                   className="px-4 bg-white shadow form-control"
                                   placeholder="Search..."
-                                  defaultValue={router?.query?._q}
+                                  defaultValue={router?.query?.search}
                                 />
                                 <button type="submit" className="mb-0 text-white btn bg-primary" id="button-addon1">
                                   <span className="material-icons">search</span>
