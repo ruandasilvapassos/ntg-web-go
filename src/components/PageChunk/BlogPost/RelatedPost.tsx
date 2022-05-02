@@ -23,7 +23,7 @@ export const RelatedPost: React.FC<RelatedPostProps> = ({ insights }) => {
               <div className="card">
                 {insight?.attributes?.image?.data?.attributes?.url && (
                   <div className="card-header p-0 mx-3 mt-n4 position-relative z-index-1">
-                    <Link href={`/blog/${insight?.attributes?.slug}`} passHref>
+                    <Link href={`/insights/${insight?.attributes?.slug}`} passHref>
                       <a className="d-block blur-shadow-image">
                         <img
                           src={insight?.attributes?.image?.data?.attributes?.url}
@@ -48,7 +48,7 @@ export const RelatedPost: React.FC<RelatedPostProps> = ({ insights }) => {
                     }}>
                     {insight?.attributes?.categoryInsight?.data?.attributes?.name}
                   </span>
-                  <Link href={`/blog/${insight?.attributes?.slug}`} passHref>
+                  <Link href={`/insights/${insight?.attributes?.slug}`} passHref>
                     <a className="card-title mt-3 h5 d-block text-darker">{insight?.attributes?.title}</a>
                   </Link>
                   <p className="card-description mb-4 line-clamp-3">

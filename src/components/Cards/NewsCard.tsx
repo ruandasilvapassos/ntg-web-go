@@ -10,7 +10,7 @@ export const NewsCard: React.FC<NewsCardProps> = (props) => {
   const { title, thumbnail, description, slug } = props
 
   return (
-    <Link href={`/blog/${slug}`} passHref>
+    <Link href={`/insights/${slug}`} passHref>
       <a className="col-lg-6">
         <div className="d-flex align-items-center mb-4">
           <div

@@ -20,7 +20,7 @@ export const InsightCard: React.FC<InsightCardProps> = (props) => {
         <div className="col-md-4">
           <div className="card-header-image">
             {thumbnail && (
-              <Link href={`/blog/${slug}`} passHref>
+              <Link href={`/insights/${slug}`} passHref>
                 <a>
                   <img className="img border-radius-lg shadow-lg" src={thumbnail} />
                 </a>
@@ -37,7 +37,7 @@ export const InsightCard: React.FC<InsightCardProps> = (props) => {
             {trending && <i className="material-icons">trending_up</i>}
             {category}
           </h6>
-          <Link href={`/blog/${slug}`} passHref>
+          <Link href={`/insights/${slug}`} passHref>
             <a>
               <h4 className="card-title">{title}</h4>
             </a>
