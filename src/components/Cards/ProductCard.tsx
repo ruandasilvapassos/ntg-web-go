@@ -40,7 +40,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             {data?.attributes?.startPrice && <h6>Software Plan Starts at</h6>}
             <div className="d-flex justify-content-between align-items-center">
               {data?.attributes?.startPrice && <h5 className="mb-0 text-md">{data?.attributes?.startPrice}</h5>}
-              <Link href={`/product/${data?.attributes?.slug}`} passHref>
+              <Link href={`/products/${data?.attributes?.slug}`} passHref>
                 <a className="mt-3 text-xs btn btn-sm btn-outline-primary">Learn more</a>
               </Link>
             </div>

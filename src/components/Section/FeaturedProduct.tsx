@@ -69,7 +69,7 @@ export const FeaturedProduct: React.FC<FeaturedProductProps> = ({ title, descrip
                       }
                     />
                   </div>
-                  <Link href={`/product/${product?.attributes?.slug}`} passHref>
+                  <Link href={`/products/${product?.attributes?.slug}`} passHref>
                     <a type="button" className="mb-0 btn bg-gradient-primary w-100">
                       View Product
                     </a>
