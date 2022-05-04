@@ -11,5 +11,9 @@ module.exports = ({ env }) => ({
         defaultPath: 'assets'
       }
     }
+  },
+  // ... publisher
+  publisher: {
+    enable: true
   }
 })
