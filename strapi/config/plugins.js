@@ -18,5 +18,8 @@ module.exports = ({ env }) => ({
       dsn: env('SENTRY_DSN'),
       sendMetadata: true
     }
+  },
+  publisher: {
+    enable: true
   }
 })
