@@ -13,7 +13,6 @@
   "dependencies": {
     "@ntegral/strapi-provider-upload-azure-storage-blob": "^2.0.5",
     "@strapi/plugin-i18n": "4.1.8",
-    "@strapi/plugin-sentry": "^4.1.9",
     "@strapi/plugin-users-permissions": "4.1.8",
     "@strapi/strapi": "4.1.8",
     "pg": "8.6.0",
