@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import Slider from 'react-slick'
 
 const ReactSlider: any = Slider
@@ -13,39 +14,42 @@ interface ScrollableLogoCloudsProps {
   }
 }
 
-const sliderSettings = {
-  dots: false,
-  infinite: true,
-  slidesToShow: 6,
-  slidesToScroll: 1,
-  autoplay: true,
-  speed: 2000,
-  autoplaySpeed: 2000,
-  cssEase: 'linear',
-  arrows: false,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 4
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2
-      }
-    }
-  ]
-}
-
 export const ScrollableLogoClouds: React.FC<ScrollableLogoCloudsProps> = ({ data }) => {
+  const sliderSettings = useMemo(() => {
+    const slidesToShow = data?.logo && data?.logo?.length > 6 ? 6 : data?.logo?.length
+    return {
+      dots: false,
+      infinite: true,
+      slidesToShow,
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 2000,
+      cssEase: 'linear',
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2
+          }
+        }
+      ]
+    }
+  }, [])
+
   return (
     <div
       className="py-5 py-lg-6"
