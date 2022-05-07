@@ -84,10 +84,10 @@
         "layouts.mansory-image",
         "layouts.partner",
         "layouts.quote",
+        "layouts.scrollable-logo-clouds",
         "layouts.simple-hero",
         "layouts.step",
-        "layouts.support-hero",
-        "layouts.scrollable-logo-clouds"
+        "layouts.support-hero"
       ]
     }
   }

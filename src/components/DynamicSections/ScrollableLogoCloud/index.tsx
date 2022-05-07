@@ -7,6 +7,7 @@ interface ScrollableLogoCloudsProps {
   data?: {
     title?: string
     sectionBackgroundColor?: string
+    autoScrollSpeed?: string
     logo?: {
       image?: Strapi.Media
       title: string
@@ -23,8 +24,8 @@ export const ScrollableLogoClouds: React.FC<ScrollableLogoCloudsProps> = ({ data
       slidesToShow,
       slidesToScroll: 1,
       autoplay: true,
-      speed: 2000,
-      autoplaySpeed: 2000,
+      speed: parseInt(data?.autoScrollSpeed || '2000') || 2000,
+      autoplaySpeed: 0,
       cssEase: 'linear',
       arrows: false,
       responsive: [
@@ -48,7 +49,7 @@ export const ScrollableLogoClouds: React.FC<ScrollableLogoCloudsProps> = ({ data
         }
       ]
     }
-  }, [])
+  }, [data])
 
   return (
     <div
