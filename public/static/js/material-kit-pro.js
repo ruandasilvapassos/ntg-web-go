@@ -352,11 +352,12 @@ if (document.querySelector('#google-maps')) {
 }
 
 // Tabs navigation
-
-var total = document.querySelectorAll('.nav-pills')
-
-setTimeout(() => {
-  total.forEach(function (item, i) {
+window.addEventListener('load', function () {
+  var total = document.querySelectorAll('.nav-pills')
+  if (!total) {
+    return
+  }
+  total?.forEach(function (item, i) {
     var moving_div = document.createElement('div')
     moving_div.id = 'moving-tab-' + i
     const divExist = document.getElementById('moving-tab-' + i)
@@ -418,7 +419,7 @@ setTimeout(() => {
       }
     }
   })
-}, 100)
+})
 
 // Tabs navigation resize
 
