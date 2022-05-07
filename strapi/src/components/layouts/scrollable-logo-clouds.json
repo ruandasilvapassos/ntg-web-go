@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_layouts_scrollable_logo_clouds",
+  "info": {
+    "displayName": "Scrollable Logo Clouds",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "sectionBackgroundColor": {
+      "type": "string",
+      "default": "#f0f2f5"
+    },
+    "logo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.logo"
+    }
+  }
+}

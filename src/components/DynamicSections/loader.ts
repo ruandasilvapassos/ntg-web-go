@@ -21,6 +21,7 @@ import { SupportHero } from './Hero/SupportHero'
 import { LogoClouds } from './LogoCloud'
 import { MasonrySection } from './Masonry'
 import { Quote } from './Quote'
+import { ScrollableLogoClouds } from './ScrollableLogoCloud'
 import { Timeline } from './Timeline'
 
 export const sectionComponents = {
@@ -31,6 +32,7 @@ export const sectionComponents = {
   'layouts.image-hero': SimpleHeroWithImage,
   'layouts.hero-stats': HeroStats,
   'layouts.partner': LogoClouds,
+  'layouts.scrollable-logo-clouds': ScrollableLogoClouds,
   'layouts.bkg-header': BackgroundHero,
   'layouts.header': HeaderHero,
   'layouts.mansory-image': MasonrySection,

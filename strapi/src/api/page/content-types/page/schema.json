@@ -78,6 +78,7 @@
         "layouts.hero-circle-image",
         "layouts.hero-highlight",
         "layouts.hero-square-image",
+        "layouts.hero-stats",
         "layouts.image-hero",
         "layouts.item-hero",
         "layouts.mansory-image",
@@ -86,7 +87,7 @@
         "layouts.simple-hero",
         "layouts.step",
         "layouts.support-hero",
-        "layouts.hero-stats"
+        "layouts.scrollable-logo-clouds"
       ]
     }
   }

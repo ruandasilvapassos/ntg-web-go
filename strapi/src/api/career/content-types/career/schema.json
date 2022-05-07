@@ -94,7 +94,8 @@
         "layouts.quote",
         "layouts.simple-hero",
         "layouts.step",
-        "layouts.support-hero"
+        "layouts.support-hero",
+        "layouts.scrollable-logo-clouds"
       ]
     }
   }

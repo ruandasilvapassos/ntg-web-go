@@ -4,6 +4,8 @@
 /* Stop purging. */
 @import 'typography';
 @import 'loader';
+@import 'vendor/slick/slick';
+@import 'vendor/slick/slick-theme';
 html,
 body {
   scroll-behavior: smooth;
