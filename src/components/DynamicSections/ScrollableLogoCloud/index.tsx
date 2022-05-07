@@ -22,7 +22,27 @@ const sliderSettings = {
   speed: 2000,
   autoplaySpeed: 2000,
   cssEase: 'linear',
-  arrows: false
+  arrows: false,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2
+      }
+    }
+  ]
 }
 
 export const ScrollableLogoClouds: React.FC<ScrollableLogoCloudsProps> = ({ data }) => {
