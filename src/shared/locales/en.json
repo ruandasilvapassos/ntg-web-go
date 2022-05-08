@@ -11,7 +11,8 @@
       "agree": "I agree to the",
       "terms": "Terms and Conditions.",
       "help": "What can we help you?",
-      "describeProblem": "Describe your problem in at least 250 characters"
+      "describeProblem": "Describe your problem in at least 250 characters",
+      "required": "This field is required"
     }
   },
   "buttons": {

@@ -419,69 +419,69 @@ window.addEventListener('load', function () {
       }
     }
   })
-})
 
-// Tabs navigation resize
+  // Tabs navigation resize
 
-window.addEventListener('resize', function (event) {
-  total.forEach(function (item, i) {
-    item.querySelector('.moving-tab').remove()
-    var moving_div = document.createElement('div')
-    moving_div.id = 'moving-tab-' + i
-    const divExist = document.getElementById('moving-tab-' + i)
-    if (divExist) {
-      return
-    }
-    var tab = item.querySelector('.nav-link.active')?.cloneNode()
-    if (tab) {
-      tab.innerHTML = '-'
-    }
-
-    moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
-    moving_div?.appendChild(tab)
-
-    item?.appendChild(moving_div)
-
-    moving_div.style.padding = '0px'
-    moving_div.style.transition = '.5s ease'
-
-    let li = item.querySelector('.nav-link.active').parentElement
-
-    if (li) {
-      let nodes = Array.from(li.closest('ul').children) // get array
-      let index = nodes.indexOf(li) + 1
-
-      let sum = 0
-      if (item.classList.contains('flex-column')) {
-        for (var j = 1; j <= nodes.indexOf(li); j++) {
-          sum += item.querySelector('li:nth-child(' + j + ')').offsetHeight
-        }
-        moving_div.style.transform = 'translate3d(0px,' + sum + 'px, 0px)'
-        moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px'
-        moving_div.style.height = item.querySelector('li:nth-child(' + j + ')').offsetHeight
-      } else {
-        for (var j = 1; j <= nodes.indexOf(li); j++) {
-          sum += item.querySelector('li:nth-child(' + j + ')').offsetWidth
-        }
-        moving_div.style.transform = 'translate3d(' + sum + 'px, 0px, 0px)'
-        moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px'
+  window.addEventListener('resize', function (event) {
+    total.forEach(function (item, i) {
+      item.querySelector('.moving-tab').remove()
+      var moving_div = document.createElement('div')
+      moving_div.id = 'moving-tab-' + i
+      const divExist = document.getElementById('moving-tab-' + i)
+      if (divExist) {
+        return
       }
+      var tab = item.querySelector('.nav-link.active')?.cloneNode()
+      if (tab) {
+        tab.innerHTML = '-'
+      }
+
+      moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link')
+      moving_div?.appendChild(tab)
+
+      item?.appendChild(moving_div)
+
+      moving_div.style.padding = '0px'
+      moving_div.style.transition = '.5s ease'
+
+      let li = item.querySelector('.nav-link.active').parentElement
+
+      if (li) {
+        let nodes = Array.from(li.closest('ul').children) // get array
+        let index = nodes.indexOf(li) + 1
+
+        let sum = 0
+        if (item.classList.contains('flex-column')) {
+          for (var j = 1; j <= nodes.indexOf(li); j++) {
+            sum += item.querySelector('li:nth-child(' + j + ')').offsetHeight
+          }
+          moving_div.style.transform = 'translate3d(0px,' + sum + 'px, 0px)'
+          moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px'
+          moving_div.style.height = item.querySelector('li:nth-child(' + j + ')').offsetHeight
+        } else {
+          for (var j = 1; j <= nodes.indexOf(li); j++) {
+            sum += item.querySelector('li:nth-child(' + j + ')').offsetWidth
+          }
+          moving_div.style.transform = 'translate3d(' + sum + 'px, 0px, 0px)'
+          moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px'
+        }
+      }
+    })
+
+    if (window.innerWidth < 991) {
+      total.forEach(function (item, i) {
+        if (!item.classList.contains('flex-column')) {
+          item.classList.add('flex-column', 'on-resize')
+        }
+      })
+    } else {
+      total.forEach(function (item, i) {
+        if (item.classList.contains('on-resize')) {
+          item.classList.remove('flex-column', 'on-resize')
+        }
+      })
     }
   })
-
-  if (window.innerWidth < 991) {
-    total.forEach(function (item, i) {
-      if (!item.classList.contains('flex-column')) {
-        item.classList.add('flex-column', 'on-resize')
-      }
-    })
-  } else {
-    total.forEach(function (item, i) {
-      if (item.classList.contains('on-resize')) {
-        item.classList.remove('flex-column', 'on-resize')
-      }
-    })
-  }
 })
 
 function getEventTarget(e) {

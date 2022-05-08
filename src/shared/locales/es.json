@@ -11,7 +11,8 @@
       "agree": "Estoy de acuerdo con la",
       "terms": "Términos y condiciones.",
       "help": "¿En qué podemos ayudarte?",
-      "describeProblem": "Describa su problema en al menos 250 caracteres"
+      "describeProblem": "Describa su problema en al menos 250 caracteres",
+      "required": "Este campo es obligatorio"
     }
   },
   "buttons": {

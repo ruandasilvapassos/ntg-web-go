@@ -10,6 +10,7 @@
   "contact.forms.terms": "Terms and Conditions.",
   "contact.forms.help": "What can we help you?",
   "contact.forms.describeProblem": "Describe your problem in at least 250 characters",
+  "contact.forms.required": "This field is required",
   "buttons.sendMessage": "Send Message",
   "buttons.shareJob": "Share Job",
   "buttons.submitApplication": "Submit Application",

@@ -59,11 +59,12 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $input-height-inner;
-        background-image: escape-svg($icon);
-        background-repeat: no-repeat;
-        background-position: right $input-height-inner-quarter center;
-        background-size: $input-height-inner-half $input-height-inner-half;
+        padding-right: $input-height-inner !important;
+        background-image: escape-svg($icon) !important;
+        background-repeat: no-repeat !important;
+        background-position: right $input-height-inner-quarter center !important;
+        background-size: $input-height-inner-half $input-height-inner-half !important;
+        transition: none;
       }
 
       &:focus {

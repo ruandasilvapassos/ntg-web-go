@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -11,7 +12,12 @@ interface ContactFormWithBackgroundProps {
   image?: Strapi.Media
 }
 export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps> = ({ title, overview, image }) => {
-  const { register, handleSubmit, reset } = useForm()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm()
   const f = useFormatMessage()
   // we set ts to any, temporarily
   const handleContactForm = async (data: any) => {
@@ -69,12 +75,15 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                         <div className="input-group input-group-static mb-4">
                           <label>{f('contact.forms.firstName')}</label>
                           <input
-                            className="form-control"
+                            className={classNames(['form-control', errors?.fullname ? 'is-invalid' : ''])}
                             placeholder="eg. Jack"
                             aria-label="First Name..."
                             type="text"
-                            {...register('first_name')}
+                            {...register('first_name', {
+                              required: true
+                            })}
                           />
+                          {errors?.first_name && <span className="text-xs text-danger">{f('contact.forms.required')}</span>}
                         </div>
                       </div>
                       <div className="col-md-6 ps-2">
@@ -85,8 +94,11 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                             className="form-control"
                             placeholder="eg. Samuel"
                             aria-label="Last Name..."
-                            {...register('last_name')}
+                            {...register('last_name', {
+                              required: true
+                            })}
                           />
+                          {errors?.last_name && <span className="text-xs text-danger">{f('contact.forms.required')}</span>}
                         </div>
                       </div>
                     </div>
@@ -97,8 +109,11 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                           type="email"
                           className="form-control"
                           placeholder="hello@creative-tim.com"
-                          {...register('email')}
+                          {...register('email', {
+                            required: true
+                          })}
                         />
+                        {errors?.email && <span className="text-xs text-danger">{f('contact.forms.required')}</span>}
                       </div>
                     </div>
                     <div className="mb-4">
@@ -109,25 +124,38 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                           className="form-control"
                           placeholder="eg. Microsoft"
                           aria-label="Company..."
-                          {...register('company')}
+                          {...register('company', {
+                            required: true
+                          })}
                         />
+                        {errors?.company && <span className="text-xs text-danger">{f('contact.forms.required')}</span>}
                       </div>
                     </div>
                     <div className="mb-4">
                       <div className="input-group input-group-static">
                         <label>{f('contact.forms.topic')}</label>
                         <input
-                          type="texy"
+                          type="text"
                           className="form-control"
                           placeholder="eg. Azure Marketplace"
                           aria-label="Topic..."
-                          {...register('topic')}
+                          {...register('topic', {
+                            required: true
+                          })}
                         />
+                        {errors?.topic && <span className="text-xs text-danger">{f('contact.forms.required')}</span>}
                       </div>
                     </div>
                     <div className="input-group input-group-static mb-4">
                       <label>{f('contact.forms.message')}</label>
-                      <textarea className="form-control" id="message" rows={4} {...register('message')}></textarea>
+                      <textarea
+                        className="form-control"
+                        id="message"
+                        rows={4}
+                        {...register('message', {
+                          required: true
+                        })}></textarea>
+                      {errors?.message && <span className="text-xs text-danger">{f('contact.forms.required')}</span>}
                     </div>
                     <div className="row">
                       <div className="col-md-12">
@@ -137,8 +165,9 @@ export const ContactFormWithBackground: React.FC<ContactFormWithBackgroundProps>
                             type="checkbox"
                             id="flexSwitchCheckDefault"
                             defaultChecked
-                            {...register('agree_tac')}
-                            required
+                            {...register('agree_tac', {
+                              required: true
+                            })}
                           />
                           <label className="form-check-label ms-3 mb-0" htmlFor="flexSwitchCheckDefault">
                             {f('contact.forms.agree')}{' '}

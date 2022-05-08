@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
@@ -9,7 +10,12 @@ interface ContactFormWithoutBackgroundProps {
   overview?: string
 }
 export const ContactFormWithoutBackground: React.FC<ContactFormWithoutBackgroundProps> = ({ title, overview }) => {
-  const { register, handleSubmit, reset } = useForm()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm()
   const f = useFormatMessage()
 
   // we set ts to any, temporarily
@@ -51,61 +57,96 @@ export const ContactFormWithoutBackground: React.FC<ContactFormWithoutBackground
               <form id="contact-form" onSubmit={handleSubmit(handleContactForm)} method="post" autoComplete="off">
                 <div className="card-body">
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="position-relative col-md-6">
                       <label>{f('contact.forms.fullName')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
                         <input
                           type="text"
-                          className="form-control"
+                          className={classNames(['form-control', errors?.fullname ? 'is-invalid' : ''])}
                           placeholder={f('contact.forms.fullName')}
-                          {...register('fullname')}
+                          {...register('fullname', {
+                            required: true
+                          })}
                         />
                       </div>
+                      {errors?.fullname && (
+                        <span className="position-absolute text-xs bottom-7 start-4 text-danger">
+                          {f('contact.forms.required')}
+                        </span>
+                      )}
                     </div>
-                    <div className="col-md-6">
+                    <div className="position-relative col-md-6">
                       <label>{f('contact.forms.email')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
                         <input
                           type="email"
-                          className="form-control"
+                          className={classNames(['form-control', errors?.email ? 'is-invalid' : ''])}
                           placeholder={f('contact.forms.email')}
-                          {...register('email')}
+                          {...register('email', {
+                            required: true
+                          })}
                         />
                       </div>
+                      {errors?.email && (
+                        <span className="position-absolute text-xs bottom-7 start-4 text-danger">
+                          {f('contact.forms.required')}
+                        </span>
+                      )}
                     </div>
-                    <div className="col-md-6">
+                    <div className="position-relative col-md-6">
                       <label>{f('contact.forms.company')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
                         <input
                           type="text"
-                          className="form-control"
+                          className={classNames(['form-control', errors?.company ? 'is-invalid' : ''])}
                           placeholder={f('contact.forms.company')}
-                          {...register('company')}
+                          {...register('company', {
+                            required: true
+                          })}
                         />
                       </div>
+                      {errors?.company && (
+                        <span className="position-absolute text-xs bottom-7 start-4 text-danger">
+                          {f('contact.forms.required')}
+                        </span>
+                      )}
                     </div>
-                    <div className="col-md-6">
-                      <label>{f('contact.forms.fullName')}</label>
+                    <div className="position-relative col-md-6">
+                      <label>{f('contact.forms.topic')}</label>
                       <div className="input-group input-group-outline is-filled mb-4">
                         <input
                           type="text"
-                          className="form-control"
-                          placeholder={f('contact.forms.fullName')}
-                          {...register('topic')}
+                          className={classNames(['form-control', errors?.topic ? 'is-invalid' : ''])}
+                          placeholder={f('contact.forms.topic')}
+                          {...register('topic', {
+                            required: true
+                          })}
                         />
                       </div>
+                      {errors?.topic && (
+                        <span className="position-absolute text-xs bottom-7 start-4 text-danger">
+                          {f('contact.forms.required')}
+                        </span>
+                      )}
                     </div>
                   </div>
-                  <div className="form-group mb-4 mt-md-0 mt-4">
+                  <div className="position-relative form-group mb-4 mt-md-0 mt-4">
                     <label>{f('contact.forms.help')}</label>
                     <div className="input-group input-group-outline is-filled mb-4">
                       <textarea
-                        className="form-control"
+                        className={classNames(['form-control', errors?.message ? 'is-invalid' : ''])}
                         id="message"
                         rows={6}
                         placeholder={f('contact.forms.describeProblem')}
-                        {...register('message')}></textarea>
+                        {...register('message', {
+                          required: true
+                        })}></textarea>
                     </div>
+                    {errors?.message && (
+                      <span className="position-absolute text-xs text-danger" style={{ bottom: '-1.2rem', left: '.25rem' }}>
+                        {f('contact.forms.required')}
+                      </span>
+                    )}
                   </div>
                   <div className="row">
                     <div className="col-md-12 text-center">

@@ -10,6 +10,7 @@
   "contact.forms.terms": "Términos y condiciones.",
   "contact.forms.help": "¿En qué podemos ayudarte?",
   "contact.forms.describeProblem": "Describa su problema en al menos 250 caracteres",
+  "contact.forms.required": "Este campo es obligatorio",
   "buttons.sendMessage": "Enviar mensaje",
   "buttons.shareJob": "Compartir trabajo",
   "buttons.submitApplication": "Presentar la solicitud",
